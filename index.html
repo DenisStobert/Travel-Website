@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <title>Web Design Mastery | Wanderlust</title>
+  </head>
+  <body>
+    <header class="header">
+      <nav>
+        <div class="nav__logo">
+          <a href="#"><img src="assets/logo.png" alt="Logo" /></a>
+        </div>
+        <ul class="nav__links">
+          <li class="link"><a href="#home" class="active">Home</a></li>
+          <li class="link"><a href="#trending">Trending</a></li>
+          <li class="link"><a href="#destination">Destinations</a></li>
+          <li class="link"><a href="#guide">Guide</a></li>
+          <li class="link"><a href="#client">Client</a></li>
+        </ul>
+        <div class="nav__contact">
+          <a href="#"
+            ><img
+              src="assets/us-flag.png"
+              alt="US Flag"
+              class="flag-icon"
+            /><span>+1</span> 234-567-890</a
+          >
+        </div>
+      </nav>
+
+      <div class="video-wrapper">
+        <video autoplay muted loop playsinline id="heroVideo">
+          <source
+            src="assets/Dream Of Being The Best _ Qatar Airways.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <div class="section__container header__container" id="home">
+          <h1>Fly business for less.</h1>
+          <div class="airline-logos">
+            <img src="assets/qatar-logo.png" alt="Qatar Airways" />
+            <img src="assets/emirates-logo.png" alt="Emirates" />
+            <img src="assets/etihad-logo.png" alt="Etihad Airways" />
+            <img src="assets/delta-logo.png" alt="Delta Airlines" />
+            <img src="assets/united-logo.png" alt="United Airlines" />
+            <img src="assets/turkish-logo.png" alt="Turkish Airlines" />
+            <p class="airlines-text">And Others...</p>
+          </div>
+          <div class="header__form">
+            <form action="/" method="post">
+              <!-- Ensure method and action are set appropriately -->
+              <div class="input__group">
+                <label for="from">From:</label>
+                <input
+                  type="text"
+                  id="from"
+                  name="from"
+                  placeholder="Departure City or Airport"
+                  required
+                />
+              </div>
+              <div class="input__group">
+                <label for="to">To:</label>
+                <input
+                  type="text"
+                  id="to"
+                  name="to"
+                  placeholder="Destination City or Airport"
+                  required
+                />
+              </div>
+              <div class="input__group">
+                <label for="departureDate">Departure Date:</label>
+                <input
+                  type="date"
+                  id="departureDate"
+                  name="departureDate"
+                  required
+                />
+              </div>
+              <div class="input__group">
+                <label for="returnDate">Return Date:</label>
+                <input type="date" id="returnDate" name="returnDate" />
+              </div>
+              <div class="input__group">
+                <label for="passengers">Passengers:</label>
+                <input
+                  type="number"
+                  id="passengers"
+                  name="passengers"
+                  placeholder="Number of Passengers"
+                  min="1"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn">Search Flights</button>
+            </form>
+          </div>
+          <p class="savings-statement">
+            "Last month Business Flyer saved its clients over $1,500,000."
+          </p>
+        </div>
+      </div>
+    </header>
+    <section class="section__container trending__container" id="trending">
+      <div class="section__header">
+        <h2 class="section__title">Trending 2024</h2>
+      </div>
+      <div class="trending__grid">
+        <div class="trending__card">
+          <img src="assets/trending-1.webp" alt="trending" />
+          <h1>Bodrum, Turkey</h1>
+          <p>Best Place to Travel by Vogue</p>
+          <div class="trending__details">
+            <div class="price">
+              <p>From</p>
+              <h3>$957.50</h3>
+              <p>*Price varies</p>
+            </div>
+            <div class="trending__ratings">
+              <div>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-half-fill"></i></span>
+                <span><i class="ri-star-line"></i></span>
+              </div>
+              <p>4.8 (10)</p>
+            </div>
+          </div>
+          <h5>
+            <span><i class="ri-time-line"></i></span> 7 days
+          </h5>
+          <p>
+            <span><i class="ri-check-line"></i></span> Free Cancellation
+          </p>
+        </div>
+        <div class="trending__card">
+          <img src="assets/trending-2.webp" alt="trending" />
+          <h1>Ha Long Bay, Vietnam</h1>
+          <p>Top 1 Visited Place by Forbes</p>
+          <div class="trending__details">
+            <div class="price">
+              <p>From</p>
+              <h3>$500.50</h3>
+              <p>*Price varies</p>
+            </div>
+            <div class="trending__ratings">
+              <div>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-half-fill"></i></span>
+                <span><i class="ri-star-line"></i></span>
+              </div>
+              <p>4.2 (25)</p>
+            </div>
+          </div>
+          <h5>
+            <span><i class="ri-time-line"></i></span> 3 days
+          </h5>
+          <p>
+            <span><i class="ri-check-line"></i></span> Free Cancellation
+          </p>
+        </div>
+        <div class="trending__card">
+          <img src="assets/trending-3.avif" alt="trending" />
+          <h1>Carribean Coastline</h1>
+          <p>Most Beautiful Place to Visit by abcNEWS</p>
+          <div class="trending__details">
+            <div class="price">
+              <p>From</p>
+              <h3>$745.00</h3>
+              <p>*Price varies</p>
+            </div>
+            <div class="trending__ratings">
+              <div>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-fill"></i></span>
+                <span><i class="ri-star-half-fill"></i></span>
+                <span><i class="ri-star-line"></i></span>
+              </div>
+              <p>4.5 (15)</p>
+            </div>
+          </div>
+          <h5>
+            <span><i class="ri-time-line"></i></span> 6 days
+          </h5>
+          <p>
+            <span><i class="ri-check-line"></i></span> Free Cancellation
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-to-book">
+      <h1 class="book">How To Book</h1>
+      <div class="step" id="step1">
+        <img src="assets/step1.png" alt="Step 1" />
+        <p><span class="step-span">Step 1:</span> <br>Enter your flight details and click search</p>
+      </div>
+      <div class="step" id="step2">
+        <img src="assets/step2.png" alt="Step 2" />
+        <p><span class="step-span">Step 2:</span> <br>Fill your contact information</p>
+      </div>
+      <div class="step" id="step3">
+        <img src="assets/step3.png" alt="Step 3" />
+        <p><span class="step-span">Step 3:</span> <br>Your personal travel advisor will contact you momentarily</p>
+      </div>
+      <div class="step" id="step4">
+        <img src="assets/step4.png" alt="Step 4" />
+        <p><span class="step-span">Step 4:</span> <br>Check your mail and choose the best deal for you</p>
+      </div>
+    </section>
+
+    <section class="section__container destination__container" id="destination">
+      <div class="section__header">
+        <h2 class="section__title">Top Destinations</h2>
+      </div>
+      <div class="destination__grid">
+        <div class="destination__card">
+          <img src="assets/destination-1.jpg" alt="destination" />
+          <div class="badge">4.7</div>
+          <div class="destination__details">
+            <h4>Sydney</h4>
+            <p>Beauty</p>
+          </div>
+          <button class="book-btn">
+            Book Now <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+        <div class="destination__card">
+          <img src="assets/destination-2.webp" alt="destination" />
+          <div class="badge">4.5</div>
+          <div class="destination__details">
+            <h4>Dubai</h4>
+            <p>New</p>
+          </div>
+          <button class="book-btn">
+            Book Now <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+        <div class="destination__card">
+          <img src="assets/destination-3.png" alt="destination" />
+          <div class="badge">4.3</div>
+          <div class="destination__details">
+            <h4>Paris</h4>
+            <p>Love</p>
+          </div>
+          <button class="book-btn">
+            Book Now <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+        <div class="destination__card">
+          <img src="assets/destination-4.jpg" alt="destination" />
+          <div class="badge">4.8</div>
+          <div class="destination__details">
+            <h4>Singapore</h4>
+            <p>Action</p>
+          </div>
+          <button class="book-btn">
+            Book Now <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+        <div class="destination__card">
+          <img src="assets/destination-5.png" alt="destination" />
+          <div class="badge">4.2</div>
+          <div class="destination__details">
+            <h4>Switzerland</h4>
+            <p>Nature</p>
+          </div>
+          <button class="book-btn">
+            Book Now <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+        <div class="destination__card">
+          <img src="assets/destination-7.jpg" alt="destination" />
+          <div class="badge">4.7</div>
+          <div class="destination__details">
+            <h4>Antarctica</h4>
+            <p>Peace</p>
+          </div>
+          <button class="book-btn">
+            Book Now <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="tour">
+      <div class="section__container tour__container">
+        <h4>Watch Our Video Tour</h4>
+        <div class="video__container">
+          <video src="assets/video.mp4" autoplay loop muted></video>
+        </div>
+      </div>
+    </section>
+
+    <section class="section__container client__container" id="client">
+      <div class="section__header">
+        <h2 class="section__title">Clients Feedback</h2>
+      </div>
+      <div class="client__grid">
+        <div class="client__card">
+          <div class="client__card__header">
+            <span><i class="ri-double-quotes-r"></i></span>
+            <div class="ratings">
+              <span><i class="ri-star-fill"></i></span>
+              <span><i class="ri-star-fill"></i></span>
+              <span><i class="ri-star-fill"></i></span>
+              <span><i class="ri-star-half-fill"></i></span>
+              <span><i class="ri-star-line"></i></span>
+            </div>
+          </div>
+          <p>
+            I had the most incredible experience using this tour and travel
+            website. From booking my flights and accommodations to discovering
+            unique local activities, everything was seamless and well-organized.
+            It made my trip stress-free and unforgettable. I can't wait to plan
+            my next adventure with them!
+          </p>
+          <div class="client__card__footer">
+            <img src="assets/client-1.jpg" alt="client" />
+            <div class="client__details">
+              <h4>Mike Henderson</h4>
+              <p>Business Manager & CEO</p>
+            </div>
+          </div>
+        </div>
+        <div class="client__card">
+          <div class="client__card__header">
+            <span><i class="ri-double-quotes-r"></i></span>
+            <div class="ratings">
+              <span><i class="ri-star-fill"></i></span>
+              <span><i class="ri-star-fill"></i></span>
+              <span><i class="ri-star-fill"></i></span>
+              <span><i class="ri-star-fill"></i></span>
+              <span><i class="ri-star-fill"></i></span>
+            </div>
+          </div>
+          <p>
+            As a frequent traveler, I've used various tour and travel websites,
+            but this one stands out for its attention to detail and personalized
+            recommendations. The itineraries they offer are thoughtfully
+            curated, and the insider tips on their blog were a game-changer for
+            my recent trip. Highly recommended! Thanks to them.
+          </p>
+          <div class="client__card__footer">
+            <img src="assets/client-2.jpg" alt="client" />
+            <div class="client__details">
+              <h4>Paul Harrison</h4>
+              <p>Director</p>
+            </div>
+          </div>
+        </div>
+        <div class="client__card">
+          <div class="client__card__header">
+            <span><i class="ri-double-quotes-r"></i></span>
+            <div class="ratings">
+              <span><i class="ri-star-fill"></i></span>
+              <span><i class="ri-star-fill"></i></span>
+              <span><i class="ri-star-fill"></i></span>
+              <span><i class="ri-star-fill"></i></span>
+              <span><i class="ri-star-line"></i></span>
+            </div>
+          </div>
+          <p>
+            I'm not an experienced traveler, but this website made me feel like
+            a pro. The customer support team was incredibly helpful in guiding
+            me through the planning process, and their city guides provided
+            valuable insights. Thanks to them, I had a fantastic time exploring
+            a new city with confidence. I can't thank them enough!
+          </p>
+          <div class="client__card__footer">
+            <img src="assets/client-3.jpg" alt="client" />
+            <div class="client__details">
+              <h4>John Williams</h4>
+              <p>Content Writer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="subscribe">
+      <div class="section__container subscribe__container">
+        <h4>Subscribe and be Updated</h4>
+        <form action="/">
+          <div class="input-container">
+            <div class="phone-prefix">
+              <img src="assets/us-flag.png" alt="US Flag" class="flag-icon" />
+              <span class="country-code">+1</span>
+              <span class="separator">|</span>
+            </div>
+            <input
+              type="tel"
+              id="phone"
+              placeholder="Phone Number"
+              name="phone"
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+              required
+            />
+          </div>
+          <span class="separator">|</span>
+          <div class="input-container">
+            <input
+              type="email"
+              id="email"
+              placeholder="Email Address"
+              name="email"
+              required
+            />
+          </div>
+          <button class="btn">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="section__container footer__container">
+        <div class="footer__col">
+          <h5>Business Flyer</h5>
+          <p>
+            Welcome to Business Flyer, our tour and travel website is your
+            gateway to a world of wanderlust-inducing experiences.
+          </p>
+        </div>
+        <div class="footer__col">
+          <h4>Quick Links</h4>
+          <a href="#home">Home</a>
+          <a href="#destination">Destinations</a>
+          <a href="#subscribe">Write to Us</a>
+          <a href="#">Contact Us</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+        <div class="footer__col">
+          <h4>Features</h4>
+          <a href="#">Vacation Package</a>
+          <a href="#">List of Tours</a>
+          <a href="#">Gallery</a>
+          <a href="#">Travel on a Budget</a>
+        </div>
+        <div class="footer__col">
+          <h4>Follow Us</h4>
+          <div class="footer__socials">
+            <img src="assets/lets_stay_connected.svg" alt="">
+            <span>
+              <a href="#"><i class="ri-twitter-fill"></i></a>
+            </span>
+            <span>
+              <a href="#"><i class="ri-linkedin-fill"></i></a>
+            </span>
+            <span>
+              <a href="#"><i class="ri-instagram-line"></i></a>
+            </span>
+            <span>
+              <a href="#"><i class="ri-facebook-fill"></i></a>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bar">
+        Copyright © 2024 Business Flyer Travel. All rights reserved.
+      </div>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>

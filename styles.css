@@ -1,0 +1,1154 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+  --primary-color: #f13033;
+  --primary-color-dark: #c3282b;
+  --secondary-color: #f9f9f9;
+  --text-dark: #0f172a;
+  --text-light: #64748b;
+  --white: #ffffff;
+  --max-width: 1200px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.section__container {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 5rem 1rem;
+}
+
+.section__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.section__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.section__nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section__nav span {
+  padding: 0 7px;
+  font-size: 1.75rem;
+  color: var(--text-dark);
+  border: 1px solid var(--text-dark);
+  border-radius: 100%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.section__nav span:hover {
+  color: var(--white);
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--white);
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--primary-color-dark);
+}
+
+.badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 2px 15px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  background-color: #f0c8c9;
+  border-radius: 1rem;
+}
+
+img {
+  display: flex;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--secondary-color);
+  padding-top: 60px;
+}
+
+.header {
+  position: relative;
+  height: 70vh;
+  color: var(--white);
+}
+.header__container {
+  position: relative;
+  z-index: 1; /* Ensures text and form are visible above the video */
+  text-align: center; /* Centers the content */
+  padding-top: 20%; /* Adjusts the position of inner content */
+}
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 70vh; /* Full height */
+  overflow: hidden;
+}
+.video-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.3
+  ); /* Adjust the opacity to make it lighter or darker */
+  z-index: 2; /* Ensure it's above the video but below the text content */
+}
+#heroVideo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  min-width: 100%;
+  height: auto;
+  min-height: 100%;
+  z-index: 1; /* Ensures the video stays behind the content */
+}
+.section__container.header__container {
+  position: relative;
+  z-index: 3; /* Ensures text and other elements are above the overlay */
+  text-align: center;
+}
+.airlines-text {
+  text-transform: uppercase;
+  font-size: 15px;
+  opacity: 0.5;
+}
+.airline-logos {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 2rem 0;
+}
+.savings-statement {
+  text-align: center;
+  font-size: 16px;
+  color: #f0cc7f;
+  line-height: 2;
+  margin-top: 3rem; /* Adds space above the statement */
+  font-style: italic;
+}
+.airline-logos img {
+  height: 70px; /* Sets a standard height for all logos */
+  width: 70px;
+  opacity: 0.5; /* Lowers the opacity to 0.5 */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.airline-logos img:hover {
+  opacity: 1; /* Full opacity when hovered */
+  scale: 1.5;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  height: 60px;
+}
+.nav__logo,
+.nav__contact {
+  flex: 1; /* Allows these elements to take up equal space on the sides */
+}
+.nav__logo img {
+  width: 200px;
+  height: auto;
+}
+.nav__links {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 3; /* Gives the navigation links more space */
+  height: 100%;
+}
+.nav__links li {
+  display: flex;
+  align-items: center;
+}
+.nav__links li a {
+  text-transform: uppercase;
+  position: relative;
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  display: block;
+  line-height: 60px;
+  padding: 0 22px;
+  overflow: hidden;
+}
+.nav__links li a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 10px;
+  left: 0;
+  background: linear-gradient(to left, #f13033, #f13033);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+  transform: scaleX(0);
+}
+.nav__links li a:hover::after,
+.nav__links li a.active::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+.nav__links li a.active {
+  color: #f13033; /* Optional: change the text color for active state if desired */
+}
+.nav__links li a:hover {
+  color: #f13033; /* Changes text color on hover */
+}
+.nav__contact a {
+  text-decoration: none;
+  color: #f13033;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.nav__contact a:hover {
+  color: var(--primary-color-dark);
+}
+.nav__contact span {
+  color: #333;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+.nav__contact .flag-icon {
+  width: 25px;
+  height: 25px;
+}
+.link a {
+  padding: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--white);
+}
+
+.link a:hover {
+  color: var(--primary-color);
+}
+
+.header__container {
+  padding: 5rem 1rem 10rem;
+}
+
+.header__container h1 {
+  margin-top: 4rem;
+  max-width: 1000px;
+  margin-inline: auto;
+  font-size: 3.5rem;
+  color: var(--white);
+  text-align: center;
+  font-weight: 500;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.header__form form {
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background-color: var(--white);
+  border-radius: 10px;
+  margin-top: 4rem;
+}
+.input__group label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.input__group input[type="text"],
+.input__group input[type="date"],
+.input__group input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px; /* Adds space between inputs */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.input__group input[type="date"]:required:focus,
+.input__group input[type="text"]:required:focus,
+.input__group input[type="number"]:required:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(241, 48, 51, 0.5); /* Add focus effect */
+}
+
+.btn {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: var(--primary-color-dark);
+}
+
+.input__group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input__group label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.input__group input {
+  max-width: 140px;
+  outline: none;
+  border: none;
+  font-size: 0.9rem;
+}
+.trending__container {
+  margin-top: 50px;
+  position: relative;
+}
+.trending__container::before {
+  content: "";
+  position: absolute;
+  width: 80%;
+  background-color: #333;
+}
+.trending__grid {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.trending__card {
+  position: relative;
+  overflow: hidden;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+}
+.trending__card img {
+  width: 100%;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  display: block;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+}
+.trending__card:hover img {
+  filter: brightness(70%); /* Darkens the image */
+}
+.book-btn {
+  position: absolute;
+  top: 50%; /* Center vertically in the card */
+  left: 50%; /* Center horizontally in the card */
+  transform: translate(-50%, -50%); /* Offset the button to exactly center */
+  padding: 10px 20px;
+  border: none;
+  background-color: #fff;
+  color: var(--primary-color);
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+  z-index: 2; /* Ensure it's above the image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trending__card:hover .book-btn {
+  opacity: 1; /* Make button visible when the image is hovered */
+}
+
+.book-btn i {
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+.book-btn:hover i {
+  transform: rotate(
+    90deg
+  ); /* Rotates the icon 90 degrees when button is hovered */
+}
+
+.book-btn:hover {
+  background-color: var(--primary-color-dark); /* Darker color on hover */
+}
+.trending__card p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.trending__card h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.trending__details {
+  padding-block: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.trending__details p {
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.trending__details h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.trending__ratings span {
+  font-size: 0.9rem;
+  color: goldenrod;
+}
+
+.trending__ratings p {
+  text-align: right;
+}
+
+.trending__card h5 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.trending__card h5 span {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+.trending__card p span {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+.trending__card:hover {
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+  scale: 1.1;
+  cursor: pointer;
+}
+.book{
+  transform: rotate(-90deg);
+}
+.how-to-book {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 50px 0;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.step {
+  position: relative;
+  text-align: center;
+  flex: 1;
+}
+.step-span{
+  font-weight: bold;
+}
+.step img {
+  width: 50px;
+  height: 50px;
+  display: block;  /* Ensures the image is treated as a block-level element */
+  margin: 0 auto 20px;  /* Centers the image horizontally and adds space below */
+}
+.step:nth-child(2), .step:nth-child(4) {
+  margin-top: 50px;
+}
+.step:nth-child(1), .step:nth-child(3) {
+  margin-top: -50px;
+}
+
+.step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 0;  /* Adjust to align with the center of the image */
+  right: -50px;  /* Positioning the start of the curve */
+  width: 100px;
+  height: 2px;
+  background: transparent;
+  border-top: 2px dashed var(--primary-color);
+  transform: scaleX(3) rotate(-20deg);  /* Adjust the curvature and angle */
+  transform-origin:  center;  /* Ensures the rotation pivots around the right center */
+}
+.step:nth-child(odd):not(:last-child)::after {
+  transform: scaleX(3) rotate(20deg);  /* Curve downwards for odd steps */
+  top: 45px;  /* Adjust top position to better fit the curve */
+}
+.step p {
+  font-size: 16px;
+  color: #333;
+}
+.destination__grid {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: 350px repeat(3, 1fr);
+  grid-auto-rows: max-content;
+  gap: 1.5rem;
+}
+
+.destination__card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.destination__card:nth-child(1) {
+  grid-area: 1/1/3/2;
+}
+
+.destination__card:nth-child(2) {
+  grid-area: 1/2/2/4;
+}
+.destination__card:nth-child(3) .book-btn,
+.destination__card:nth-child(4) .book-btn,
+.destination__card:nth-child(5) .book-btn,
+.destination__card:nth-child(6) .book-btn {
+  font-size: 12px;
+}
+.destination__card img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+.destination__card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0); /* Transparent by default */
+  transition: background 0.3s ease;
+  border-radius: 10px; /* Matches image border-radius */
+  z-index: 1;
+}
+.destination__card:hover::before {
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay on hover */
+}
+.destination__card:hover img {
+  transform: scale(1.1);
+}
+.book-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  border: none;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0; /* Initially hidden */
+  transition: all 0.3s ease;
+  z-index: 2; /* Ensure it's above the image */
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  display: flex; /* Ensures the text and icon are inline */
+  align-items: center; /* Centers the icon vertically */
+  justify-content: center;
+}
+.book-btn i {
+  margin-left: 10px; /* Space between text and icon */
+  transition: transform 0.3s ease; /* Smooth transition for rotation */
+}
+.destination__card:hover .book-btn {
+  opacity: 1; /* Appears when hovering the card */
+}
+.book-btn:hover {
+  background-color: var(--primary-color-dark);
+}
+.book-btn:hover i {
+  transform: rotate(90deg); /* Rotates the icon 90 degrees */
+}
+.destination__details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+}
+
+.destination__details h4 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--white);
+}
+
+.destination__details p {
+  font-size: 0.9rem;
+  color: var(--white);
+}
+
+.seller__grid {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.seller__image {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.seller__image__content {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.seller__image .badge {
+  left: unset;
+  right: 1rem;
+}
+
+.seller__image__footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.seller__price p {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+}
+
+.seller__price h4 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--white);
+}
+
+.seller__image__footer .btn {
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.seller__details {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.seller__details h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.seller__details p {
+  color: var(--text-light);
+}
+
+.seller__card:hover .seller__image__content {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.tour {
+  margin-bottom: 2rem;
+  background-image: url("assets/tour.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.tour__container {
+  padding-bottom: 0;
+}
+
+.tour__container h4 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--white);
+  text-align: center;
+}
+
+.video__container {
+  width: 100%;
+  max-width: 600px;
+  margin-inline: auto;
+  height: 300px;
+  overflow: hidden;
+  background-color: var(--text-light);
+  transform: translateY(2rem);
+  border: 1px solid var(--white);
+  border-radius: 10px;
+}
+
+.guide__grid {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.guide__card {
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.guide__image {
+  position: relative;
+}
+
+.guide__socials {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.guide__card:hover .guide__socials {
+  opacity: 1;
+}
+
+.guide__socials > div {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.guide__socials a {
+  padding: 5px 10px;
+  font-size: 1.25rem;
+  color: var(--text-dark);
+  background-color: var(--white);
+  border-radius: 100%;
+}
+
+.guide__socials .btn {
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.guide__content {
+  padding: 1.5rem;
+}
+
+.guide__details {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.guide__details h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.guide__card .guide__details p {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.guide__card p {
+  color: var(--text-light);
+}
+
+.guide__card:hover {
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+}
+
+.client__grid {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.client__card {
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.client__card__header {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.client__card__header span {
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.client__card__header .ratings span {
+  font-size: 1.2rem;
+  color: goldenrod;
+}
+
+.client__card p {
+  margin-bottom: 1rem;
+  color: var(--text-light);
+}
+
+.client__card__footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.client__card__footer img {
+  max-width: 60px;
+  border-radius: 100%;
+}
+
+.client__card__footer h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.client__card__footer p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.client__card:hover {
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+}
+.input-container {
+  width: 100%; /* Ensures input containers take full width of the form */
+  display: flex;
+  justify-content: center; /* Centers the flag, country code, and input field horizontally */
+  align-items: center;
+}
+
+.phone-prefix {
+  display: flex;
+  align-items: center;
+  margin-right: 5px; /* Space between prefix and input */
+}
+.separator,
+.input-separator {
+  color: #64748b; /* Match the secondary text color */
+  margin: 0 10px; /* Space around separators */
+  font-size: 1rem; /* Ensure it matches the size of the input text */
+  align-self: center; /* Vertically aligns with the inputs */
+}
+.flag-icon {
+  width: 24px;
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.country-code {
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
+input[type="tel"],
+input[type="email"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex-grow: 1; /* Allows input fields to take up remaining space */
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+.subscribe {
+  background-image: url("assets/subscribe.jpeg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.subscribe__container h4 {
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--white);
+  text-align: center;
+}
+.subscribe__container form {
+  width: 100%;
+  max-width: 900px;
+  margin-inline: auto;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  background-color: var(--white);
+  border-radius: 10px;
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+}
+
+.subscribe__container input {
+  width: 100%;
+  padding: 0 2rem;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+}
+
+.footer__container {
+  display: grid;
+  grid-template-columns: 400px repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.footer__col h5 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.footer__col p {
+  max-width: 300px;
+  color: var(--text-light);
+}
+
+.footer__col h4 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.footer__col a {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-light);
+  transition: 0.3s;
+}
+
+.footer__col a:hover {
+  color: var(--primary-color);
+}
+
+.footer__socials {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.footer__socials span a {
+  padding: 5px 10px;
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--white);
+  background-color: var(--primary-color);
+  border-radius: 100%;
+}
+
+.footer__socials span a:hover {
+  color: var(--secondary-color);
+  background-color: var(--primary-color-dark);
+}
+
+.footer__bar {
+  padding: 1rem;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  text-align: center;
+}
+
+@media (width < 1200px) {
+  .destination__grid {
+    gap: 1rem;
+  }
+
+  .footer__container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (width < 900px) {
+  .nav__links {
+    gap: 1rem;
+  }
+
+  .link a {
+    padding: 0;
+  }
+
+  .trending__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .destination__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .destination__card:nth-child(1),
+  .destination__card:nth-child(2) {
+    grid-area: unset;
+  }
+
+  .seller__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .guide__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .client__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .footer__container {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .footer__col:nth-child(4) {
+    grid-area: 2/1/3/2;
+  }
+}
+
+@media (width < 600px) {
+  .nav__links {
+    display: none;
+  }
+
+  .header__form form {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .trending__grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .destination__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .seller__grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .guide__grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .client__grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .subscribe__container input {
+    padding: 0 1rem;
+  }
+
+  .footer__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
