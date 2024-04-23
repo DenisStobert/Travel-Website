@@ -111,7 +111,7 @@ body {
 
 .header {
   position: relative;
-  height: 70vh;
+  min-height: 70vh;
   color: var(--white);
 }
 .header__container {
@@ -391,6 +391,7 @@ nav {
 .trending__container {
   margin-top: 50px;
   position: relative;
+  min-height: 50vh;
 }
 .trending__container::before {
   content: "";
@@ -405,7 +406,7 @@ nav {
 }
 .trending__container .swiper {
   width: 100%;
-  min-height: 50vh;
+  height: 50vh;
 }
 
 .trending__container .swiper-slide {

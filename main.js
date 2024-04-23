@@ -54,20 +54,20 @@ ScrollReveal().reveal('.line img', {
   interval: 300
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-  var mySwiper = new Swiper('.mySwiper', {
-      slidesPerView: 1,
-      spaceBetween: 30,
-      loop: true,
-      pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-      },
-      navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-      },
-  });
+var swiper = new Swiper('.mySwiper', {
+  loop: true,
+  autoplay: {
+      delay: 5000,  // 5000 milliseconds = 5 seconds
+      disableOnInteraction: false,  // Continue autoplay when the swiper is interacted with (swipe, navigation buttons, etc.)
+  },
+  pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+  },
+  navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+  },
 });
 function initAutocomplete() {
   var fromInput = document.getElementById("fromAirport");
