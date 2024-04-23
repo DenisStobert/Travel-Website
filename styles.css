@@ -16,7 +16,85 @@
   box-sizing: border-box;
   transition: none;
 }
+.loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #03a9f4;
+  z-index: 9999; /* High z-index to make sure it covers everything */
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+.loader{
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+.loader span{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(calc(18deg * var(--i)));
+}
+.loader span::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: animate 2s linear infinite;
+  animation-delay: calc(0.1s * var(--i));
+}
+@keyframes animate {
+  0%{
+    transform: scale(0);
+  }
+  10% {
+    transform: scale(1.2);
+  }
+  80%,100%{
+    transform: scale(0);
+  }
+}
+.rocket{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: rotating 2s linear infinite;
+  animation-delay: -1s;
+}
+@keyframes rotating {
+  0%{
+    transform: rotate(10deg);
+  }
+  100%{
+    transform: rotate(370deg);
+  }
+}
+.rocket::before{
+  content: '\f072';
+  font-family: fontAwesome;
+  position: absolute;
+  top: 80px;
+  left: 85px;
+  color: #fff;
+  font-size: 60px;
+  transform: rotate(120deg);
 
+}
 .section__container {
   max-width: var(--max-width);
   margin: auto;
@@ -102,7 +180,6 @@ a {
 html,
 body {
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 
 body {
@@ -340,6 +417,35 @@ nav {
   color: var(--text-dark);
   font-weight: 600;
 }
+.trip-type {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.trip-option {
+  font-size: 20px;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 10px; /* Adds a right margin to each button except the last one */
+}
+
+.trip-option:last-child {
+  margin-right: 0; /* Removes the margin for the last button */
+}
+
+.trip-option.active {
+  background-color: #f13033;
+  color: white;
+  border-color: #f13033;
+}
+
+input[type="date"]:disabled {
+  background-color: #e9ecef;
+  cursor: not-allowed;
+}
 
 .input__group input[type="text"],
 .input__group input[type="date"],
@@ -350,14 +456,37 @@ nav {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-
+input[type="date"] {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
 .input__group input[type="date"]:required:focus,
 .input__group input[type="text"]:required:focus,
 .input__group input[type="number"]:required:focus {
   border-color: var(--primary-color);
   box-shadow: 0 0 5px rgba(241, 48, 51, 0.5); /* Add focus effect */
 }
+.pac-container {
+  font-family: 'Arial', sans-serif; /* Specify the font */
+  border-radius: 5px; /* Rounded corners for the dropdown */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
 
+.pac-item {
+  padding: 10px; /* More space around the items */
+  cursor: pointer; /* Make it clear it's selectable */
+}
+
+.pac-item:hover {
+  background-color: #f0f0f0; /* Light grey background on hover */
+}
+
+.pac-item-query {
+  font-weight: bold; /* Make the matched text bolder */
+}
 .btn {
   background-color: var(--primary-color);
   color: var(--white);

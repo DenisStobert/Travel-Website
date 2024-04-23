@@ -19,8 +19,35 @@
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3AP2WmC5MY8fOBIPVd66YmkD8u8nbcts&libraries=places&callback=initAutocomplete" async defer></script>
   </head>
   <body>
+    <div class="loader-wrapper">
+      <div class="loader">
+        <span style="--i: 1"></span>
+        <span style="--i: 2"></span>
+        <span style="--i: 3"></span>
+        <span style="--i: 4"></span>
+        <span style="--i: 5"></span>
+        <span style="--i: 6"></span>
+        <span style="--i: 7"></span>
+        <span style="--i: 8"></span>
+        <span style="--i: 9"></span>
+        <span style="--i: 10"></span>
+        <span style="--i: 11"></span>
+        <span style="--i: 12"></span>
+        <span style="--i: 13"></span>
+        <span style="--i: 14"></span>
+        <span style="--i: 15"></span>
+        <span style="--i: 16"></span>
+        <span style="--i: 17"></span>
+        <span style="--i: 18"></span>
+        <span style="--i: 19"></span>
+        <span style="--i: 20"></span>
+        <div class="rocket"></div>
+      </div>
+    </div>
     <header class="header">
       <nav>
         <div class="nav__logo">
@@ -67,6 +94,10 @@
             <p class="airlines-text">And Others...</p>
           </div>
           <div class="header__form">
+            <div class="trip-type">
+              <button type="button" id="roundTrip" class="trip-option active">Round-Trip</button>
+              <button type="button" id="oneWay" class="trip-option">One-Way Trip</button>
+            </div>
             <form action="/" method="post">
               <!-- Ensure method and action are set appropriately -->
               <div class="input__group">
@@ -125,7 +156,9 @@
     <section class="section__container trending__container" id="trending">
       <div class="section__header">
         <h2 class="section__title">Business Trending 2024</h2>
-        <p>Save 50-77%* OFF on Business Class Flights with SkyLux Travel</p>
+        <p>
+          Save 50-77%* OFF on Business Class Flights with BusinessFlyer Travel
+        </p>
       </div>
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
@@ -610,12 +643,7 @@
       <div class="section__container tour__container">
         <h4>Watch Our Video Tour</h4>
         <div class="video__container">
-          <video
-            src="assets/videoTour.mp4"
-            autoplay
-            loop
-            muted
-          ></video>
+          <video src="assets/videoTour.mp4" autoplay loop muted></video>
         </div>
       </div>
     </section>
