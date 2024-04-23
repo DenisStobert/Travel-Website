@@ -14,12 +14,21 @@
     />
     <script src="https://unpkg.com/scrollreveal"></script>
     <title>Web Design Mastery | Wanderlust</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   </head>
   <body>
     <header class="header">
       <nav>
         <div class="nav__logo">
-          <a href="#"><img src="assets/logo.png" alt="Logo" /></a>
+          <a href="#">
+            <img src="assets/logo.png" alt="Logo" />
+            <span class="logo-separator">|</span>
+            <span class="logo-text">Comfort you can afford</span>
+          </a>
         </div>
         <ul class="nav__links">
           <li class="link"><a href="#home" class="active">Home</a></li>
@@ -66,7 +75,7 @@
                   type="text"
                   id="from"
                   name="from"
-                  placeholder="Departure City or Airport"
+                  placeholder="Departure Country"
                   required
                 />
               </div>
@@ -76,7 +85,7 @@
                   type="text"
                   id="to"
                   name="to"
-                  placeholder="Destination City or Airport"
+                  placeholder="Destination Country"
                   required
                 />
               </div>
@@ -108,120 +117,378 @@
             </form>
           </div>
           <p class="savings-statement">
-            "Last month Business Flyer saved its clients over $1,500,000."
+            "Last month Business Flyer saved its clients over $700,000."
           </p>
         </div>
       </div>
     </header>
     <section class="section__container trending__container" id="trending">
       <div class="section__header">
-        <h2 class="section__title">Trending 2024</h2>
+        <h2 class="section__title">Business Trending 2024</h2>
+        <p>Save 50-77%* OFF on Business Class Flights with SkyLux Travel</p>
       </div>
-      <div class="trending__grid">
-        <div class="trending__card">
-          <img src="assets/trending-1.webp" alt="trending" />
-          <h1>Bodrum, Turkey</h1>
-          <p>Best Place to Travel by Vogue</p>
-          <div class="trending__details">
-            <div class="price">
-              <p>From</p>
-              <h3>$957.50</h3>
-              <p>*Price varies</p>
-            </div>
-            <div class="trending__ratings">
-              <div>
-                <span><i class="ri-star-fill"></i></span>
-                <span><i class="ri-star-fill"></i></span>
-                <span><i class="ri-star-fill"></i></span>
-                <span><i class="ri-star-half-fill"></i></span>
-                <span><i class="ri-star-line"></i></span>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <!-- Swiper Slide 1 -->
+          <div class="swiper-slide">
+            <div class="trending__grid">
+              <div class="trending__card">
+                <img src="assets/trending-1.webp" alt="trending" />
+                <h1>Turkey</h1>
+                <p>Best Place to Travel by Vogue</p>
+                <div class="trending__details">
+                  <div class="price">
+                    <p>From</p>
+                    <h3>$2,325*</h3>
+                    <p>*Price varies</p>
+                  </div>
+                  <div class="trending__ratings">
+                    <div>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-half-fill"></i></span>
+                      <span><i class="ri-star-line"></i></span>
+                    </div>
+                    <p>4.8 (10)</p>
+                  </div>
+                </div>
+                <h5>
+                  <span><i class="ri-time-line"></i></span> 7 days
+                </h5>
+                <p>
+                  <span><i class="ri-check-line"></i></span> Free Cancellation
+                </p>
               </div>
-              <p>4.8 (10)</p>
+              <div class="trending__card">
+                <img src="assets/trending-2.webp" alt="trending" />
+                <h1>Vietnam</h1>
+                <p>Top 1 Visited Place by Forbes</p>
+                <div class="trending__details">
+                  <div class="price">
+                    <p>From</p>
+                    <h3>$1,449*</h3>
+                    <p>*Price varies</p>
+                  </div>
+                  <div class="trending__ratings">
+                    <div>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-half-fill"></i></span>
+                      <span><i class="ri-star-line"></i></span>
+                    </div>
+                    <p>4.2 (25)</p>
+                  </div>
+                </div>
+                <h5>
+                  <span><i class="ri-time-line"></i></span> 3 days
+                </h5>
+                <p>
+                  <span><i class="ri-check-line"></i></span> Free Cancellation
+                </p>
+              </div>
+              <div class="trending__card">
+                <img src="assets/trending-3.avif" alt="trending" />
+                <h1>Carribean</h1>
+                <p>Most Beautiful Place to Visit by abcNEWS</p>
+                <div class="trending__details">
+                  <div class="price">
+                    <p>From</p>
+                    <h3>$2,165*</h3>
+                    <p>*Price varies</p>
+                  </div>
+                  <div class="trending__ratings">
+                    <div>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-half-fill"></i></span>
+                      <span><i class="ri-star-line"></i></span>
+                    </div>
+                    <p>4.5 (15)</p>
+                  </div>
+                </div>
+                <h5>
+                  <span><i class="ri-time-line"></i></span> 6 days
+                </h5>
+                <p>
+                  <span><i class="ri-check-line"></i></span> Free Cancellation
+                </p>
+              </div>
             </div>
           </div>
-          <h5>
-            <span><i class="ri-time-line"></i></span> 7 days
-          </h5>
-          <p>
-            <span><i class="ri-check-line"></i></span> Free Cancellation
-          </p>
-        </div>
-        <div class="trending__card">
-          <img src="assets/trending-2.webp" alt="trending" />
-          <h1>Ha Long Bay, Vietnam</h1>
-          <p>Top 1 Visited Place by Forbes</p>
-          <div class="trending__details">
-            <div class="price">
-              <p>From</p>
-              <h3>$500.50</h3>
-              <p>*Price varies</p>
-            </div>
-            <div class="trending__ratings">
-              <div>
-                <span><i class="ri-star-fill"></i></span>
-                <span><i class="ri-star-fill"></i></span>
-                <span><i class="ri-star-fill"></i></span>
-                <span><i class="ri-star-half-fill"></i></span>
-                <span><i class="ri-star-line"></i></span>
+          <!-- Swiper Slide 2 -->
+          <div class="swiper-slide">
+            <div class="trending__grid">
+              <div class="trending__card">
+                <img src="assets/trending-4.jpg" alt="trending" />
+                <h1>Dubai</h1>
+                <p>Best Place to Travel by Vogue</p>
+                <div class="trending__details">
+                  <div class="price">
+                    <p>From</p>
+                    <h3>$2,775*</h3>
+                    <p>*Price varies</p>
+                  </div>
+                  <div class="trending__ratings">
+                    <div>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-half-fill"></i></span>
+                      <span><i class="ri-star-line"></i></span>
+                    </div>
+                    <p>4.3 (12)</p>
+                  </div>
+                </div>
+                <h5>
+                  <span><i class="ri-time-line"></i></span> 5 days
+                </h5>
+                <p>
+                  <span><i class="ri-check-line"></i></span> Free Cancellation
+                </p>
               </div>
-              <p>4.2 (25)</p>
+              <div class="trending__card">
+                <img src="assets/trending-5.webp" alt="trending" />
+                <h1>Singapore</h1>
+                <p>Top 1 Visited Place by Forbes</p>
+                <div class="trending__details">
+                  <div class="price">
+                    <p>From</p>
+                    <h3>$2,959*</h3>
+                    <p>*Price varies</p>
+                  </div>
+                  <div class="trending__ratings">
+                    <div>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-half-fill"></i></span>
+                      <span><i class="ri-star-line"></i></span>
+                    </div>
+                    <p>4.4 (21)</p>
+                  </div>
+                </div>
+                <h5>
+                  <span><i class="ri-time-line"></i></span> 4 days
+                </h5>
+                <p>
+                  <span><i class="ri-check-line"></i></span> Free Cancellation
+                </p>
+              </div>
+              <div class="trending__card">
+                <img src="assets/trending-6.jpeg" alt="trending" />
+                <h1>Tokyo</h1>
+                <p>Most Beautiful Place to Visit by abcNEWS</p>
+                <div class="trending__details">
+                  <div class="price">
+                    <p>From</p>
+                    <h3>$2,899*</h3>
+                    <p>*Price varies</p>
+                  </div>
+                  <div class="trending__ratings">
+                    <div>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-half-fill"></i></span>
+                      <span><i class="ri-star-line"></i></span>
+                    </div>
+                    <p>4.9 (19)</p>
+                  </div>
+                </div>
+                <h5>
+                  <span><i class="ri-time-line"></i></span> 9 days
+                </h5>
+                <p>
+                  <span><i class="ri-check-line"></i></span> Free Cancellation
+                </p>
+              </div>
             </div>
           </div>
-          <h5>
-            <span><i class="ri-time-line"></i></span> 3 days
-          </h5>
-          <p>
-            <span><i class="ri-check-line"></i></span> Free Cancellation
-          </p>
-        </div>
-        <div class="trending__card">
-          <img src="assets/trending-3.avif" alt="trending" />
-          <h1>Carribean Coastline</h1>
-          <p>Most Beautiful Place to Visit by abcNEWS</p>
-          <div class="trending__details">
-            <div class="price">
-              <p>From</p>
-              <h3>$745.00</h3>
-              <p>*Price varies</p>
-            </div>
-            <div class="trending__ratings">
-              <div>
-                <span><i class="ri-star-fill"></i></span>
-                <span><i class="ri-star-fill"></i></span>
-                <span><i class="ri-star-fill"></i></span>
-                <span><i class="ri-star-half-fill"></i></span>
-                <span><i class="ri-star-line"></i></span>
+          <!-- Swiper Slide 3 -->
+          <div class="swiper-slide">
+            <div class="trending__grid">
+              <div class="trending__card">
+                <img src="assets/trending-7.jpeg" alt="trending" />
+                <h1>Japan</h1>
+                <p>Best Place to Travel by Vogue</p>
+                <div class="trending__details">
+                  <div class="price">
+                    <p>From</p>
+                    <h3>$1,535*</h3>
+                    <p>*Price varies</p>
+                  </div>
+                  <div class="trending__ratings">
+                    <div>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-half-fill"></i></span>
+                      <span><i class="ri-star-line"></i></span>
+                    </div>
+                    <p>4.5 (5)</p>
+                  </div>
+                </div>
+                <h5>
+                  <span><i class="ri-time-line"></i></span> 1 days
+                </h5>
+                <p>
+                  <span><i class="ri-check-line"></i></span> Free Cancellation
+                </p>
               </div>
-              <p>4.5 (15)</p>
+              <div class="trending__card">
+                <img src="assets/trending-8.jpg" alt="trending" />
+                <h1>Delhi</h1>
+                <p>Top 1 Visited Place by Forbes</p>
+                <div class="trending__details">
+                  <div class="price">
+                    <p>From</p>
+                    <h3>$1,909*</h3>
+                    <p>*Price varies</p>
+                  </div>
+                  <div class="trending__ratings">
+                    <div>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-half-fill"></i></span>
+                      <span><i class="ri-star-line"></i></span>
+                    </div>
+                    <p>4.4 (22)</p>
+                  </div>
+                </div>
+                <h5>
+                  <span><i class="ri-time-line"></i></span> 3 days
+                </h5>
+                <p>
+                  <span><i class="ri-check-line"></i></span> Free Cancellation
+                </p>
+              </div>
+              <div class="trending__card">
+                <img src="assets/trending-9.jpeg" alt="trending" />
+                <h1>Frankfurt</h1>
+                <p>Most Beautiful Place to Visit by abcNEWS</p>
+                <div class="trending__details">
+                  <div class="price">
+                    <p>From</p>
+                    <h3>$1,039*</h3>
+                    <p>*Price varies</p>
+                  </div>
+                  <div class="trending__ratings">
+                    <div>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-half-fill"></i></span>
+                      <span><i class="ri-star-line"></i></span>
+                    </div>
+                    <p>4.5 (15)</p>
+                  </div>
+                </div>
+                <h5>
+                  <span><i class="ri-time-line"></i></span> 6 days
+                </h5>
+                <p>
+                  <span><i class="ri-check-line"></i></span> Free Cancellation
+                </p>
+              </div>
             </div>
           </div>
-          <h5>
-            <span><i class="ri-time-line"></i></span> 6 days
-          </h5>
-          <p>
-            <span><i class="ri-check-line"></i></span> Free Cancellation
-          </p>
+          <!-- Swiper Slide 4 -->
+          <div class="swiper-slide">
+            <div class="trending__grid">
+              <div class="trending__card">
+                <img src="assets/trending-10.jpg" alt="trending" />
+                <h1>Amsterdam</h1>
+                <p>Best Place to Travel by Vogue</p>
+                <div class="trending__details">
+                  <div class="price">
+                    <p>From</p>
+                    <h3>$1,635*</h3>
+                    <p>*Price varies</p>
+                  </div>
+                  <div class="trending__ratings">
+                    <div>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-half-fill"></i></span>
+                      <span><i class="ri-star-line"></i></span>
+                    </div>
+                    <p>4.8 (11)</p>
+                  </div>
+                </div>
+                <h5>
+                  <span><i class="ri-time-line"></i></span> 6 days
+                </h5>
+                <p>
+                  <span><i class="ri-check-line"></i></span> Free Cancellation
+                </p>
+              </div>
+              <div class="trending__card">
+                <img src="assets/trending-11.jpeg" alt="trending" />
+                <h1>Sydney</h1>
+                <p>Top 1 Visited Place by Forbes</p>
+                <div class="trending__details">
+                  <div class="price">
+                    <p>From</p>
+                    <h3>$2,899*</h3>
+                    <p>*Price varies</p>
+                  </div>
+                  <div class="trending__ratings">
+                    <div>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-half-fill"></i></span>
+                      <span><i class="ri-star-line"></i></span>
+                    </div>
+                    <p>4.7 (21)</p>
+                  </div>
+                </div>
+                <h5>
+                  <span><i class="ri-time-line"></i></span> 2 days
+                </h5>
+                <p>
+                  <span><i class="ri-check-line"></i></span> Free Cancellation
+                </p>
+              </div>
+              <div class="trending__card">
+                <img src="assets/trending-12.jpg" alt="trending" />
+                <h1>Cairo</h1>
+                <p>Most Beautiful Place to Visit by abcNEWS</p>
+                <div class="trending__details">
+                  <div class="price">
+                    <p>From</p>
+                    <h3>$2,325*</h3>
+                    <p>*Price varies</p>
+                  </div>
+                  <div class="trending__ratings">
+                    <div>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-fill"></i></span>
+                      <span><i class="ri-star-half-fill"></i></span>
+                      <span><i class="ri-star-line"></i></span>
+                    </div>
+                    <p>4.9 (19)</p>
+                  </div>
+                </div>
+                <h5>
+                  <span><i class="ri-time-line"></i></span> 9 days
+                </h5>
+                <p>
+                  <span><i class="ri-check-line"></i></span> Free Cancellation
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
-
-    <section class="how-to-book">
-      <h1 class="book">How To Book</h1>
-      <div class="step" id="step1">
-        <img src="assets/step1.png" alt="Step 1" />
-        <p><span class="step-span">Step 1:</span> <br>Enter your flight details and click search</p>
-      </div>
-      <div class="step" id="step2">
-        <img src="assets/step2.png" alt="Step 2" />
-        <p><span class="step-span">Step 2:</span> <br>Fill your contact information</p>
-      </div>
-      <div class="step" id="step3">
-        <img src="assets/step3.png" alt="Step 3" />
-        <p><span class="step-span">Step 3:</span> <br>Your personal travel advisor will contact you</p>
-      </div>
-      <div class="step" id="step4">
-        <img src="assets/step4.png" alt="Step 4" />
-        <p><span class="step-span">Step 4:</span> <br>Check your mail and choose the best deal for you</p>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
       </div>
     </section>
 
@@ -303,7 +570,12 @@
       <div class="section__container tour__container">
         <h4>Watch Our Video Tour</h4>
         <div class="video__container">
-          <video src="assets/Cabin Tour _ Two-class Airbus A380 _ Emirates Airline.mp4" autoplay loop muted></video>
+          <video
+            src="assets/Cabin Tour _ Two-class Airbus A380 _ Emirates Airline.mp4"
+            autoplay
+            loop
+            muted
+          ></video>
         </div>
       </div>
     </section>
@@ -455,7 +727,7 @@
         <div class="footer__col">
           <h4>Follow Us</h4>
           <div class="footer__socials">
-            <img src="assets/lets_stay_connected.svg" alt="">
+            <img src="assets/lets_stay_connected.svg" alt="" />
             <span>
               <a href="#"><i class="ri-twitter-fill"></i></a>
             </span>

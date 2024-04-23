@@ -25,13 +25,15 @@
 .section__header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  font-family: 'Times New Roman', Times, serif;
+  justify-content: center;
   gap: 2rem;
 }
 
 .section__title {
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--text-dark);
 }
 
@@ -206,6 +208,22 @@ nav {
   width: 200px;
   height: auto;
 }
+.nav__logo a {
+  display: flex; /* Aligns children inline */
+  align-items: center; /* Vertically centers the text with the image */
+  white-space: nowrap; /* Keeps the text on a single line */
+  text-decoration: none; /* Removes underline from links */
+}
+.logo-separator {
+  margin: 0 10px; /* Adds space around the separator */
+  font-size: 1.5rem; /* Matches the logo text size */
+  text-decoration: none;
+  color: #333;
+}
+.logo-text {
+  font-size: 0.8rem; /* Smaller font size for the logo text */
+  color: #333; /* Adjust color as needed */
+}
 .nav__links {
   display: flex;
   justify-content: center;
@@ -256,12 +274,17 @@ nav {
 }
 .nav__contact a {
   text-decoration: none;
-  color: #f13033;
+  color: #fff;
   font-size: 1.2rem;
   font-weight: 500;
+  background-color: rgba(241, 48, 51, 0.8);
+  border-radius: 25px;
+  padding: 10px 10px;
+  transition: box-shadow 0.2s ease;
 }
 .nav__contact a:hover {
   color: var(--primary-color-dark);
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.5);
 }
 .nav__contact span {
   color: #333;
@@ -376,22 +399,44 @@ nav {
   background-color: #333;
 }
 .trending__grid {
-  margin-top: 4rem;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.trending__container .swiper {
+  width: 100%;
+  height: 50vh;
 }
 
+.trending__container .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  color: #000;
+  margin: -10px;
+}
+.swiper-pagination-bullet {
+  background: #000;
+}
 .trending__card {
-  position: relative;
-  overflow: hidden;
-  padding: 1rem;
+  flex: 1;
+  margin: 10px;
+  max-width: 330px;
   border-radius: 10px;
-  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
-  transition: 0.3s ease;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .trending__card img {
   width: 100%;
+  height: 230px;
+  object-fit: cover;
   transition: transform 0.3s ease, filter 0.3s ease;
   display: block;
   margin-bottom: 1rem;
@@ -448,7 +493,13 @@ nav {
   font-weight: 600;
   color: var(--text-dark);
 }
-
+.trending__details,
+.trending__ratings,
+h1,
+p,
+h5 {
+  padding: 0 20px;
+}
 .trending__details {
   padding-block: 1rem 2rem;
   display: flex;
@@ -499,57 +550,55 @@ nav {
   scale: 1.1;
   cursor: pointer;
 }
-.book{
+.book {
   transform: rotate(-90deg);
+  margin-top: 120px;
 }
 .how-to-book {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
-  align-items: center;
+  align-items: start;
   padding: 50px 0;
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-.step {
-  position: relative;
-  text-align: center;
+.step,
+.line {
   flex: 1;
+  text-align: center;
+  margin: 20px;
 }
-.step-span{
+.step {
+  flex: 1;
+  min-width: 120px;
+  text-align: center;
+  margin: 20px;
+  box-sizing: border-box;
+}
+.step-span {
   font-weight: bold;
 }
 .step img {
-  width: 50px;
-  height: 50px;
-  display: block;  /* Ensures the image is treated as a block-level element */
-  margin: 0 auto 20px;  /* Centers the image horizontally and adds space below */
+  width: 75px; /* Set to your image size */
+  height: 75px;
+  display: block;
+  margin: 0 auto;
+  transition: 0.3s ease;
 }
-.step:nth-child(2), .step:nth-child(4) {
-  margin-top: 50px;
+.step img:hover {
+  transform: translateY(-10px);
 }
-.step:nth-child(1), .step:nth-child(3) {
-  margin-top: -50px;
-}
-
-.step:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  top: 0;  /* Adjust to align with the center of the image */
-  right: -50px;  /* Positioning the start of the curve */
-  width: 100px;
-  height: 2px;
-  background: transparent;
-  border-top: 2px dashed var(--primary-color);
-  transform: scaleX(3) rotate(-20deg);  /* Adjust the curvature and angle */
-  transform-origin:  center;  /* Ensures the rotation pivots around the right center */
-}
-.step:nth-child(odd):not(:last-child)::after {
-  transform: scaleX(3) rotate(20deg);  /* Curve downwards for odd steps */
-  top: 45px;  /* Adjust top position to better fit the curve */
+.line img {
+  width: 250px;
 }
 .step p {
   font-size: 16px;
   color: #333;
+  margin-top: 10px;
+  padding: 0 10px;
+  max-width: none;
+  width: auto;
 }
 .destination__grid {
   margin-top: 4rem;
@@ -751,26 +800,30 @@ nav {
 }
 
 .video__container {
+  position: relative; /* Ensures absolute positioning of the video relative to this container */
   width: 100%;
   max-width: 600px;
   margin-inline: auto;
   height: 300px;
-  overflow: hidden;
+  overflow: hidden; /* Keeps any oversized parts of the video hidden */
   background-color: var(--text-light);
   transform: translateY(2rem);
   border: 1px solid var(--white);
   border-radius: 10px;
 }
-.video__container video{
+
+.video__container video {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: auto;
-  min-width: 100%;
-  height: auto;
-  min-height: 100%;
-  z-index: 1; /* Ensures the video stays behind the content */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Center the video perfectly within the container */
+  width: 100%; /* Adjust to cover the container width */
+  height: 100%; /* Adjust to cover the container height */
+  object-fit: cover; /* Ensures the video covers the area without distorting aspect ratio */
+  z-index: 1; /* Keeps the video behind any overlaid content */
 }
 .guide__grid {
   margin-top: 4rem;

@@ -15,10 +15,10 @@ ScrollReveal().reveal(".header__form", {
 });
 
 // trending container
-ScrollReveal().reveal(".trending__card", {
+/*ScrollReveal().reveal(".trending__card", {
   ...scrollRevealOption,
   interval: 500,
-});
+});*/
 
 // destination container
 ScrollReveal().reveal(".destination__card", {
@@ -47,6 +47,27 @@ ScrollReveal().reveal(".client__card", {
 ScrollReveal().reveal('.step', {
   ...scrollRevealOption,
   interval: 300
+});
+ScrollReveal().reveal('.line img', {
+  ...scrollRevealOption,
+  delay: 1000, // Delay line images more than the steps
+  interval: 300
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  var mySwiper = new Swiper('.mySwiper', {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+      },
+      navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+      },
+  });
 });
 function initAutocomplete() {
   var fromInput = document.getElementById("fromAirport");
