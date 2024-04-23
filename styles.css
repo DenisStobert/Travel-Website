@@ -409,7 +409,7 @@ nav {
 }
 .trending__container .swiper {
   width: 100%;
-  min-height: 50vh;
+  min-height: 60vh;
   margin-top: 50px;
 }
 
@@ -417,7 +417,10 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 50vh;
+  min-height: 60vh;
+}
+.trending__container .swiper{
+  min-height: 60vh;
 }
 .swiper-button-prev,
 .swiper-button-next {
