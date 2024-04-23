@@ -568,24 +568,20 @@ h5 {
 .how-to-book {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: start;
+  justify-content: space-between;
+  align-items: center;
   padding: 50px 0;
   background-color: rgba(0, 0, 0, 0.05);
+  width: 100%;
+  overflow: hidden;
 }
 
-.step,
-.line {
-  flex: 1;
-  text-align: center;
-  margin: 20px;
-}
-.step {
-  flex: 1;
-  min-width: 5%;
-  text-align: center;
-  margin: 20px;
-  box-sizing: border-box;
+.step, .line {
+  flex: 1 1 10%; /* Each step and line will take 20% of the space */
+  text-align: center; /* Centers text horizontally */
+  display: flex;
+  flex-direction: column; /* Stacks content vertically */
+  align-items: center; /* Aligns items in the center horizontally */
 }
 .step-span {
   font-weight: bold;
