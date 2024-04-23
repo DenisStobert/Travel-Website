@@ -14,6 +14,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  transition: none;
 }
 
 .section__container {
@@ -101,6 +102,7 @@ a {
 html,
 body {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -392,6 +394,7 @@ nav {
   margin-top: 50px;
   position: relative;
   min-height: 50vh;
+  overflow: visible;
 }
 .trending__container::before {
   content: "";
@@ -403,10 +406,12 @@ nav {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  overflow: visible;
 }
 .trending__container .swiper {
   width: 100%;
   height: 50vh;
+  margin-top: 50px;
 }
 
 .trending__container .swiper-slide {
@@ -535,7 +540,11 @@ h5 {
   font-weight: 500;
   color: var(--text-dark);
 }
-
+.swiper-container {
+  margin-top: 20px; /* Adjust based on your layout */
+  overflow: visible; /* Change if it's set to hidden */
+  padding: 10px 0; /* Add padding to prevent cutting off */
+}
 .trending__card h5 span {
   font-size: 1.2rem;
   color: var(--primary-color);
@@ -550,6 +559,7 @@ h5 {
   box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
   scale: 1.1;
   cursor: pointer;
+  z-index: 10;
 }
 .book {
   transform: rotate(-90deg);
