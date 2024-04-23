@@ -393,7 +393,6 @@ nav {
 .trending__container {
   margin-top: 50px;
   position: relative;
-  min-height: 50vh;
   overflow: visible;
 }
 .trending__container::before {
@@ -583,7 +582,7 @@ h5 {
 }
 .step {
   flex: 1;
-  min-width: 120px;
+  min-width: 5%;
   text-align: center;
   margin: 20px;
   box-sizing: border-box;
