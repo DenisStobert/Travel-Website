@@ -20,7 +20,11 @@
     />
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/places.js@1"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3AP2WmC5MY8fOBIPVd66YmkD8u8nbcts&libraries=places&callback=initAutocomplete" async defer></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3AP2WmC5MY8fOBIPVd66YmkD8u8nbcts&libraries=places&callback=initAutocomplete"
+      async
+      defer
+    ></script>
   </head>
   <body>
     <div class="loader-wrapper">
@@ -95,8 +99,9 @@
           </div>
           <div class="header__form">
             <div class="trip-type">
-              <button type="button" id="roundTrip" class="trip-option active">Round-Trip</button>
-              <button type="button" id="oneWay" class="trip-option">One-Way Trip</button>
+              <span id="roundTrip" class="trip-option active">Round-Trip</span>
+              <span id="oneWay" class="trip-option">One-Way</span>
+              <div class="active-line"></div>
             </div>
             <form action="/" method="post">
               <!-- Ensure method and action are set appropriately -->
@@ -148,7 +153,7 @@
             </form>
           </div>
           <p class="savings-statement">
-            "Last month Business Flyer saved its clients over $700,000."
+            "Last month Business Flyer saved its clients over $365,000."
           </p>
         </div>
       </div>

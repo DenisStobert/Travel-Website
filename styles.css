@@ -418,28 +418,19 @@ nav {
   font-weight: 600;
 }
 .trip-type {
-  text-align: center;
-  margin-top: 30px;
+  display: flex;
+  align-items: center;
 }
 
 .trip-option {
-  font-size: 20px;
-  padding: 10px 20px;
-  border: 1px solid #ccc;
-  background-color: #f9f9f9;
+  margin-right: 20px;
   cursor: pointer;
-  transition: background-color 0.3s;
-  margin-right: 10px; /* Adds a right margin to each button except the last one */
+  transition: 0.3s;
 }
 
-.trip-option:last-child {
-  margin-right: 0; /* Removes the margin for the last button */
-}
-
-.trip-option.active {
-  background-color: #f13033;
-  color: white;
-  border-color: #f13033;
+.active {
+  color: #f00; /* Red color for active text */
+  border-bottom: 1px solid var(--primary-color);
 }
 
 input[type="date"]:disabled {
@@ -520,7 +511,6 @@ input[type="date"] {
   font-size: 0.9rem;
 }
 .trending__container {
-  margin-top: 50px;
   position: relative;
   overflow: visible;
 }
@@ -570,6 +560,7 @@ input[type="date"] {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-height: 40vh;
 }
 .trending__card img {
   width: 100%;
