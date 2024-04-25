@@ -26,62 +26,62 @@ window.addEventListener('load', function() {
 // Keep this structure. You won't need the 'description' property anymore since it's static.
 const destinations = {
   turkey: {
-    imageUrl: 'assets/trending-1.webp',
+    imageUrl: 'assets/trending-card-1.jpeg',
     name: 'Turkey',
     price: '$2325',
   },
   vietnam: {
-    imageUrl: 'assets/trending-2.webp',
+    imageUrl: 'assets/trending-card-2.jpeg',
     name: 'Vietnam',
     price: '$1449',
   },
   carribean: {
-    imageUrl: 'assets/trending-3.avif',
+    imageUrl: 'assets/trending-card-3.jpeg',
     name: 'Carribean',
     price: '$2165',
   },
   dubai: {
-    imageUrl: 'assets/trending-4.jpg',
+    imageUrl: 'assets/trending-card-4.jpeg',
     name: 'Dubai',
     price: '$2775',
   },
   singapore: {
-    imageUrl: 'assets/trending-5.webp',
+    imageUrl: 'assets/trending-card-5.jpeg',
     name: 'Singapore',
     price: '$2959',
   },
   tokyo: {
-    imageUrl: 'assets/trending-6.jpeg',
+    imageUrl: 'assets/trending-card-6.jpeg',
     name: 'Tokyo',
     price: '$2899',
   },
   japan: {
-    imageUrl: 'assets/trending-7.jpeg',
+    imageUrl: 'assets/trending-card-8.jpeg',
     name: 'Japan',
     price: '$1535',
   },
   delhi: {
-    imageUrl: 'assets/trending-8.jpg',
+    imageUrl: 'assets/trending-card-7.jpeg',
     name: 'Delhi',
     price: '$1909',
   },
   frankfurt: {
-    imageUrl: 'assets/trending-9.jpeg',
+    imageUrl: 'assets/trending-card-9.jpeg',
     name: 'Frankfurt',
     price: '$1039',
   },
   amsterdam: {
-    imageUrl: 'assets/trending-10.jpg',
+    imageUrl: 'assets/trending-card-10.jpeg',
     name: 'Amsterdam',
     price: '$1635',
   },
   sydney: {
-    imageUrl: 'assets/trending-11.jpeg',
+    imageUrl: 'assets/trending-card-11.jpeg',
     name: 'Sydney',
     price: '$2899',
   },
   cairo: {
-    imageUrl: 'assets/trending-12.jpg',
+    imageUrl: 'assets/trending-card-12.jpg',
     name: 'Cairo',
     price: '$2325',
   },
