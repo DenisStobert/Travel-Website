@@ -102,14 +102,12 @@ var openModal = function() {
   var data = destinations[destinationId];
 
   var modalLeft = document.querySelector('.modal-left');
-  modalLeft.style.backgroundImage = `url(${data.imageUrl})`;
+  modalLeft.style.backgroundImage = `url(${data.imageUrl})`; // Make sure URLs are correct
 
-  // Update other modal contents
   document.getElementById('modalDestinationName').innerText = `Fly to ${data.name} in Business Class up to 77% OFF`;
   document.getElementById('modalPrice').innerText = `From ${data.price} Round-trip, Total`;
 
-  // Display the modal
-  modal.style.display = 'block';
+  modal.style.display = 'block'; // This should only be called here
 };
 
 // Function to close modal

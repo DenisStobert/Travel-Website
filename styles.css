@@ -615,7 +615,6 @@ input[type="date"] {
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgba(0,0,0,0.6); /* Black with opacity */
-  display: flex;
   align-items: center; /* Vertical alignment */
   justify-content: center; /* Horizontal alignment */
   backdrop-filter: blur(5px);
@@ -628,7 +627,7 @@ input[type="date"] {
   height: 65%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   animation-name: animatetop;
-  animation-duration: 0.4s;
+  animation-duration: .5s;
   /* Centering Techniques */
   position: relative; /* Relative to modal */
   top: 50%;
@@ -638,7 +637,7 @@ input[type="date"] {
 /* Add Animation */
 @keyframes animatetop {
   from {top: -50%; opacity: 0}
-  to {top: 0; opacity: 1}
+  to {top: 50%; opacity: 1}
 }
 
 /* The Close Button */
@@ -660,16 +659,26 @@ input[type="date"] {
 /* Modal Left Side with Full Background Image */
 .modal-left {
   float: left;
-  width: 50%;
-  background: url('assets/trending-4.jpg') no-repeat center center;
-  background-size: cover;
-  background-position: center;
-  padding: 0; /* Remove padding */
-  box-sizing: border-box;
-  z-index: 2;
-  position: relative;
-  height: 100%; /* Make sure it covers full height */
-  overflow: hidden;
+  width: 50%; 
+  height: 100%; 
+  background: no-repeat center center; 
+  background-size: cover; 
+  padding: 0; 
+  box-sizing: border-box; 
+  position: relative; 
+  overflow: hidden; 
+}
+
+
+.modal-left::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
 /* Modal Right Side with Form */
@@ -682,10 +691,10 @@ input[type="date"] {
 }
 
 .modal-left h2, .modal-left p, .modal-left ul {
-  color: #fff; /* White text color */
-  margin: 30px; /* Add margin inside the content */
-  z-index: 1;
   position: relative;
+  z-index: 2;  
+  color: #fff;  
+  margin: 30px;
 }
 
 .modal-left ul {
@@ -697,6 +706,7 @@ input[type="date"] {
 /* Ensure that both columns inside modal are equally sized */
 .modal-body {
   overflow: hidden;
+  height: 100%;
 }
 
 /* Clear floats after the columns */
