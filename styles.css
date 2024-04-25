@@ -667,6 +667,8 @@ input[type="date"] {
   box-sizing: border-box; 
   position: relative; 
   overflow: hidden; 
+  -webkit-mask-image: linear-gradient(to right, #000 50%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(to right, #000 50%, rgba(0, 0, 0, 0) 100%);
 }
 
 
@@ -692,7 +694,7 @@ input[type="date"] {
 
 .modal-left h2, .modal-left p, .modal-left ul {
   position: relative;
-  z-index: 2;  
+  z-index: 3;  
   color: #fff;  
   margin: 30px;
 }
