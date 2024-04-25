@@ -23,6 +23,116 @@ window.addEventListener('load', function() {
   }, 1000); // Minimum display time for the loader
 });
 
+// Keep this structure. You won't need the 'description' property anymore since it's static.
+const destinations = {
+  turkey: {
+    imageUrl: 'assets/trending-1.webp',
+    name: 'Turkey',
+    price: '$2325',
+  },
+  vietnam: {
+    imageUrl: 'assets/trending-2.webp',
+    name: 'Vietnam',
+    price: '$1449',
+  },
+  carribean: {
+    imageUrl: 'assets/trending-3.avif',
+    name: 'Carribean',
+    price: '$2165',
+  },
+  dubai: {
+    imageUrl: 'assets/trending-4.jpg',
+    name: 'Dubai',
+    price: '$2775',
+  },
+  singapore: {
+    imageUrl: 'assets/trending-5.webp',
+    name: 'Singapore',
+    price: '$2959',
+  },
+  tokyo: {
+    imageUrl: 'assets/trending-6.jpeg',
+    name: 'Tokyo',
+    price: '$2899',
+  },
+  japan: {
+    imageUrl: 'assets/trending-7.jpeg',
+    name: 'Japan',
+    price: '$1535',
+  },
+  delhi: {
+    imageUrl: 'assets/trending-8.jpg',
+    name: 'Delhi',
+    price: '$1909',
+  },
+  frankfurt: {
+    imageUrl: 'assets/trending-9.jpeg',
+    name: 'Frankfurt',
+    price: '$1039',
+  },
+  amsterdam: {
+    imageUrl: 'assets/trending-10.jpg',
+    name: 'Amsterdam',
+    price: '$1635',
+  },
+  sydney: {
+    imageUrl: 'assets/trending-11.jpeg',
+    name: 'Sydney',
+    price: '$2899',
+  },
+  cairo: {
+    imageUrl: 'assets/trending-12.jpg',
+    name: 'Cairo',
+    price: '$2325',
+  },
+};
+
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get all elements with the class 'trending__card'
+var cards = document.getElementsByClassName('trending__card');
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName('close')[0];
+
+// Function to populate and open modal
+var openModal = function() {
+  var destinationId = this.getAttribute('data-destination');
+  var data = destinations[destinationId];
+
+  var modalLeft = document.querySelector('.modal-left');
+  modalLeft.style.backgroundImage = `url(${data.imageUrl})`;
+
+  // Update other modal contents
+  document.getElementById('modalDestinationName').innerText = `Fly to ${data.name} in Business Class up to 77% OFF`;
+  document.getElementById('modalPrice').innerText = `From ${data.price} Round-trip, Total`;
+
+  // Display the modal
+  modal.style.display = 'block';
+};
+
+// Function to close modal
+var closeModal = function() {
+  modal.style.display = 'none';
+};
+
+// Attach openModal function to click event of each card
+for (var i = 0; i < cards.length; i++) {
+  cards[i].addEventListener('click', openModal);
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = closeModal;
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    closeModal();
+  }
+};
+
+
 document.addEventListener('DOMContentLoaded', function () {
     // Access the 'From' input
     var inputFrom = document.getElementById('from');

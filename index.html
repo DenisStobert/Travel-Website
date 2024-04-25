@@ -103,25 +103,29 @@
               <span id="oneWay" class="trip-option">One-Way</span>
               <div class="active-line"></div>
             </div>
-            <form action="/" method="post">
+            <form
+              action="/search-results.html"
+              method="post"
+              id="flightSearchForm"
+            >
               <!-- Ensure method and action are set appropriately -->
               <div class="input__group">
-                <label for="from">From:</label>
+                <label for="fromAirport">From:</label>
                 <input
                   type="text"
-                  id="from"
-                  name="from"
-                  placeholder="Departure Country"
+                  id="fromAirport"
+                  name="fromAirport"
+                  placeholder="Departure Airport"
                   required
                 />
               </div>
               <div class="input__group">
-                <label for="to">To:</label>
+                <label for="toAirport">To:</label>
                 <input
                   type="text"
-                  id="to"
-                  name="to"
-                  placeholder="Destination Country"
+                  id="toAirport"
+                  name="toAirport"
+                  placeholder="Arrival Airport"
                   required
                 />
               </div>
@@ -170,7 +174,7 @@
           <!-- Swiper Slide 1 -->
           <div class="swiper-slide">
             <div class="trending__grid">
-              <div class="trending__card">
+              <div class="trending__card" data-destination="turkey">
                 <img src="assets/trending-1.webp" alt="trending" />
                 <h1>Turkey</h1>
                 <p>Best Place to Travel by Vogue</p>
@@ -198,7 +202,7 @@
                   <span><i class="ri-check-line"></i></span> Free Exchanges
                 </p>
               </div>
-              <div class="trending__card">
+              <div class="trending__card" data-destination="vietnam">
                 <img src="assets/trending-2.webp" alt="trending" />
                 <h1>Vietnam</h1>
                 <p>Top 1 Visited Place by Forbes</p>
@@ -226,7 +230,7 @@
                   <span><i class="ri-check-line"></i></span> Free Exchanges
                 </p>
               </div>
-              <div class="trending__card">
+              <div class="trending__card" data-destination="carribean">
                 <img src="assets/trending-3.avif" alt="trending" />
                 <h1>Carribean</h1>
                 <p>Most Beautiful Place to Visit by abcNEWS</p>
@@ -259,7 +263,7 @@
           <!-- Swiper Slide 2 -->
           <div class="swiper-slide">
             <div class="trending__grid">
-              <div class="trending__card">
+              <div class="trending__card" data-destination="dubai">
                 <img src="assets/trending-4.jpg" alt="trending" />
                 <h1>Dubai</h1>
                 <p>Best Place to Travel by Vogue</p>
@@ -287,7 +291,7 @@
                   <span><i class="ri-check-line"></i></span> Free Exchanges
                 </p>
               </div>
-              <div class="trending__card">
+              <div class="trending__card" data-destination="singapore">
                 <img src="assets/trending-5.webp" alt="trending" />
                 <h1>Singapore</h1>
                 <p>Top 1 Visited Place by Forbes</p>
@@ -315,7 +319,7 @@
                   <span><i class="ri-check-line"></i></span> Free Exchanges
                 </p>
               </div>
-              <div class="trending__card">
+              <div class="trending__card" data-destination="tokyo">
                 <img src="assets/trending-6.jpeg" alt="trending" />
                 <h1>Tokyo</h1>
                 <p>Most Beautiful Place to Visit by abcNEWS</p>
@@ -348,7 +352,7 @@
           <!-- Swiper Slide 3 -->
           <div class="swiper-slide">
             <div class="trending__grid">
-              <div class="trending__card">
+              <div class="trending__card" data-destination="japan">
                 <img src="assets/trending-7.jpeg" alt="trending" />
                 <h1>Japan</h1>
                 <p>Best Place to Travel by Vogue</p>
@@ -376,7 +380,7 @@
                   <span><i class="ri-check-line"></i></span> Free Exchanges
                 </p>
               </div>
-              <div class="trending__card">
+              <div class="trending__card" data-destination="delhi">
                 <img src="assets/trending-8.jpg" alt="trending" />
                 <h1>Delhi</h1>
                 <p>Top 1 Visited Place by Forbes</p>
@@ -404,7 +408,7 @@
                   <span><i class="ri-check-line"></i></span> Free Exchanges
                 </p>
               </div>
-              <div class="trending__card">
+              <div class="trending__card" data-destination="frankfurt">
                 <img src="assets/trending-9.jpeg" alt="trending" />
                 <h1>Frankfurt</h1>
                 <p>Most Beautiful Place to Visit by abcNEWS</p>
@@ -437,7 +441,7 @@
           <!-- Swiper Slide 4 -->
           <div class="swiper-slide">
             <div class="trending__grid">
-              <div class="trending__card">
+              <div class="trending__card" data-destination="amsterdam">
                 <img src="assets/trending-10.jpg" alt="trending" />
                 <h1>Amsterdam</h1>
                 <p>Best Place to Travel by Vogue</p>
@@ -465,7 +469,7 @@
                   <span><i class="ri-check-line"></i></span> Free Exchanges
                 </p>
               </div>
-              <div class="trending__card">
+              <div class="trending__card" data-destination="sydney">
                 <img src="assets/trending-11.jpeg" alt="trending" />
                 <h1>Sydney</h1>
                 <p>Top 1 Visited Place by Forbes</p>
@@ -493,7 +497,7 @@
                   <span><i class="ri-check-line"></i></span> Free Exchanges
                 </p>
               </div>
-              <div class="trending__card">
+              <div class="trending__card" data-destination="cairo">
                 <img src="assets/trending-12.jpg" alt="trending" />
                 <h1>Cairo</h1>
                 <p>Most Beautiful Place to Visit by abcNEWS</p>
@@ -529,6 +533,38 @@
         <div class="swiper-button-next"></div>
       </div>
     </section>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-body">
+          <div class="modal-left" id="modalImage">
+            <!-- Background image set via JS -->
+            <h2 id="modalDestinationName"></h2>
+            <p id="modalPrice"></p>
+            <p id="modalDescription">
+              Our exclusive contracts with the airlines do not allow us to show
+              the details of our discount fares, including flight itineraries
+              and some airline brands online. Just complete the request form
+              below and one of our experts will get in touch with you with the
+              best itinerary and price options for your flight.
+            </p>
+            <p>How It Works?</p>
+            <ul>
+              <li><span>1. </span>Request Free Quotes</li>
+              <li><span>2. </span>Receive Several Options</li>
+              <li><span>3. </span>Confirm and Travel</li>
+            </ul>
+          </div>
+          <div class="modal-right">
+            <!-- Form -->
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
 
     <section class="how-to-book">
       <h1 class="book">How To Book</h1>
@@ -583,7 +619,9 @@
             <p>Beauty</p>
           </div>
           <button class="book-btn">
-            Book Now <i class="fa-solid fa-arrow-right"></i>
+            <a href="search-results.html"
+              >Book Now <i class="fa-solid fa-arrow-right"></i
+            ></a>
           </button>
         </div>
         <div class="destination__card">
@@ -594,7 +632,9 @@
             <p>New</p>
           </div>
           <button class="book-btn">
-            Book Now <i class="fa-solid fa-arrow-right"></i>
+            <a href="search-results.html"
+              >Book Now <i class="fa-solid fa-arrow-right"></i
+            ></a>
           </button>
         </div>
         <div class="destination__card">
@@ -605,7 +645,9 @@
             <p>Love</p>
           </div>
           <button class="book-btn">
-            Book Now <i class="fa-solid fa-arrow-right"></i>
+            <a href="search-results.html"
+              >Book Now <i class="fa-solid fa-arrow-right"></i
+            ></a>
           </button>
         </div>
         <div class="destination__card">
@@ -616,7 +658,9 @@
             <p>Action</p>
           </div>
           <button class="book-btn">
-            Book Now <i class="fa-solid fa-arrow-right"></i>
+            <a href="search-results.html"
+              >Book Now <i class="fa-solid fa-arrow-right"></i
+            ></a>
           </button>
         </div>
         <div class="destination__card">
@@ -627,7 +671,9 @@
             <p>Nature</p>
           </div>
           <button class="book-btn">
-            Book Now <i class="fa-solid fa-arrow-right"></i>
+            <a href="search-results.html"
+              >Book Now <i class="fa-solid fa-arrow-right"></i
+            ></a>
           </button>
         </div>
         <div class="destination__card">
@@ -638,7 +684,9 @@
             <p>Peace</p>
           </div>
           <button class="book-btn">
-            Book Now <i class="fa-solid fa-arrow-right"></i>
+            <a href="search-results.html"
+              >Book Now <i class="fa-solid fa-arrow-right"></i
+            ></a>
           </button>
         </div>
       </div>

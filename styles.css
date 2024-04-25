@@ -30,12 +30,12 @@
   opacity: 1;
   transition: opacity 1s ease-out;
 }
-.loader{
+.loader {
   position: relative;
   width: 120px;
   height: 120px;
 }
-.loader span{
+.loader span {
   position: absolute;
   top: 0;
   left: 0;
@@ -43,8 +43,8 @@
   height: 100%;
   transform: rotate(calc(18deg * var(--i)));
 }
-.loader span::before{
-  content: '';
+.loader span::before {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -57,17 +57,18 @@
   animation-delay: calc(0.1s * var(--i));
 }
 @keyframes animate {
-  0%{
+  0% {
     transform: scale(0);
   }
   10% {
     transform: scale(1.2);
   }
-  80%,100%{
+  80%,
+  100% {
     transform: scale(0);
   }
 }
-.rocket{
+.rocket {
   position: absolute;
   top: 0;
   left: 0;
@@ -77,15 +78,15 @@
   animation-delay: -1s;
 }
 @keyframes rotating {
-  0%{
+  0% {
     transform: rotate(10deg);
   }
-  100%{
+  100% {
     transform: rotate(370deg);
   }
 }
-.rocket::before{
-  content: '\f072';
+.rocket::before {
+  content: "\f072";
   font-family: fontAwesome;
   position: absolute;
   top: 80px;
@@ -93,7 +94,6 @@
   color: #fff;
   font-size: 60px;
   transform: rotate(120deg);
-
 }
 .section__container {
   max-width: var(--max-width);
@@ -105,7 +105,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   justify-content: center;
   gap: 2rem;
 }
@@ -461,7 +461,7 @@ input[type="date"] {
   box-shadow: 0 0 5px rgba(241, 48, 51, 0.5); /* Add focus effect */
 }
 .pac-container {
-  font-family: 'Arial', sans-serif; /* Specify the font */
+  font-family: "Arial", sans-serif; /* Specify the font */
   border-radius: 5px; /* Rounded corners for the dropdown */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Shadow for depth */
 }
@@ -529,7 +529,6 @@ input[type="date"] {
 .trending__container .swiper {
   width: 100%;
   min-height: 60vh;
-  margin-top: 50px;
 }
 
 .trending__container .swiper-slide {
@@ -538,7 +537,7 @@ input[type="date"] {
   align-items: center;
   min-height: 60vh;
 }
-.trending__container .swiper{
+.trending__container .swiper {
   min-height: 60vh;
 }
 .swiper-button-prev,
@@ -593,7 +592,10 @@ input[type="date"] {
   align-items: center;
   justify-content: center;
 }
-
+.book-btn a {
+  text-decoration: none;
+  color: #fff;
+}
 .trending__card:hover .book-btn {
   opacity: 1; /* Make button visible when the image is hovered */
 }
@@ -602,6 +604,108 @@ input[type="date"] {
   margin-left: 10px;
   transition: transform 0.3s ease;
 }
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 10; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.6); /* Black with opacity */
+  display: flex;
+  align-items: center; /* Vertical alignment */
+  justify-content: center; /* Horizontal alignment */
+  backdrop-filter: blur(5px);
+}
+
+/* Modal Content Box */
+.modal-content {
+  background-color: #fefefe;
+  width: 75%; /* Width */
+  height: 65%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  /* Centering Techniques */
+  position: relative; /* Relative to modal */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* Add Animation */
+@keyframes animatetop {
+  from {top: -50%; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 35px;
+  font-weight: bold;
+  margin: 0 12px;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Modal Left Side with Full Background Image */
+.modal-left {
+  float: left;
+  width: 50%;
+  background: url('assets/trending-4.jpg') no-repeat center center;
+  background-size: cover;
+  background-position: center;
+  padding: 0; /* Remove padding */
+  box-sizing: border-box;
+  z-index: 2;
+  position: relative;
+  height: 100%; /* Make sure it covers full height */
+  overflow: hidden;
+}
+
+/* Modal Right Side with Form */
+.modal-right {
+  float: right;
+  width: 50%;
+  padding: 20px;
+  box-sizing: border-box;
+  border-left: 1px solid #ddd; /* Add a left border */
+}
+
+.modal-left h2, .modal-left p, .modal-left ul {
+  color: #fff; /* White text color */
+  margin: 30px; /* Add margin inside the content */
+  z-index: 1;
+  position: relative;
+}
+
+.modal-left ul {
+  list-style: none; /* Styling for list */
+}
+.modal-left ul li span{
+  font-weight: bold;
+}
+/* Ensure that both columns inside modal are equally sized */
+.modal-body {
+  overflow: hidden;
+}
+
+/* Clear floats after the columns */
+.modal-body::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 
 .book-btn:hover i {
   transform: rotate(
@@ -698,7 +802,8 @@ h5 {
   overflow: hidden;
 }
 
-.step, .line {
+.step,
+.line {
   flex: 1 1 10%; /* Each step and line will take 20% of the space */
   text-align: center; /* Centers text horizontally */
   display: flex;
