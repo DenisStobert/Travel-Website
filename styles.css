@@ -689,7 +689,6 @@ input[type="date"] {
   width: 50%;
   padding: 20px;
   box-sizing: border-box;
-  border-left: 1px solid #ddd; /* Add a left border */
 }
 
 .modal-left h2, .modal-left p, .modal-left ul {
@@ -716,6 +715,171 @@ input[type="date"] {
   content: "";
   display: table;
   clear: both;
+}
+.call-info {
+  display: flex;
+  justify-content: space-around; /* Evenly space around each item */
+  align-items: center; /* Align items vertically */
+  margin-bottom: 20px; /* Extra space below the row */
+}
+
+.call-info > div {
+  flex: 0 1 33%; /* Flex grow, flex shrink, and basis set to 33% */
+  text-align: center; /* Center the text within each block */
+  padding: 15px; /* Padding for spacing inside each block */
+}
+.call-action p{
+  font-size: 12px;
+  font-weight: bold;
+  text-align: left;
+}
+.phone-number {
+  background-color: var(--primary-color);
+  font-weight: bold; /* Make phone number stand out */
+  color: #fff; /* Optional: style the phone number with a distinct color */
+}
+
+.offline-deals {
+  font-style: italic; /* Style for emphasis */
+  font-size: 10px;
+}
+.second-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* Needed for positioning pseudo-elements */
+  text-align: center;
+  margin: 0px 0;
+}
+
+.second-row::before,
+.second-row::after {
+  content: '';
+  position: absolute;
+  top: 50%; /* Align vertically at the middle of the container */
+  width: 30%; /* Adjust the length of the lines as needed */
+  height: 1px; /* Line thickness */
+  background-color: #333; /* Line color */
+}
+
+.second-row::before {
+  left: 0%; /* Distance from the left side */
+}
+
+.second-row::after {
+  right: 0%; /* Distance from the right side */
+}
+
+.booking-call, .offer-request {
+  width: 100%;
+  margin: 0px 0;
+  padding: 0 20px; /* Adds padding to prevent text from overlapping with lines */
+  z-index: 1; /* Ensures text appears above the lines */
+  position: relative;
+}
+
+.booking-call {
+  font-weight: bold; /* Make the main call to action bold */
+}
+
+.offer-request {
+  font-style: italic; /* Optionally italicize the secondary option */
+}
+
+.modal-right .input-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.modal-right .input-row-form {
+  display: flex;
+  width: 100%;
+  margin-bottom: 30px;
+}
+.modal-right .round-trip{
+  text-align: left;
+}
+.modal-right .one-way{
+  text-align: right;
+}
+.modal-right .input-group {
+  flex: 1;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.modal-right .input-trip {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.trip-option-form {
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+  border-bottom: 2px solid transparent; /* Hidden underline by default */
+  transition: all 0.3s ease;
+}
+
+.trip-option-form.active, .trip-option-form:hover {
+  border-bottom: 2px solid var(--primary-color); /* Active/hover state underline */
+  color: var(--primary-color);
+}
+.modal-right  .input-group:last-child {
+  margin-right: 0;
+}
+
+.modal-right .input-group label {
+  position: absolute;
+  top: -8px; /* Positions label slightly down from the top of the input */
+  left: 12px; /* Slight left margin within the input for padding effect */
+  margin: 0;
+  padding: 0 5px;
+  font-size: 12px; /* Smaller font size for the label inside the input */
+  color: #000; /* Label color */
+  background-color: #fff;
+  pointer-events: none; /* Allows clicks to pass through to the input element */
+  z-index: 50; /* Ensures the label is above the input text */
+  font-weight: 500;
+}
+
+.modal-right  input[type="text"],
+.modal-right  input[type="email"],
+.modal-right  input[type="tel"],
+.modal-right  input[type="date"] {
+  width: 100%;
+  padding-top: 20px; /* Space at the top to accommodate the label */
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.modal-right [type="text"]:focus,
+.modal-right [type="email"]:focus,
+.modal-right [type="tel"]:focus,
+.modal-right [type="date"]:focus {
+  border-color: var(--primary-color); /* Highlight the input border on focus */
+}
+
+.modal-right  button {
+  width: 100%;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px; /* More space above the submit button */
+}
+
+.modal-right  button:hover {
+  background-color: var(--primary-color-dark);
 }
 
 
@@ -803,10 +967,11 @@ h5 {
 .book {
   transform: rotate(-90deg);
 }
+
 .how-to-book {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-wrap: nowrap;
+  justify-content: space-between; /* Ensures even spacing between elements */
   align-items: center;
   padding: 50px 0;
   background-color: rgba(0, 0, 0, 0.05);
@@ -814,30 +979,31 @@ h5 {
   overflow: hidden;
 }
 
-.step,
-.line {
-  flex: 1 1 10%; /* Each step and line will take 20% of the space */
-  text-align: center; /* Centers text horizontally */
+.step {
+  flex: 1 0 20%; /* Each step and line will now take exactly 20% of the space */
+  text-align: center;
   display: flex;
-  flex-direction: column; /* Stacks content vertically */
-  align-items: center; /* Aligns items in the center horizontally */
+  flex-direction: column;
+  align-items: center;
+  min-width: 160px; /* Minimum width of each step */
 }
+
 .step-span {
   font-weight: bold;
 }
+
 .step img {
-  width: 75px; /* Set to your image size */
+  width: 75px; /* Adjust if needed */
   height: 75px;
   display: block;
   margin: 0 auto;
   transition: 0.3s ease;
 }
+
 .step img:hover {
-  transform: translateY(-10px);
+  transform: translateY(-10px); /* Adds hover effect to the images */
 }
-.line img {
-  width: 250px;
-}
+
 .step p {
   font-size: 16px;
   color: #333;
@@ -846,6 +1012,7 @@ h5 {
   max-width: none;
   width: auto;
 }
+
 .destination__grid {
   margin-top: 4rem;
   display: grid;

@@ -18,6 +18,7 @@
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/places.js@1"></script>
     <script
@@ -558,10 +559,73 @@
             </ul>
           </div>
           <div class="modal-right">
-            <!-- Form -->
-
+            <div class="call-info">
+              <div class="call-action">
+                <p>SAVE $100 extra by Calling Now</p>
+              </div>
+              <div class="phone-number">
+                855-507-9770
+              </div>
+              <div class="offline-deals">
+                CALL & ASK FOR OFFLINE DEALS
+              </div>
+            </div>
+            <div class="second-row">
+              <p class="booking-call">Call Us to Book and Save More ⤴</p>
+              <p class="offer-request">or request an offer</p>
+            </div>            
+            <form id="bookingForm">
+                <div class="input-row-form">
+                  <div class="input-trip" id="tripType">
+                    <span class="trip-option-form round-trip active" data-value="Round-Trip">Round-Trip</span>
+                    <span class="trip-option-form one-way" data-value="One-Way">One-Way</span>
+                  </div>
+                </div>
+              <div class="input-row">
+                <div class="input-group">
+                  <label for="from">From*</label>
+                  <input type="text" id="from" name="from" placeholder="City or Airport" required>
+                </div>
+                <div class="input-group">
+                  <label for="to">To*</label>
+                  <input type="text" id="to" name="to" placeholder="City or Airport" required>
+                </div>
+              </div>
+              <div class="input-row">
+                <div class="input-group">
+                  <label for="departureDate">Departure Date*</label>
+                  <input type="date" id="departureDate" name="departureDate" required>
+                </div>
+                <div class="input-group">
+                  <label for="returnDate">Return Date</label>
+                  <input type="date" id="returnDate" name="returnDate">
+                </div>
+              </div>
+              <div class="input-row">
+                <div class="input-group">
+                  <label for="name">Name*</label>
+                  <input type="text" id="name" name="name" placeholder="e.g. John Smith" required>
+                </div>
+                <div class="input-group">
+                  <label for="passengers">Passengers / Cabin*</label>
+                  <input type="text" id="passengers" name="passengers" placeholder="1 | Business" required>
+                </div>
+              </div>
+              <div class="input-row">
+                <div class="input-group">
+                  <label for="phone">Phone Number*</label>
+                  <input type="tel" id="phone" name="phone" placeholder="Phone number" required>
+                </div>
+                <div class="input-group">
+                  <label for="email">Email*</label>
+                  <input type="email" id="email" name="email" placeholder="someone@example.com" required>
+                </div>
+              </div>
+              <button type="submit">GET FREE QUOTES</button>
+            </form>
+            
+            
           </div>
-          
         </div>
       </div>
     </div>
@@ -574,9 +638,6 @@
           <span class="step-span">Step 1:</span> <br />Enter your flight details
         </p>
       </div>
-      <div class="line" id="line1">
-        <img src="assets/line1.png" alt="Line 1" />
-      </div>
       <div class="step" id="step2">
         <img src="assets/step2.png" alt="Step 2" />
         <p>
@@ -584,18 +645,12 @@
           information
         </p>
       </div>
-      <div class="line" id="line2">
-        <img src="assets/line2.png" alt="Line 2" />
-      </div>
       <div class="step" id="step3">
         <img src="assets/step3.png" alt="Step 3" />
         <p>
           <span class="step-span">Step 3:</span> <br />Your personal travel
           advisor will contact you
         </p>
-      </div>
-      <div class="line" id="line3">
-        <img src="assets/line3.png" alt="Line 3" />
       </div>
       <div class="step" id="step4">
         <img src="assets/step4.png" alt="Step 4" />
@@ -691,6 +746,8 @@
         </div>
       </div>
     </section>
+
+    <section class="information"></section>
 
     <section class="tour">
       <div class="section__container tour__container">
@@ -790,7 +847,7 @@
     <section class="subscribe">
       <div class="section__container subscribe__container">
         <h4>Subscribe and be Updated</h4>
-        <form action="/">
+        <form action="/" onsubmit="handleSubscribe(event)">
           <div class="input-container">
             <div class="phone-prefix">
               <img src="assets/us-flag.png" alt="US Flag" class="flag-icon" />
@@ -802,8 +859,11 @@
               id="phone"
               placeholder="Phone Number"
               name="phone"
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+              pattern="\d{10}"
+              title="Phone number must be exactly 10 digits without any spaces or dashes."
               required
+              oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+              maxlength="10"
             />
           </div>
           <span class="separator">|</span>
@@ -816,7 +876,7 @@
               required
             />
           </div>
-          <button class="btn">Subscribe</button>
+          <button class="btn" type="submit">Subscribe</button>
         </form>
       </div>
     </section>

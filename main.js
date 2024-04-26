@@ -22,7 +22,36 @@ window.addEventListener('load', function() {
     }, 1000); // Additional time for the fade-out transition
   }, 1000); // Minimum display time for the loader
 });
+function handleSubscribe(e) {
+  e.preventDefault(); // Prevents the form from submitting normally
 
+  // Trigger SweetAlert
+  Swal.fire({
+    title: 'Thank you for subscribing!',
+    text: 'You will now receive updates directly to your inbox.',
+    icon: 'success',
+    confirmButtonText: 'Close'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Optional: Handle further logic after the user clicks 'Close'
+      // For example, you might want to actually submit the form programmatically here
+      // or reset the form fields.
+    }
+  });
+}
+document.getElementById('tripType').addEventListener('click', function(event) {
+  if (event.target.classList.contains('trip-option-form')) {
+    // Remove active class from all options
+    document.querySelectorAll('.trip-option-form').forEach(function(option) {
+      option.classList.remove('active');
+    });
+    // Add active class to clicked option
+    event.target.classList.add('active');
+    // Optionally handle the value
+    console.log("Selected Trip Type:", event.target.dataset.value);
+    // If you need to use this value for further processing, you can set it on a hidden input or form data
+  }
+});
 // Keep this structure. You won't need the 'description' property anymore since it's static.
 const destinations = {
   turkey: {
