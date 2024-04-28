@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 :root {
   --primary-color: #f13033;
@@ -643,11 +644,27 @@ input[type="date"] {
 
 /* The Close Button */
 .close {
+  position: relative;
   color: #aaaaaa;
   float: right;
   font-size: 35px;
   font-weight: bold;
   margin: 0 12px;
+  transform: .1s ease;
+}
+.close::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 50px 0 0 50px; /* Adjust for an upward-pointing triangle with the longest line inward */
+  border-color: var(--primary-color) transparent transparent transparent; /* Left border is the color of the triangle */
+  transform: translateX(0%) translateY(25%) scale(1.5); /* Position it to align with the corner */
+  z-index: -1; /* Ensures the triangle is behind the 'X' */
+  transition: .1s ease;
 }
 
 .close:hover,
@@ -655,6 +672,10 @@ input[type="date"] {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.close:hover::before {
+  border-color: #e9ecef transparent transparent transparent; /* Lightens the triangle on hover */
 }
 
 /* Modal Left Side with Full Background Image */
@@ -680,7 +701,7 @@ input[type="date"] {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 1;
 }
 
@@ -696,7 +717,33 @@ input[type="date"] {
   position: relative;
   z-index: 3;  
   color: #fff;  
-  margin: 30px;
+  margin: 50px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+}
+.modal-left h2 {
+  font-size: 30px;
+  font-weight: 500;
+}
+.modal-left .how-it-works{
+  font-weight: bold;
+  font-size: 20px;
+}
+.modal-left #modalPrice {
+  font-size: 60px;
+}
+.modal-left p{
+  font-size: 15px;
+}
+.modal-text {
+  white-space: nowrap;  /* Prevents wrapping and ensures content stays on a single line */
+  overflow: hidden;     /* Prevents content from spilling out of the element bounds */
+  text-overflow: ellipsis; /* Adds an ellipsis if the text overflows the element's width */
+  
+}
+.modal-text #modalPrice {
+  margin-right: 10px; /* Space after the price */
+  margin-left: 10px;  /* Space before the price */
 }
 
 .modal-left ul {
@@ -704,6 +751,7 @@ input[type="date"] {
 }
 .modal-left ul li span{
   font-weight: bold;
+  margin-right: 15px;
 }
 /* Ensure that both columns inside modal are equally sized */
 .modal-body {
@@ -856,7 +904,6 @@ input[type="date"] {
   z-index: 50; /* Ensures the label is above the input text */
   font-weight: 500;
 }
-
 .modal-right  input[type="text"],
 .modal-right  input[type="email"],
 .modal-right  input[type="tel"],
@@ -864,7 +911,7 @@ input[type="date"] {
   width: 100%;
   padding-top: 20px;
   padding-right: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
   padding-left: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;

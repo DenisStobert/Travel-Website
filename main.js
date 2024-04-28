@@ -134,7 +134,7 @@ var openModal = function() {
   modalLeft.style.backgroundImage = `url(${data.imageUrl})`; // Make sure URLs are correct
 
   document.getElementById('modalDestinationName').innerText = `Fly to ${data.name} in Business Class up to 77% OFF`;
-  document.getElementById('modalPrice').innerText = `From ${data.price} Round-trip, Total`;
+  document.getElementById('modalPrice').innerText = `${data.price}`;
 
   modal.style.display = 'block'; // This should only be called here
 };
