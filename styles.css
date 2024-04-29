@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
 :root {
   --primary-color: #f13033;
@@ -616,7 +616,7 @@ input[type="date"] {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0,0,0,0.6); /* Black with opacity */
+  background-color: rgba(0, 0, 0, 0.6); /* Black with opacity */
   align-items: center; /* Vertical alignment */
   justify-content: center; /* Horizontal alignment */
   backdrop-filter: blur(5px);
@@ -626,10 +626,9 @@ input[type="date"] {
 .modal-content {
   background-color: #fefefe;
   width: 75%; /* Width */
-  height: 65%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   animation-name: animatetop;
-  animation-duration: .5s;
+  animation-duration: 0.5s;
   /* Centering Techniques */
   position: relative; /* Relative to modal */
   top: 50%;
@@ -638,8 +637,14 @@ input[type="date"] {
 }
 /* Add Animation */
 @keyframes animatetop {
-  from {top: -50%; opacity: 0}
-  to {top: 50%; opacity: 1}
+  from {
+    top: -50%;
+    opacity: 0;
+  }
+  to {
+    top: 50%;
+    opacity: 1;
+  }
 }
 
 /* The Close Button */
@@ -650,7 +655,7 @@ input[type="date"] {
   font-size: 35px;
   font-weight: bold;
   margin: 0 12px;
-  transform: .1s ease;
+  transform: 0.1s ease;
 }
 .close::before {
   content: "";
@@ -664,7 +669,7 @@ input[type="date"] {
   border-color: var(--primary-color) transparent transparent transparent; /* Left border is the color of the triangle */
   transform: translateX(0%) translateY(25%) scale(1.5); /* Position it to align with the corner */
   z-index: -1; /* Ensures the triangle is behind the 'X' */
-  transition: .1s ease;
+  transition: 0.1s ease;
 }
 
 .close:hover,
@@ -681,18 +686,21 @@ input[type="date"] {
 /* Modal Left Side with Full Background Image */
 .modal-left {
   float: left;
-  width: 50%; 
-  height: 100%; 
-  background: no-repeat center center; 
-  background-size: cover; 
-  padding: 0; 
-  box-sizing: border-box; 
-  position: relative; 
-  overflow: hidden; 
-  -webkit-mask-image: linear-gradient(to right, #000 50%, rgba(0, 0, 0, 0) 100%);
+  width: 50%;
+  height: 100%;
+  background: no-repeat center center;
+  background-size: cover;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    #000 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
   mask-image: linear-gradient(to right, #000 50%, rgba(0, 0, 0, 0) 100%);
 }
-
 
 .modal-left::before {
   content: "";
@@ -713,10 +721,12 @@ input[type="date"] {
   box-sizing: border-box;
 }
 
-.modal-left h2, .modal-left p, .modal-left ul {
+.modal-left h2,
+.modal-left p,
+.modal-left ul {
   position: relative;
-  z-index: 3;  
-  color: #fff;  
+  z-index: 3;
+  color: #fff;
   margin: 50px;
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
@@ -725,31 +735,30 @@ input[type="date"] {
   font-size: 30px;
   font-weight: 500;
 }
-.modal-left .how-it-works{
+.modal-left .how-it-works {
   font-weight: bold;
   font-size: 20px;
 }
 .modal-left #modalPrice {
   font-size: 60px;
 }
-.modal-left p{
+.modal-left p {
   font-size: 15px;
 }
 .modal-text {
-  white-space: nowrap;  /* Prevents wrapping and ensures content stays on a single line */
-  overflow: hidden;     /* Prevents content from spilling out of the element bounds */
+  white-space: nowrap; /* Prevents wrapping and ensures content stays on a single line */
+  overflow: hidden; /* Prevents content from spilling out of the element bounds */
   text-overflow: ellipsis; /* Adds an ellipsis if the text overflows the element's width */
-  
 }
 .modal-text #modalPrice {
   margin-right: 10px; /* Space after the price */
-  margin-left: 10px;  /* Space before the price */
+  margin-left: 10px; /* Space before the price */
 }
 
 .modal-left ul {
   list-style: none; /* Styling for list */
 }
-.modal-left ul li span{
+.modal-left ul li span {
   font-weight: bold;
   margin-right: 15px;
 }
@@ -777,10 +786,13 @@ input[type="date"] {
   text-align: center; /* Center the text within each block */
   padding: 15px; /* Padding for spacing inside each block */
 }
-.call-action p{
+.call-action p {
   font-size: 12px;
   font-weight: bold;
   text-align: left;
+}
+.call-action span {
+  color: var(--primary-color);
 }
 .phone-number {
   background-color: var(--primary-color);
@@ -804,7 +816,7 @@ input[type="date"] {
 
 .second-row::before,
 .second-row::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%; /* Align vertically at the middle of the container */
   width: 30%; /* Adjust the length of the lines as needed */
@@ -820,7 +832,8 @@ input[type="date"] {
   right: 0%; /* Distance from the right side */
 }
 
-.booking-call, .offer-request {
+.booking-call,
+.offer-request {
   width: 100%;
   margin: 0px 0;
   padding: 0 20px; /* Adds padding to prevent text from overlapping with lines */
@@ -828,15 +841,15 @@ input[type="date"] {
   position: relative;
 }
 .phone-number a {
-  text-decoration: none;  /* Removes underline from the link */
+  text-decoration: none; /* Removes underline from the link */
   color: #fff;
-  font-weight: bold;      /* Makes the font bold */
-  font-size: 18px;        /* Increases the font size */
-  transition: .2s ease;
+  font-weight: bold; /* Makes the font bold */
+  font-size: 18px; /* Increases the font size */
+  transition: 0.2s ease;
 }
 .phone-number a:hover,
 .phone-number a:focus {
-  color: #000;         /* Changes color when hovered or focused for better accessibility */
+  color: #000; /* Changes color when hovered or focused for better accessibility */
 }
 .booking-call {
   font-weight: bold; /* Make the main call to action bold */
@@ -856,10 +869,10 @@ input[type="date"] {
   width: 100%;
   margin-bottom: 30px;
 }
-.modal-right .round-trip{
+.modal-right .round-trip {
   text-align: left;
 }
-.modal-right .one-way{
+.modal-right .one-way {
   text-align: right;
 }
 .modal-right .input-group {
@@ -883,11 +896,12 @@ input[type="date"] {
   transition: all 0.3s ease;
 }
 
-.trip-option-form.active, .trip-option-form:hover {
+.trip-option-form.active,
+.trip-option-form:hover {
   border-bottom: 2px solid var(--primary-color); /* Active/hover state underline */
   color: var(--primary-color);
 }
-.modal-right  .input-group:last-child {
+.modal-right .input-group:last-child {
   margin-right: 0;
 }
 
@@ -904,10 +918,10 @@ input[type="date"] {
   z-index: 50; /* Ensures the label is above the input text */
   font-weight: 500;
 }
-.modal-right  input[type="text"],
-.modal-right  input[type="email"],
-.modal-right  input[type="tel"],
-.modal-right  input[type="date"] {
+.modal-right input[type="text"],
+.modal-right input[type="email"],
+.modal-right input[type="tel"],
+.modal-right input[type="date"] {
   width: 100%;
   padding-top: 20px;
   padding-right: 10px;
@@ -926,7 +940,7 @@ input[type="date"] {
   box-shadow: 0 0 5px rgba(241, 48, 51, 0.5) !important;
 }
 
-.modal-right  button {
+.modal-right button {
   width: 100%;
   background-color: var(--primary-color);
   color: white;
@@ -937,10 +951,9 @@ input[type="date"] {
   margin-top: 20px; /* More space above the submit button */
 }
 
-.modal-right  button:hover {
+.modal-right button:hover {
   background-color: var(--primary-color-dark);
 }
-
 
 .book-btn:hover i {
   transform: rotate(
@@ -1024,9 +1037,18 @@ h5 {
   z-index: 10;
 }
 .book {
-  transform: rotate(-90deg);
+  writing-mode: vertical-lr; /* Makes the text vertical */
+  transform: rotate(180deg); /* Flips the text to read from bottom to top */
+  font-size: 2rem;
+  white-space: nowrap; /* Keeps the title in one line */
+  margin-right: 20px;
 }
-
+.steps-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
 .how-to-book {
   display: flex;
   flex-wrap: nowrap;
@@ -1036,6 +1058,7 @@ h5 {
   background-color: rgba(0, 0, 0, 0.05);
   width: 100%;
   overflow: hidden;
+  min-height: 200px;
 }
 
 .step {
@@ -1591,21 +1614,34 @@ input::placeholder {
   text-align: center;
 }
 
-@media (width < 1200px) {
+@media (width < 1272px) {
   .destination__grid {
     gap: 1rem;
   }
-
+  .nav__links li a {
+    font-size: 12px;
+  }
+  .nav__contact a {
+    font-size: 12px;
+  }
   .footer__container {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-@media (width < 900px) {
-  .nav__links {
-    gap: 1rem;
+@media (width < 1050px) {
+  .nav__logo img {
+    width: 120px;
   }
-
+  .nav__logo span {
+    font-size: 10px;
+  }
+  .nav__contact a {
+    font-size: 12px;
+  }
+  .nav__links li a {
+    font-size: 12px;
+  }
   .link a {
     padding: 0;
   }
@@ -1649,10 +1685,35 @@ input::placeholder {
 }
 
 @media (width < 600px) {
+  .swiper-slide {
+    flex-direction: column; /* Aligns cards vertically */
+  }
+
+  .trending__card {
+    flex: 0 0 100%; /* Forces each card to take full width of the slide */
+  }
   .nav__links {
     display: none;
   }
+  .how-to-book {
+    flex-direction: column; /* Stack the elements vertically */
+  }
 
+  .book {
+    writing-mode: horizontal-tb; /* Revert to horizontal text */
+    transform: rotate(0deg); /* No rotation */
+    margin-right: 0; /* Remove right margin */
+    margin-bottom: 20px; /* Space below the title */
+    text-align: center; /* Center the title */
+  }
+
+  .steps-container {
+    justify-content: center; /* Center the steps */
+  }
+
+  .step {
+    flex: 0 0 50%; /* Each step takes up half the width of the container */
+  }
   .header__form form {
     flex-direction: column;
     align-items: flex-start;
@@ -1685,5 +1746,74 @@ input::placeholder {
 
   .footer__container {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .airline-logos img:nth-of-type(n + 5) {
+    display: none;
+  }
+  .airlines-text {
+    display: none;
+  }
+  #flightSearchForm {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .nav__logo {
+    text-align: center;
+    flex: 1;
+  }
+  .nav__logo a {
+    justify-content: center; /* Center the content within the link */
+    display: flex;
+  }
+  .nav__logo a span {
+    font-size: 10px;
+  }
+  .nav__logo img {
+    margin: 0px auto; /* Center the image */
+  }
+  .nav__links,
+  .nav__contact {
+    display: none; /* Hide links and contact info, display via menu */
+  }
+  .header__container h1 {
+    font-size: 40px;
+    margin-top: 0px;
+  }
+  .menu-icon {
+    display: block; /* Ensure the menu icon is visible */
+    position: absolute; /* Positioning it to the left */
+    left: 10px; /* Space from the left edge */
+    top: 10px; /* Space from the top */
+    font-size: 24px; /* Adjust size as necessary */
+  }
+  .trip-type {
+    margin-bottom: 10px;
+  }
+  #flightSearchForm {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns of equal width */
+    gap: 20px; /* Space between rows and columns */
+    width: 100%; /* Full width of the container */
+    max-width: 600px; /* Optional: limit the maximum width of the form */
+    margin: auto; /* Center the form horizontally */
+    padding: 20px; /* Padding around the form */
+  }
+
+  #flightSearchForm .input__group {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center-align the contents of the input group */
+  }
+
+  #flightSearchForm .input__group input,
+  #flightSearchForm .input__group label {
+    width: 100%; /* Inputs and labels take full width of their container */
+    text-align: center; /* Center text inside input and labels */
+  }
+
+  #flightSearchForm .btn,
+  #flightSearchForm .full-width {
+    grid-column: span 2; /* Make the button and any full-width inputs extend across all columns */
   }
 }
