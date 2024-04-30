@@ -53,6 +53,60 @@ document.getElementById("tripType").addEventListener("click", function (event) {
     // If you need to use this value for further processing, you can set it on a hidden input or form data
   }
 });
+document.addEventListener('DOMContentLoaded', function() {
+  var menuIcon = document.querySelector('.menu-icon a');
+  var navLinks = document.querySelectorAll('.nav__links a');
+  var navLinksContainer = document.querySelector('.nav__links');
+  var navContact = document.querySelector('.nav__contact');
+  var navLogo = document.querySelector('.nav__logo');
+  var navLogoMobile = document.querySelector('.nav__logo-mobile');
+
+  // Function to toggle the mobile navigation
+  function toggleMenu() {
+    if (navLinksContainer.style.transform === "translateY(0%)") {
+      navLinksContainer.style.transform = "translateY(-100%)"; // Hide it
+      navContact.style.display = "none"; // Hide nav contact
+      navLogoMobile.style.display = "none"; // Hide mobile logo
+      navLogo.style.opacity = "1";
+      document.body.style.overflow = "auto"; // Allow scrolling on the body
+    } else {
+      navLinksContainer.style.transform = "translateY(0%)"; // Show it
+      navContact.style.display = "block"; // Show nav contact
+      navLogoMobile.style.display = "block"; // Show mobile logo
+      navLogo.style.opacity = "0";
+      document.body.style.overflow = "hidden"; // Disable scrolling on the body
+    }
+  }
+
+  // Function to set active class on clicked link and handle navigation
+  function handleNavLinkClick(event) {
+    // Remove 'active' class from all links
+    navLinks.forEach(link => link.classList.remove('active'));
+
+    // Add 'active' class to clicked link
+    this.classList.add('active');
+
+    // Navigate to the section linked by the anchor
+    const hash = this.getAttribute('href');
+    const target = document.querySelector(hash);
+    if (target) {
+      window.scrollTo({
+        top: target.offsetTop - 60, // Offset by header height
+        behavior: 'smooth'
+      });
+    }
+
+    // If in mobile view and menu is open, toggle the menu closed
+    if (window.innerWidth <= 600 && navLinksContainer.style.transform === "translateY(0%)") {
+      toggleMenu();
+    }
+  }
+
+  // Attach event listeners
+  menuIcon.addEventListener('click', toggleMenu);
+  navLinks.forEach(link => link.addEventListener('click', handleNavLinkClick));
+});
+
 // Keep this structure. You won't need the 'description' property anymore since it's static.
 const destinations = {
   turkey: {
@@ -140,11 +194,13 @@ var openModal = function () {
   document.getElementById("modalPrice").innerText = `${data.price}`;
 
   modal.style.display = "block"; // This should only be called here
+  document.body.classList.add('no-scroll');
 };
 
 // Function to close modal
 var closeModal = function () {
   modal.style.display = "none";
+  document.body.classList.remove('no-scroll');
 };
 
 // Attach openModal function to click event of each card

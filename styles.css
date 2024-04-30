@@ -295,6 +295,16 @@ nav {
   white-space: nowrap; /* Keeps the text on a single line */
   text-decoration: none; /* Removes underline from links */
 }
+.menu-icon {
+  display: none;
+  position: fixed; 
+  top: 20px;  
+  right: 20px;
+  z-index: 100;  
+  cursor: pointer; 
+  text-decoration: none;
+  color: #000;
+}
 .logo-separator {
   margin: 0 10px; /* Adds space around the separator */
   font-size: 1.5rem; /* Matches the logo text size */
@@ -313,6 +323,12 @@ nav {
   margin: 0;
   flex: 3; /* Gives the navigation links more space */
   height: 100%;
+}
+.nav__logo-mobile {
+  display: none; /* Initially hidden */
+  width: 100%; /* Full width */
+  text-align: center; /* Center logo */
+  margin-bottom: 20px; /* Space between logo and links */
 }
 .nav__links li {
   display: flex;
@@ -621,7 +637,13 @@ input[type="date"] {
   justify-content: center; /* Horizontal alignment */
   backdrop-filter: blur(5px);
 }
-
+.modal-extra-text {
+  display: none; /* Hide by default on larger screens */
+  text-align: center; /* Center the text */
+  padding: 20px; /* Add some padding for spacing */
+  font-size: 14px; /* Set font size */
+  color: #666; /* Set text color */
+}
 /* Modal Content Box */
 .modal-content {
   background-color: #fefefe;
@@ -634,6 +656,7 @@ input[type="date"] {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  overflow-y: auto;
 }
 /* Add Animation */
 @keyframes animatetop {
@@ -886,6 +909,10 @@ input[type="date"] {
   display: flex;
   width: 100%;
   justify-content: space-around;
+}
+.no-scroll {
+  overflow: hidden; /* Prevents scrolling on the body */
+  height: 100%; /* Optional: May help in some cases to limit body height */
 }
 .trip-option-form {
   flex: 1;
@@ -1685,15 +1712,90 @@ input::placeholder {
 }
 
 @media (width < 600px) {
+  .section__header {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex-direction: column; /* Stack children vertically */
+    text-align: center; /* Ensure text is centered within each child */
+    margin-bottom: 30px;
+  }
+  .nav__logo img, span{
+    z-index: 9999;
+  }
+  .nav__logo-mobile {
+    display: none; /* Keep it hidden by default on small screens */
+  }
+  .modal {
+    top: 60px; /* Start below the header */
+    height: calc(100% - 60px); /* Full height minus header height */
+    align-items: flex-start; /* Align to the top starting below the header */
+    display: flex; /* Ensures flex properties are enabled */
+    justify-content: center; /* Centers content horizontally in the modal */
+    display: none;
+  }
+  .modal-extra-text {
+    display: block; /* Show only on small screens */
+    background-color: #eee;
+    margin-top: 35px;
+  }
+  .modal-right .call-action p{
+    font-size: 10px;
+  }
+  .modal-right .phone-number a{
+    font-size: 12px;
+  }
+  .modal-content {
+    width: 100%; /* Full width of the modal */
+    height: 100%; /* Full height of the modal */
+    position: absolute; /* Use absolute to fill the parent .modal */
+    top: 0;
+    left: 0;
+    transform: none; /* Remove the transform for full screen */
+    overflow: auto; /* Ensure content can scroll if needed */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    flex-direction: column; /* Stack children vertically */
+    animation-name: slideFromTop; /* New animation for small screens */
+    padding-top: 20px; /* Add space for the close button at the top */
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+
+  /* Define new animation for sliding from the top */
+  @keyframes slideFromTop {
+    from {
+      top: -100%; /* Start from above the screen */
+      opacity: 0;
+    }
+    to {
+      top: 0; /* End at the top of the modal */
+      opacity: 1;
+    }
+  }
+  .modal-right {
+    width: 100%; /* Make the right side take full width of the modal */
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+
+  .modal-left {
+    display: none; /* Hide the left side content */
+  }
+
+  .close {
+    position: absolute;
+    top: 0px; /* Adjust if necessary to align with the header */
+    right: 0px; /* Keep it at the top-right corner */
+    z-index: 20; /* Ensure it is above all other modal content */
+  }
   .swiper-slide {
     flex-direction: column; /* Aligns cards vertically */
   }
-
+  
   .trending__card {
     flex: 0 0 100%; /* Forces each card to take full width of the slide */
-  }
-  .nav__links {
-    display: none;
+    margin: 15px 10px;
   }
   .how-to-book {
     flex-direction: column; /* Stack the elements vertically */
@@ -1772,9 +1874,34 @@ input::placeholder {
   .nav__logo img {
     margin: 0px auto; /* Center the image */
   }
-  .nav__links,
+  .nav__links {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 60px;
+    left: 0;
+    background-color: white;
+    transform: translateY(-100vh);
+    transition: transform 0.5s ease;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  .nav__links li a {
+    font-size: 20px;
+  }
   .nav__contact {
-    display: none; /* Hide links and contact info, display via menu */
+    display: none; /* Hide the contact info by default on mobile */
+    position: absolute; /* Position it over the nav links */
+    width: 100%; /* Full width */
+    top: 0; /* Align to the top of the nav container */
+    background: #fff; /* Match the background to nav links for consistency */
+    text-align: center; /* Center the contact info */
+    padding: 10px 0; /* Add some padding */
+    border-bottom: 1px solid #ccc; /* Optional: add a separator */
+    z-index: 888;
   }
   .header__container h1 {
     font-size: 40px;
@@ -1786,6 +1913,11 @@ input::placeholder {
     left: 10px; /* Space from the left edge */
     top: 10px; /* Space from the top */
     font-size: 24px; /* Adjust size as necessary */
+    z-index: 1001;
+  }
+  .menu-icon a{
+    text-decoration: none;
+    color: #000;
   }
   .trip-type {
     margin-bottom: 10px;
