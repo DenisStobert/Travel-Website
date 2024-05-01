@@ -199,6 +199,77 @@ body {
   text-align: center; /* Centers the content */
   padding-top: 20%; /* Adjusts the position of inner content */
 }
+.hero-image {
+  background-image: url("assets/bg1.webp"); /* Path to your image */
+  background-size: cover;
+  background-position: center;
+  height: 80vh; /* 80% of the viewport height */
+  display: flex;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  color: #fff; /* Adjust text color based on your image */
+  position: relative;
+}
+.hero-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Adjust the opacity to make darker or lighter */
+  z-index: 1; /* Ensures the overlay is above the background image but below the text */
+}
+.how-to {
+  height: 100vh;
+}
+.hero-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    z-index: 999;
+}
+
+.price-box, .flight-details {
+    background: rgba(0, 0, 0, 0.6); /* Dark semi-transparent background */
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.best-price h1, .best-price h2 {
+    margin: 10px 0;
+}
+
+.old-price, .time-limit {
+    font-style: italic;
+}
+
+.flight-details h3, .flight-details div, .flight-details button {
+    margin-top: 10px;
+}
+
+.flight-details input, .flight-details button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.flight-details button {
+    background-color: #4CAF50; /* Green background */
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.from-to span, .dates span {
+    display: block;
+}
 .video-wrapper {
   position: relative;
   width: 100%;
@@ -273,14 +344,14 @@ nav {
   justify-content: space-between;
   padding: 0 20px;
   background-color: transparent;
-  transition: background-color .3s;
+  transition: background-color 0.3s;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
   height: 60px;
 }
-nav.scrolled{
+nav.scrolled {
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -300,11 +371,11 @@ nav.scrolled{
 }
 .menu-icon {
   display: none;
-  position: fixed; 
-  top: 20px;  
+  position: fixed;
+  top: 20px;
   right: 20px;
-  z-index: 100;  
-  cursor: pointer; 
+  z-index: 100;
+  cursor: pointer;
   text-decoration: none;
   color: #000;
 }
@@ -348,30 +419,37 @@ nav.scrolled{
   line-height: 60px;
   padding: 0 22px;
   overflow: hidden;
+  border: none; /* Ensures no border is applied */
 }
+
 .nav__links li a::after {
   content: "";
   position: absolute;
-  width: 100%;
-  height: 2px;
-  bottom: 10px;
-  left: 0;
-  background: linear-gradient(to left, #f13033, #f13033);
-  transform-origin: bottom right;
+  width: 7px; /* Circle width */
+  height: 7px; /* Circle height */
+  border-radius: 50%;
+  background-color: var(--primary-color); /* Using CSS variable for color */
+  bottom: 5px; /* Adjusted for positioning */
+  left: 50%;
+  transform: translateX(-50%) scale(0);
   transition: transform 0.25s ease-out;
-  transform: scaleX(0);
 }
+
 .nav__links li a:hover::after,
 .nav__links li a.active::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
+  transform: translateX(-50%) scale(1);
 }
-.nav__links li a.active {
-  color: #f13033; /* Optional: change the text color for active state if desired */
-}
+
+.nav__links li a.active,
 .nav__links li a:hover {
-  color: #f13033; /* Changes text color on hover */
+  color: var(--primary-color); /* Standardize hover and active color */
 }
+
+/* Ensure no outlines are present */
+.nav__links li a:focus {
+  outline: none;
+}
+
 .nav__contact a {
   text-decoration: none;
   color: #fff;
@@ -1645,7 +1723,7 @@ input::placeholder {
 .footer-info p {
   margin-bottom: 10px; /* Space between paragraphs */
   line-height: 1.6; /* Increase line height for better readability */
-  font-size: .6rem;
+  font-size: 0.6rem;
   width: 70%;
   justify-content: center;
   align-items: center;
@@ -1736,7 +1814,8 @@ input::placeholder {
     text-align: center; /* Ensure text is centered within each child */
     margin-bottom: 30px;
   }
-  .nav__logo img, span{
+  .nav__logo img,
+  span {
     z-index: 9999;
   }
   .nav__logo-mobile {
@@ -1755,10 +1834,10 @@ input::placeholder {
     background-color: #eee;
     margin-top: 35px;
   }
-  .modal-right .call-action p{
+  .modal-right .call-action p {
     font-size: 10px;
   }
-  .modal-right .phone-number a{
+  .modal-right .phone-number a {
     font-size: 12px;
   }
   .modal-content {
@@ -1808,7 +1887,7 @@ input::placeholder {
   .swiper-slide {
     flex-direction: column; /* Aligns cards vertically */
   }
-  
+
   .trending__card {
     flex: 0 0 100%; /* Forces each card to take full width of the slide */
     margin: 15px 10px;
@@ -1931,7 +2010,7 @@ input::placeholder {
     font-size: 24px; /* Adjust size as necessary */
     z-index: 1001;
   }
-  .menu-icon a{
+  .menu-icon a {
     text-decoration: none;
     color: #000;
   }

@@ -54,6 +54,18 @@ document.getElementById("tripType").addEventListener("click", function (event) {
   }
 });
 document.addEventListener('DOMContentLoaded', function() {
+  const navbar = document.querySelector('nav');
+  window.addEventListener('scroll', function() {
+      // Check if page is scrolled more than 50 pixels
+      if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+      } else {
+          navbar.classList.remove('scrolled');
+      }
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
   var menuIcon = document.querySelector('.menu-icon a');
   var navLinks = document.querySelectorAll('.nav__links a');
   var navLinksContainer = document.querySelector('.nav__links');

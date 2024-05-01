@@ -1,41 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="search-results.css" />
     <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="search-results.css" />
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <title>Web Design Mastery | Wanderlust</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3AP2WmC5MY8fOBIPVd66YmkD8u8nbcts&libraries=places&callback=initAutocomplete"
+      async
+      defer
+    ></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-</head>
-<body>
+  </head>
+  <body>
     <div class="loader-wrapper">
-        <div class="loader">
-          <span style="--i: 1"></span>
-          <span style="--i: 2"></span>
-          <span style="--i: 3"></span>
-          <span style="--i: 4"></span>
-          <span style="--i: 5"></span>
-          <span style="--i: 6"></span>
-          <span style="--i: 7"></span>
-          <span style="--i: 8"></span>
-          <span style="--i: 9"></span>
-          <span style="--i: 10"></span>
-          <span style="--i: 11"></span>
-          <span style="--i: 12"></span>
-          <span style="--i: 13"></span>
-          <span style="--i: 14"></span>
-          <span style="--i: 15"></span>
-          <span style="--i: 16"></span>
-          <span style="--i: 17"></span>
-          <span style="--i: 18"></span>
-          <span style="--i: 19"></span>
-          <span style="--i: 20"></span>
-          <div class="rocket"></div>
-        </div>
+      <div class="loader">
+        <span style="--i: 1"></span>
+        <span style="--i: 2"></span>
+        <span style="--i: 3"></span>
+        <span style="--i: 4"></span>
+        <span style="--i: 5"></span>
+        <span style="--i: 6"></span>
+        <span style="--i: 7"></span>
+        <span style="--i: 8"></span>
+        <span style="--i: 9"></span>
+        <span style="--i: 10"></span>
+        <span style="--i: 11"></span>
+        <span style="--i: 12"></span>
+        <span style="--i: 13"></span>
+        <span style="--i: 14"></span>
+        <span style="--i: 15"></span>
+        <span style="--i: 16"></span>
+        <span style="--i: 17"></span>
+        <span style="--i: 18"></span>
+        <span style="--i: 19"></span>
+        <span style="--i: 20"></span>
+        <div class="rocket"></div>
       </div>
-      <script src="main.js"></script>
-</body>
+    </div>
+    <header class="header">
+      <nav class="main-nav">
+        <div class="menu-icon">
+          <a href="javascript:void(0);" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i> <!-- FontAwesome icon -->
+          </a>
+        </div>
+        <div class="nav__logo">
+          <a href="#">
+            <img src="assets/logo.png" alt="Logo" />
+            <span class="logo-separator">|</span>
+            <span class="logo-text">Comfort you can afford</span>
+          </a>
+        </div>
+        <ul class="nav__links">
+          <div class="nav__logo-mobile">
+            <img src="assets/logo.png" alt="Logo" /> <!-- Ensure this is the correct path -->
+          </div>
+          <li class="link"><a href="#home" class="active">Home</a></li>
+          <li class="link"><a href="#trending">Trending</a></li>
+          <li class="link"><a href="#destination">Destinations</a></li>
+          <li class="link"><a href="#guide">Guide</a></li>
+          <li class="link"><a href="#client">Client</a></li>
+        </ul>
+        <div class="nav__contact">
+          <a href="#"
+            ><img
+              src="assets/us-flag.png"
+              alt="US Flag"
+              class="flag-icon"
+            /><span>+1</span> 234-567-890</a
+          >
+        </div>
+      </nav>
+      <div class="hero-image">
+        <div class="hero-content">
+          <!-- Best Price Box -->
+          <div class="price-box best-price">
+              <p>BEST PRICE</p>
+              <h1>ATLANTA → CHISINAU</h1>
+              <p>Business Class, Round Trip, Total</p>
+              <h2>$1830.00*</h2>
+              <p class="old-price">old price: $2190.00</p>
+              <p class="time-limit">Price expires in 17:32 min</p>
+          </div>
+          
+          <!-- Flight Details Box -->
+          <div class="flight-details">
+              <h3>FLIGHT DETAILS</h3>
+              <div>
+                  <label>Round Trip</label>
+                  <label>1 Passenger</label>
+                  <label>Business</label>
+              </div>
+              <div class="from-to">
+                  <span>From</span>
+                  <span>Atlanta (ATL)</span>
+                  <span>To</span>
+                  <span>Chisinau (RMO)</span>
+              </div>
+              <div class="dates">
+                  <span>Departure: Apr 30, 2024</span>
+                  <span>Return: May 1, 2024</span>
+              </div>
+              <div class="personal-info">
+                  <input type="text" placeholder="Enter your name">
+                  <input type="email" placeholder="Enter your email">
+                  <input type="tel" placeholder="+1">
+              </div>
+              <button>Get a FREE Quote</button>
+          </div>
+      </div>
+      </div>
+    </header>
+    <section class="how-to">
+
+    </section>
+
+    <script src="search-results.js"></script>
+  </body>
 </html>
