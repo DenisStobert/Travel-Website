@@ -229,46 +229,473 @@ body {
   height: 100vh;
 }
 .hero-content {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    z-index: 999;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-content: center; /* Centers the grid items along the row */
+  padding: 20px; /* Adds padding around the grid for spacing */
+  margin: auto; /* Centers the entire grid container in the available space */
+  width: 100%; /* Ensures it takes full width up to the max width */
+  z-index: 999;
+  max-width: 1400px;
+}
+.price-box.best-price {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the items vertically */
+  padding: 20px;
+  background-color: rgba(23, 45, 40, 0.9); /* Change as needed */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+  height: 370px;
+}
+.price-content {
+  display: flex;
+  flex-direction: column; /* Stacks content vertically */
+  align-items: flex-start; /* Aligns content to the start */
+  margin-right: 20px; /* Adds some margin to separate from the divider */
+  flex-grow: 0; /* Prevents the box from growing to fill available space */
+  flex-shrink: 1; /* Allows the box to shrink to fit its content */
 }
 
-.price-box, .flight-details {
-    background: rgba(0, 0, 0, 0.6); /* Dark semi-transparent background */
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
+.price-details {
+  display: flex;
+  flex-direction: column; /* Stacks content vertically */
+  align-items: flex-start; /* Aligns content to the end */
+  flex-grow: 1; /* Allows the box to expand to use available space */
+  text-align: left;
+  margin-left: 20px; /* Adds some margin to separate from the divider */
+}
+.price-box img {
+  width: 100px;
+  height: auto;
+}
+.price-divider {
+  width: 50px; /* Adjust size as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin: 0 20px; /* Space around the SVG */
+}
+.exclusive-deal {
+  border-top: 1px solid black;
+  width: 100%;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+}
+.exclusive-deal i {
+  font-size: 40px;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(20%);
+  margin-right: 20px;
+  color: var(--primary-color);
+}
+.best-price-text i {
+  margin-right: 5px; /* Space between icon and text */
 }
 
-.best-price h1, .best-price h2 {
-    margin: 10px 0;
+.old-price {
+  color: white; /* Dim the old price */
+  text-decoration: line-through; /* Strike-through style */
+  margin-bottom: 10px; /* Space before the next line */
+  text-align: left;
+}
+.safe-text {
+  font-size: 12px;
+  margin-top: 10px;
+}
+.safe-text span {
+  font-weight: bold;
+}
+.time-limit {
+  font-size: 0.7rem; /* Smaller font size for emphasis */
+  color: white; /* Dark grey color for visibility */
+  font-style: italic; /* Italicize the timer */
+  text-align: left;
+}
+.time-limit span {
+  color: #ffc496;
+  font-weight: bold;
 }
 
-.old-price, .time-limit {
-    font-style: italic;
+.price-box h2 {
+  color: #ffc496; /* Red color for the current price */
+  font-size: 40px;
+  margin: 10px 0; /* Space around the price */
+}
+.price-box,
+.flight-details {
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
 }
 
-.flight-details h3, .flight-details div, .flight-details button {
-    margin-top: 10px;
+.flight-details {
+  background-image: url("assets/travel.webp"); /* Ensure this path is correct */
+  background-size: cover;
+  background-position: center;
+  position: relative; /* Important for positioning the pseudo-element */
+  color: #ecf0f1;
+  width: 500px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  overflow: hidden; /* Ensures no child content spills outside the border radius */
 }
 
-.flight-details input, .flight-details button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
+.flight-details::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* Darken the background */
+  border-radius: 10px;
+  z-index: 0; /* Set a higher z-index than the default */
+}
+
+/* Ensure that content is layered above the overlay */
+.flight-details * {
+  position: relative;
+  z-index: 1;
+}
+
+.price-box {
+  background-color: rgba(23, 45, 40, 0.9);
+}
+.price-box-content {
+  display: flex; /* Aligns children horizontally */
+  align-items: center; /* Centers items vertically */
+  justify-content: space-around; /* Distributes space around items */
+  width: 100%; /* Full width to fit parent */
+  margin-bottom: 20px;
+}
+.best-price-text {
+  text-align: center; /* Center the text horizontally */
+  width: 100%; /* Ensures it spans the full width */
+  margin-bottom: 20px; /* Space below the text */
+  font-size: 1.2rem; /* Larger font size for emphasis */
+  color: white; /* Dark color for visibility */
+  font-weight: 500;
+}
+.best-price-text i {
+  margin-right: 10px;
+  color: var(--primary-color);
+  font-size: 30px;
+}
+
+.best-price h1,
+.best-price h2 {
+  margin: 10px 0;
+}
+
+.old-price,
+.time-limit {
+  font-style: italic;
+}
+.form-section {
+  margin-bottom: 15px;
+}
+
+.form-section label {
+  display: block;
+  margin-bottom: 5px;
+}
+.flight-details select {
+  width: 100%;
+  padding: 8px;
+  border: none !important; /* Removes the border */
+  background: none !important; /* Sets the background to be transparent */
+  color: white; /* Text color */
+  -webkit-appearance: none; /* Removes default style in WebKit browsers */
+  -moz-appearance: none; /* Removes default style in Mozilla browsers */
+  appearance: none; /* Removes default style */
+  cursor: pointer;
+  position: relative; /* Needed for positioning the custom arrow */
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+/* Custom dropdown arrow */
+.flight-details .third {
+  position: relative; /* Sets the position context for the pseudo-element */
+}
+.flight-details option {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* When select is focused, make options visible */
+.flight-details select:focus option {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Rotate the arrow when the select box is focused */
+.flight-details .third.focused::after {
+  transform: translateY(-50%) rotate(-180deg);
+}
+/* Style the select when user interacts */
+.flight-details select:focus option {
+  outline: none; /* Removes the outline */
+  color: black;
+  border-radius: 0px;
+}
+.custom-select-wrapper {
+  position: relative;
+  width: 200px;
+}
+.dropdown{
+  position: relative;
+  z-index: 999;
+}
+.dropdown *{
+  position: relative;
+  box-sizing: border-box;
+  z-index: 999 !important;
+}
+.select{
+  background: transparent;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  border-radius: .5em;
+  padding: 1em;
+  cursor: pointer;
+  transition: background .3s;
+}
+.caret{
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #fff;
+  transition: .3s;
+  margin-bottom: 10px;
+}
+.caret-rotate{
+  transform: rotate(-180deg);
+}
+.menu{
+  list-style: none;
+  padding: .2em .5em;
+  background: #323741;
+  border: 1px #363a43 solid;
+  box-shadow: 0 .5em 1em rgba(0,0,0,0.2);
+  border-radius: .5em;
+  color: #9fa5b5;
+  position: absolute;
+  top: 3em;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+  opacity: 0;
+  display: none;
+  transition: .2s;
+  z-index: 999 !important;
+}
+.menu li{
+  padding: .7em .5em;
+  margin: .3em 0;
+  border-radius: .5em;
+  cursor: pointer;
+  z-index: 9999;
+}
+.menu li:hover{
+  background: #2a2d35;
+}
+.active-menu{
+  background: #23242a;
+}
+.menu-open{
+  display: block;
+  opacity: 1;
+  z-index: 9999;
+}
+.custom-select {
+  position: relative;
+  border-radius: 5px;
+  user-select: none;
+}
+.select-selected {
+  background-color: transparent;
+  color: #ffffff;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.select-items div {
+  padding: 8px;
+  cursor: pointer;
+  background-color: #f1f1f1;
+  color: #000;
+  border-bottom: 1px solid #d1d1d1;
+  display: none;
+}
+.select-items div:last-child {
+  border-bottom: none;
+}
+.select-items div:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.flight-details select:focus {
+  outline: none; /* Removes the outline when focused */
+  border: none; /* Ensures no border is visible */
+  background: transparent; /* Ensures the background is transparent */
+}
+.form-section select,
+.form-section input[type="text"],
+.form-section input[type="date"] {
+  width: 100%;
+  padding: 10px 0px 10px 15px; /* Adjust left padding to ensure text doesn't overlap the flag */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  background-size: 24px 16px; /* Adjust the size of the flag */
+  background-position: 12px center; /* Position the flag within the padding area */
+  background-repeat: no-repeat;
+  position: relative; /* Needed for positioning of the country code */
+  z-index: 999;
+  backdrop-filter: blur(3px);
+}
+
+.form-section select {
+  cursor: pointer;
+  appearance: none; /* Removes default styling */
+  background: rgba(0, 0, 0, 0.3) url('assets/dropdown-icon.png') no-repeat right 10px center; /* Custom dropdown icon */
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.third {
+  width: 33%; /* Adjusts the width to fit three elements in one row */
+  z-index: 9999;
+}
+
+.half {
+  width: 48%;
+  z-index: 5 !important;
+}
+.flight-details h3,
+.flight-details div,
+.flight-details button {
+  margin-top: 10px;
+  z-index: 2;
+}
+.flight-details h3 {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+.flight-details input,
+.flight-details button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Semi-transparent inputs for aesthetics */
+  color: white; /* Ensures text is visible */
+  z-index: 2;
+}
+.personal-info h3 {
+  padding: 20px 5px;
+  font-size: 25px;
+}
+.personal-info input[type="text"],
+.personal-info input[type="email"] {
+  width: 100%;
+  padding: 10px 10px 10px 15px; /* Adjust left padding to ensure text doesn't overlap the flag */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  background-size: 24px 16px; /* Adjust the size of the flag */
+  background-position: 12px center; /* Position the flag within the padding area */
+  background-repeat: no-repeat;
+  position: relative; /* Needed for positioning of the country code */
+  z-index: 2;
+  backdrop-filter: blur(3px);
+}
+.personal-info .input-group input[type="tel"] {
+  width: 100%;
+  padding: 10px 10px 10px 50px; /* Adjust left padding to ensure text doesn't overlap the flag */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-top: -5px;
+  margin-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  background-size: 24px 16px; /* Adjust the size of the flag */
+  background-position: 12px center; /* Position the flag within the padding area */
+  background-repeat: no-repeat;
+  position: relative; /* Needed for positioning of the country code */
+  backdrop-filter: blur(3px);
+  z-index: 2;
+}
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+
+.input-group::before {
+  content: "+1"; /* Country code */
+  position: absolute;
+  left: 40px; /* Adjust to place the code right after the flag */
+  top: 33%;
+  transform: translateY(-50%);
+  color: white; /* Match your design */
+  pointer-events: none; /* Makes it non-interactive */
+  z-index: 3;
+  font-weight: 500;
+}
+
+.personal-info .input-group input[type="tel"] {
+  padding-left: 65px; /* Adjust padding to accommodate flag and country code */
 }
 
 .flight-details button {
-    background-color: #4CAF50; /* Green background */
-    border: none;
-    color: white;
-    cursor: pointer;
+  background-color: var(--primary-color); /* Green background */
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  transition: 0.2s ease;
+  z-index: 2;
 }
-
-.from-to span, .dates span {
-    display: block;
+.flight-details button:hover {
+  background-color: var(--primary-color-dark);
+}
+.from-to span,
+.dates span {
+  display: block;
+  z-index: 2;
+}
+.info {
+  z-index: 2;
 }
 .video-wrapper {
   position: relative;
@@ -355,6 +782,12 @@ nav.scrolled {
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+nav.scrolled li a {
+  color: black;
+}
+nav.scrolled .nav__logo span {
+  color: black;
+}
 .nav__logo,
 .nav__contact {
   flex: 1; /* Allows these elements to take up equal space on the sides */
@@ -383,11 +816,11 @@ nav.scrolled {
   margin: 0 10px; /* Adds space around the separator */
   font-size: 1.5rem; /* Matches the logo text size */
   text-decoration: none;
-  color: #333;
+  color: #f0f0f0;
 }
 .logo-text {
   font-size: 0.8rem; /* Smaller font size for the logo text */
-  color: #333; /* Adjust color as needed */
+  color: #f0f0f0; /* Adjust color as needed */
 }
 .nav__links {
   display: flex;
@@ -412,7 +845,7 @@ nav.scrolled {
   text-transform: uppercase;
   position: relative;
   text-decoration: none;
-  color: #333;
+  color: white;
   font-size: 1rem;
   transition: all 0.3s ease;
   display: block;
@@ -425,11 +858,11 @@ nav.scrolled {
 .nav__links li a::after {
   content: "";
   position: absolute;
-  width: 7px; /* Circle width */
-  height: 7px; /* Circle height */
+  width: 4px; /* Circle width */
+  height: 4px; /* Circle height */
   border-radius: 50%;
   background-color: var(--primary-color); /* Using CSS variable for color */
-  bottom: 5px; /* Adjusted for positioning */
+  bottom: 10px; /* Adjusted for positioning */
   left: 50%;
   transform: translateX(-50%) scale(0);
   transition: transform 0.25s ease-out;

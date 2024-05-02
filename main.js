@@ -129,7 +129,7 @@ const destinations = {
   vietnam: {
     imageUrl: "assets/trending-card-2.jpeg",
     name: "Vietnam",
-    price: "$1449",
+    price: "$2692",
   },
   carribean: {
     imageUrl: "assets/trending-card-3.jpeg",
@@ -151,10 +151,10 @@ const destinations = {
     name: "Tokyo",
     price: "$2899",
   },
-  japan: {
+  italy: {
     imageUrl: "assets/trending-card-8.jpeg",
-    name: "Japan",
-    price: "$1535",
+    name: "Italy",
+    price: "$1951",
   },
   delhi: {
     imageUrl: "assets/trending-card-7.jpeg",
@@ -164,7 +164,7 @@ const destinations = {
   frankfurt: {
     imageUrl: "assets/trending-card-9.jpeg",
     name: "Frankfurt",
-    price: "$1039",
+    price: "$1975",
   },
   amsterdam: {
     imageUrl: "assets/trending-card-10.jpeg",
@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var swiper = new Swiper('.mySwiper', {
     loop: true,
     autoplay: {
-      delay: 5000,
+      delay: 10000,
       disableOnInteraction: false,
     },
     pagination: {

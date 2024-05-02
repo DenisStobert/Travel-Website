@@ -1,3 +1,70 @@
+document.getElementById('phone-input').addEventListener('input', function (e) {
+  var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+  e.target.value = !x[2] ? x[1] : `${x[1]} ${x[2]}${x[3] ? ' ' + x[3] : ''}`;
+});
+function startTimer(duration, display) {
+  var timer = duration, hours, minutes, seconds;
+  setInterval(function () {
+      hours = parseInt(timer / 3600, 10);
+      minutes = parseInt((timer % 3600) / 60, 10);
+      seconds = parseInt(timer % 60, 10);
+
+      hours = hours < 10 ? "0" + hours : hours;
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+
+      display.textContent = hours + "h :" + minutes + "min";
+
+      if (--timer < 0) {
+          timer = duration;
+      }
+  }, 1000);
+}
+const dropdowns = document.querySelectorAll('.dropdown');
+dropdowns.forEach(dropdown => {
+  const select = dropdown.querySelector('.select');
+  const caret = dropdown.querySelector('.caret');
+  const menu = dropdown.querySelector('.menu');
+  const options = dropdown.querySelectorAll('.menu li');
+  const selected = dropdown.querySelector('.selected');
+
+  select.addEventListener('click', () => {
+    select.classList.toggle('select-clicked');
+    caret.classList.toggle('caret-rotate');
+    menu.classList.toggle('menu-open');
+  });
+  options.forEach(option => {
+    option.addEventListener('click', () => {
+      selected.innerText = option.innerText;
+      select.classList.remove('select-clicked');
+      caret.classList.remove('caret-rotate');
+      menu.classList.remove('menu-open');
+      options.forEach(option => {
+        option.classList.remove('active');
+      });
+      option.classList.add('active');
+    });
+  });
+});
+window.onload = function () {
+  var timeInSeconds = 17 * 3600 + 32 * 60; // 17 hours and 32 minutes in seconds
+  var display = document.querySelector('#timer');
+  startTimer(timeInSeconds, display);
+};
+document.addEventListener("DOMContentLoaded", function() {
+  // Get all select elements within .third containers
+  const selects = document.querySelectorAll('.flight-details .third select');
+
+  // Add event listeners to each select element
+  selects.forEach(select => {
+    select.addEventListener('focus', () => {
+      select.parentNode.classList.add('focused');
+    });
+    select.addEventListener('blur', () => {
+      select.parentNode.classList.remove('focused');
+    });
+  });
+});
 document.addEventListener('DOMContentLoaded', function() {
     const navbar1 = document.querySelector('.main-nav');
     window.addEventListener('scroll', function() {

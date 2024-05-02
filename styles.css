@@ -284,6 +284,12 @@ nav.scrolled{
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+nav.scrolled li a{
+  color: black;
+}
+nav.scrolled .nav__logo span{
+  color: black;
+}
 .nav__logo,
 .nav__contact {
   flex: 1; /* Allows these elements to take up equal space on the sides */
@@ -312,11 +318,11 @@ nav.scrolled{
   margin: 0 10px; /* Adds space around the separator */
   font-size: 1.5rem; /* Matches the logo text size */
   text-decoration: none;
-  color: #333;
+  color: white;
 }
 .logo-text {
   font-size: 0.8rem; /* Smaller font size for the logo text */
-  color: #333; /* Adjust color as needed */
+  color: white; /* Adjust color as needed */
 }
 .nav__links {
   display: flex;
@@ -341,13 +347,14 @@ nav.scrolled{
   text-transform: uppercase;
   position: relative;
   text-decoration: none;
-  color: #333;
+  color: white;
   font-size: 1rem;
   transition: all 0.3s ease;
   display: block;
   line-height: 60px;
   padding: 0 22px;
   overflow: hidden;
+  border-bottom: none;
 }
 .nav__links li a::after {
   content: "";
