@@ -203,12 +203,44 @@ body {
   background-image: url("assets/bg1.webp"); /* Path to your image */
   background-size: cover;
   background-position: center;
-  height: 80vh; /* 80% of the viewport height */
+  height: 85vh; /* 80% of the viewport height */
   display: flex;
   align-items: center; /* Center content vertically */
   justify-content: center; /* Center content horizontally */
   color: #fff; /* Adjust text color based on your image */
   position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+  background-color: white;
+}
+.hero-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Stretch children to full width */
+}
+.full-width-info {
+  display: flex;
+  justify-content: space-evenly; /* Distribute space among children evenly */
+  color: white; /* Example text color */
+  padding: 20px 0; /* Padding for better spacing */
+  z-index: 100;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the icons and text */
+}
+
+.info-item i {
+  font-size: 35px; /* Example icon size */
+  margin-bottom: 8px; /* Space between icon and text */
+  color: var(--primary-color);
+}
+
+.info-item p {
+  text-align: center;
+  color: white;
+  text-transform: lowercase;
 }
 .hero-image::before {
   content: "";
@@ -227,6 +259,63 @@ body {
 }
 .how-to {
   height: 100vh;
+}
+.other-deals {
+  padding: 20px;
+  margin-top: 50px; /* Space from the above content */
+}
+.other-deals h1{
+  text-align: center;
+}
+.deals-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.airline-deal {
+  background-color: rgba(23, 45, 40, 0.9); /* Light background for visibility */
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 15px; /* Space between deals */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: space-around; /* Evenly space the contents horizontally */
+  align-items: center; /* Align items vertically */
+  min-width: 600px;
+  height: 85px;
+}
+.airline-logo-deal {
+  width: 60px !important;
+  height: 10px;
+  margin-right: 10px;
+}
+.airline-name, .airline-price, .flight-class {
+  flex: 1; /* Divide the space equally among children */
+  text-align: center;
+}
+
+.airline-name {
+  font-size: 18px;
+  font-weight: 400;
+  color: white;
+  text-align: left;
+}
+
+.airline-price {
+  font-size: 20px;
+  color: #ffc496;
+  font-weight: bold;
+}
+
+.flight-class {
+  font-size: 14px;
+  color: #ccc;
+}
+
+#destination-city {
+  color: var(--primary-color); /* Use primary color variable for theming */
+  text-transform: uppercase;
 }
 .hero-content {
   display: grid;
@@ -247,7 +336,7 @@ body {
   background-color: rgba(23, 45, 40, 0.9); /* Change as needed */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
-  height: 370px;
+  height: 340px;
 }
 .price-content {
   display: flex;
@@ -257,7 +346,9 @@ body {
   flex-grow: 0; /* Prevents the box from growing to fill available space */
   flex-shrink: 1; /* Allows the box to shrink to fit its content */
 }
-
+.price-content p{
+  font-size: 13px;
+}
 .price-details {
   display: flex;
   flex-direction: column; /* Stacks content vertically */
@@ -276,7 +367,7 @@ body {
   margin: 0 20px; /* Space around the SVG */
 }
 .exclusive-deal {
-  border-top: 1px solid black;
+  border-top: 1px solid white;
   width: 100%;
   padding: 20px;
   justify-content: center;
@@ -295,7 +386,37 @@ body {
 .best-price-text i {
   margin-right: 5px; /* Space between icon and text */
 }
+.additional-details {
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: auto; /* Pushes the additional details to the bottom */
+  width: 100%; /* Ensures it takes the full width */
+}
 
+.form-section.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px; /* Add negative margins to counteract the padding for perfect alignment */
+}
+
+.form-section.row .sixth {
+  flex: 1 1 16.66%; /* Flex grow, flex shrink, flex-basis */
+  max-width: 16.66%;
+  box-sizing: border-box;
+  padding: 10px;
+  text-align: center;
+  vertical-align: top;
+}
+
+.form-section.row .sixth i {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.form-section.row .sixth p {
+  margin-top: 0;
+  font-size: 14px;
+}
 .old-price {
   color: white; /* Dim the old price */
   text-decoration: line-through; /* Strike-through style */
@@ -343,6 +464,7 @@ body {
   border-radius: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   overflow: hidden; /* Ensures no child content spills outside the border radius */
+  z-index: 5;
 }
 
 .flight-details::before {
@@ -397,12 +519,13 @@ body {
   font-style: italic;
 }
 .form-section {
-  margin-bottom: 15px;
+  margin-bottom: -15px;
+  z-index: 1;
 }
-
 .form-section label {
   display: block;
   margin-bottom: 5px;
+  z-index: 1;
 }
 .flight-details select {
   width: 100%;
@@ -450,74 +573,78 @@ body {
   position: relative;
   width: 200px;
 }
-.dropdown{
+.dropdown {
   position: relative;
-  z-index: 999;
+  z-index: 1001 !important; /* Ensures dropdown is above other items */
 }
-.dropdown *{
-  position: relative;
-  box-sizing: border-box;
-  z-index: 999 !important;
-}
-.select{
+
+.select {
   background: transparent;
-  color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: none;
-  border-radius: .5em;
-  padding: 1em;
+  padding: 10px;
   cursor: pointer;
-  transition: background .3s;
+  transition: background-color 0.3s ease-in-out;
 }
-.caret{
-  width: 0;
-  height: 0;
+
+.caret {
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 6px solid #fff;
-  transition: .3s;
+  border-top: 5px solid #ccc; /* Light color for the caret */
+  transition: transform 0.3s ease-in-out;
   margin-bottom: 10px;
+}
+.error-message {
+  display: block; /* Ensure it's not inline */
+  width: 100%; /* Full width of the container */
+  color: red;
+  font-size: 12px;
+  text-align: left; /* Align text left within the error message */
+}
+
+input.error {
+  border: 1px solid red; /* Red border for error inputs */
+}
+.menu {
+  list-style: none;
+  padding: 0;
+  background: #f9f9f9; /* Light background for the dropdown */
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  opacity: 0;
+  visibility: hidden; /* Use visibility to toggle display */
+  transform: translateY(-20px);
+  transition: all 0.3s ease-in-out;
+  z-index: 1002;
+}
+
+.menu li {
+  padding: 10px;
+  cursor: pointer;
+  color: #333; /* Darker text for better readability */
+  transition: background-color 0.2s;
+}
+
+.menu li:hover, .menu li.active {
+  background: #e1e1e1; /* Light hover background */
+}
+
+.menu-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.menu li.active {
+  font-weight: bold;
 }
 .caret-rotate{
   transform: rotate(-180deg);
-}
-.menu{
-  list-style: none;
-  padding: .2em .5em;
-  background: #323741;
-  border: 1px #363a43 solid;
-  box-shadow: 0 .5em 1em rgba(0,0,0,0.2);
-  border-radius: .5em;
-  color: #9fa5b5;
-  position: absolute;
-  top: 3em;
-  left: 50%;
-  width: 100%;
-  transform: translateX(-50%);
-  opacity: 0;
-  display: none;
-  transition: .2s;
-  z-index: 999 !important;
-}
-.menu li{
-  padding: .7em .5em;
-  margin: .3em 0;
-  border-radius: .5em;
-  cursor: pointer;
-  z-index: 9999;
-}
-.menu li:hover{
-  background: #2a2d35;
-}
-.active-menu{
-  background: #23242a;
-}
-.menu-open{
-  display: block;
-  opacity: 1;
-  z-index: 9999;
 }
 .custom-select {
   position: relative;
@@ -565,7 +692,7 @@ body {
   background-position: 12px center; /* Position the flag within the padding area */
   background-repeat: no-repeat;
   position: relative; /* Needed for positioning of the country code */
-  z-index: 999;
+  z-index: 10 !important;
   backdrop-filter: blur(3px);
 }
 
@@ -582,12 +709,15 @@ body {
 
 .third {
   width: 33%; /* Adjusts the width to fit three elements in one row */
-  z-index: 9999;
+  z-index: 10;
 }
 
 .half {
-  width: 48%;
-  z-index: 5 !important;
+  flex: 1; /* Allows each side to fill half the space */
+  position: relative;
+  text-align: center;
+  z-index: 3;
+  padding: 0 5px;
 }
 .flight-details h3,
 .flight-details div,
@@ -618,6 +748,33 @@ body {
 .personal-info h3 {
   padding: 20px 5px;
   font-size: 25px;
+  margin-top: 20px;
+}
+.half input[type="text"], input[type="date"] {
+  width: 100%;
+  height: 70px; /* Increase height of input */
+  padding-top: 20px; /* Make space for the label inside the input */
+  padding-left: 10px;
+  border: 1px solid #ccc; /* Style as needed */
+  border-radius: 5px;
+  box-sizing: border-box;
+  z-index: 100;
+  font-size: 20px;
+}
+.half input[type="text"]:focus, input[type="date"]:focus {
+  border-color: #666;
+  outline: none;
+}
+.half label {
+  position: absolute;
+  top: 2px;
+  left: 10px;
+  padding: 0 5px;
+  margin-top: 5px; /* Adjust to center the label vertically in the top padding */
+  font-size: 10px;
+  color: white;
+  pointer-events: none; /* Makes the label non-interactive */
+  z-index: 100;
 }
 .personal-info input[type="text"],
 .personal-info input[type="email"] {
@@ -651,10 +808,16 @@ body {
   backdrop-filter: blur(3px);
   z-index: 2;
 }
+.personal-info input[type="text"]:focus,
+.personal-info input[type="email"]:focus,
+.personal-info .input-group input[type="tel"]:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(241, 48, 51, 0.5); /* Add focus effect */
+}
 .input-group {
+  display: block; /* or 'flex' but ensure it handles child alignment properly */
   position: relative;
-  display: flex;
-  align-items: center;
+  width: 100%; /* Adjust based on your design needs */
   z-index: 2;
 }
 
@@ -685,6 +848,7 @@ body {
   font-weight: bold;
   transition: 0.2s ease;
   z-index: 2;
+  margin-top: 10px;
 }
 .flight-details button:hover {
   background-color: var(--primary-color-dark);
@@ -1577,11 +1741,11 @@ h5 {
   z-index: 10;
 }
 .book {
-  writing-mode: vertical-lr; /* Makes the text vertical */
-  transform: rotate(180deg); /* Flips the text to read from bottom to top */
   font-size: 2rem;
   white-space: nowrap; /* Keeps the title in one line */
-  margin-right: 20px;
+  text-align: center; /* Center the title */
+  width: 100%; /* Ensure it spans the full width of its container */
+  margin-bottom: 50px;
 }
 .steps-container {
   display: flex;
@@ -1590,15 +1754,13 @@ h5 {
   width: 100%;
 }
 .how-to-book {
-  display: flex;
-  flex-wrap: nowrap;
   justify-content: space-between; /* Ensures even spacing between elements */
   align-items: center;
   padding: 50px 0;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: var(--secondary-color);
   width: 100%;
   overflow: hidden;
-  min-height: 200px;
+  min-height: 300px;
 }
 
 .step {
@@ -2335,6 +2497,7 @@ input::placeholder {
     margin-right: 0; /* Remove right margin */
     margin-bottom: 20px; /* Space below the title */
     text-align: center; /* Center the title */
+    margin-bottom: 50px;
   }
 
   .steps-container {

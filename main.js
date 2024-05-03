@@ -23,6 +23,13 @@ window.addEventListener("load", function () {
     }, 1000); // Additional time for the fade-out transition
   }, 1000); // Minimum display time for the loader
 });
+function updateTripType(type) {
+  document.getElementById('tripType').value = type;
+  document.querySelectorAll('.trip-option').forEach(option => {
+    option.classList.remove('active');
+  });
+  event.target.classList.add('active');
+}
 function handleSubscribe(e) {
   e.preventDefault(); // Prevents the form from submitting normally
 
