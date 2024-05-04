@@ -732,82 +732,70 @@
         <h2 class="section__title">Top Destinations</h2>
       </div>
       <div class="destination__grid">
-        <div class="destination__card">
-          <img src="assets/destination-1.jpg" alt="destination" />
+        <div class="destination__card" data-city="Sydney" data-image="sydney.jpg">
+          <img src="assets/destination-1.jpg" alt="Sydney" />
           <div class="badge">4.7</div>
           <div class="destination__details">
             <h4>Sydney</h4>
             <p>Beauty</p>
           </div>
-          <button class="book-btn">
-            <a href="search-results.html"
-              >Book Now <i class="fa-solid fa-arrow-right"></i
-            ></a>
+          <button class="book-btn" onclick="bookNow('Sydney')">
+              Book Now <i class="fa-solid fa-arrow-right"></i>
           </button>
         </div>
-        <div class="destination__card">
-          <img src="assets/destination-2.webp" alt="destination" />
+        <div class="destination__card" data-city="Dubai" data-image="dubai.jpg">
+          <img src="assets/destination-2.webp" alt="Dubai" />
           <div class="badge">4.5</div>
           <div class="destination__details">
             <h4>Dubai</h4>
             <p>New</p>
           </div>
-          <button class="book-btn">
-            <a href="search-results.html"
-              >Book Now <i class="fa-solid fa-arrow-right"></i
-            ></a>
+          <button class="book-btn" onclick="bookNow('Dubai')">
+              Book Now <i class="fa-solid fa-arrow-right"></i>
           </button>
         </div>
-        <div class="destination__card">
-          <img src="assets/destination-3.png" alt="destination" />
+        <div class="destination__card" data-city="Paris" data-image="paris.jpg">
+          <img src="assets/destination-3.png" alt="Paris" />
           <div class="badge">4.3</div>
           <div class="destination__details">
             <h4>Paris</h4>
             <p>Love</p>
           </div>
-          <button class="book-btn">
-            <a href="search-results.html"
-              >Book Now <i class="fa-solid fa-arrow-right"></i
-            ></a>
+          <button class="book-btn" onclick="bookNow('Paris')">
+              Book Now <i class="fa-solid fa-arrow-right"></i>
           </button>
         </div>
-        <div class="destination__card">
-          <img src="assets/destination-4.jpg" alt="destination" />
+        <div class="destination__card" data-city="Singapore" data-image="singapore.jpg">
+          <img src="assets/destination-4.jpg" alt="Singapore" />
           <div class="badge">4.8</div>
           <div class="destination__details">
             <h4>Singapore</h4>
             <p>Action</p>
           </div>
-          <button class="book-btn">
-            <a href="search-results.html"
-              >Book Now <i class="fa-solid fa-arrow-right"></i
-            ></a>
+          <button class="book-btn" onclick="bookNow('Singapore')">
+              Book Now <i class="fa-solid fa-arrow-right"></i>
           </button>
         </div>
-        <div class="destination__card">
-          <img src="assets/destination-5.png" alt="destination" />
+        <div class="destination__card" data-city="Switzerland" data-image="switzerland.jpg">
+          <img src="assets/destination-5.png" alt="Switzerland" />
           <div class="badge">4.2</div>
           <div class="destination__details">
             <h4>Switzerland</h4>
             <p>Nature</p>
           </div>
-          <button class="book-btn">
-            <a href="search-results.html"
-              >Book Now <i class="fa-solid fa-arrow-right"></i
-            ></a>
+          <button class="book-btn" onclick="bookNow('Switzerland')">
+              Book Now <i class="fa-solid fa-arrow-right"></i>
           </button>
         </div>
-        <div class="destination__card">
-          <img src="assets/destination-7.jpg" alt="destination" />
+        <div class="destination__card" data-city="Antarctica" data-image="antarctica.jpg">
+          <img src="assets/destination-7.jpg" alt="Antarctica" />
           <div class="badge">4.7</div>
           <div class="destination__details">
             <h4>Antarctica</h4>
             <p>Peace</p>
           </div>
-          <button class="book-btn">
-            <a href="search-results.html"
-              >Book Now <i class="fa-solid fa-arrow-right"></i
-            ></a>
+          <button class="book-btn" onclick="bookNow('Antarctica')">
+              Book Now <i class="fa-solid fa-arrow-right"></i>
           </button>
         </div>
       </div>
@@ -1002,5 +990,6 @@
     </footer>
 
     <script src="main.js"></script>
+    <script src="search-results.js"></script>
   </body>
 </html>

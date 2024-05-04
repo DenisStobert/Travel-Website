@@ -142,6 +142,48 @@ dropdowns.forEach((dropdown) => {
     });
   });
 });
+// Object to store prices for each destination
+const destinationPrices = {
+  Sydney: 2990.00,
+  Dubai: 2830.00,
+  Paris: 2550.00,
+  Singapore: 2480.00,
+  Switzerland: 2750.00,
+  Antarctica: 3000.00
+};
+// Update destination name, price, and hero image in HTML elements
+function updateDestinationDetails(cityName) {
+  // Update destination name and price
+  document.querySelector(".price-content h1").textContent = cityName;
+  const oldPrice = destinationPrices[cityName];
+  const discountedPrice = calculateDiscountedPrice(oldPrice);
+  document.querySelector(".old-price").textContent = `old price: $${oldPrice.toFixed(2)}`;
+  document.querySelector("h2").textContent = `$${discountedPrice.toFixed(2)}*`;
+
+  // Update hero image
+  const heroImageElement = document.querySelector(".hero-image");
+  const imageUrl = `url('assets/${cityName.toLowerCase()}.jpg')`;
+  heroImageElement.style.backgroundImage = imageUrl;
+
+  document.getElementById("destination-city").textContent = cityName;
+}
+
+// Example function to calculate discounted price
+function calculateDiscountedPrice(oldPrice) {
+  // Example calculation for discounted price
+  // You can replace this with your own logic
+  const discountPercentage = 0.15; // 15% discount
+  return oldPrice * (1 - discountPercentage);
+}
+
+// In search-results.js
+document.addEventListener('DOMContentLoaded', function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const cityName = urlParams.get('city');
+  if (cityName) {
+    updateDestinationDetails(cityName);
+  }
+});
 
 // Function to close all dropdowns
 function closeAllDropdowns() {
@@ -154,12 +196,34 @@ function closeAllDropdowns() {
 }
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize any actions on load
-  document
-    .getElementById("submitQuoteButton")
-    .addEventListener("click", submitQuote);
+  document.querySelectorAll("form").forEach(form => {
+    form.addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent the default form submission behavior
+      if (form.id === "subscribeForm") {
+        handleSubscribe(); // Call your custom function for the subscribe form
+      } else if (form.id === "quoteForm") {
+        submitQuote(); // Call your custom function for the quote form
+      }
+    });
+  });
 });
+function handleSubscribe() {
+  const phoneInput = document.getElementById("phone").value;
+  const emailInput = document.getElementById("email").value;
+
+  // Your custom logic to handle subscription
+  // For example, you can use AJAX to submit the form data to the server
+  
+  // Display a confirmation message
+  Swal.fire({
+    title: "Subscription Successful!",
+    text: "You have successfully subscribed.",
+    icon: "success",
+    confirmButtonText: "OK",
+  });
+}
 function submitQuote() {
-  const inputs = document.querySelectorAll("input[required]:not(:disabled)"); // Only consider enabled inputs
+  const inputs = document.querySelectorAll("#quoteForm input[required]:not(:disabled)"); // Only consider enabled inputs
   let allFieldsFilled = true;
   let validationMessage = "Please fill in this field.";
 
@@ -202,11 +266,10 @@ function submitQuote() {
       text: "A travel advisor will contact you soon.",
       icon: "success",
       confirmButtonText: "OK",
-    }).then((result) => {
-      // Optionally submit the form here if needed
     });
   }
 }
+
 
 window.onload = function () {
   var timeInSeconds = 17 * 3600 + 32 * 60; // 17 hours and 32 minutes in seconds
@@ -263,23 +326,6 @@ window.addEventListener("load", function () {
     }, 1000); // Additional time for the fade-out transition
   }, 1000); // Minimum display time for the loader
 });
-function handleSubscribe(e) {
-  e.preventDefault(); // Prevents the form from submitting normally
-
-  // Trigger SweetAlert
-  Swal.fire({
-    title: "Thank you for subscribing!",
-    text: "You will now receive updates directly to your inbox.",
-    icon: "success",
-    confirmButtonText: "Close",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      // Optional: Handle further logic after the user clicks 'Close'
-      // For example, you might want to actually submit the form programmatically here
-      // or reset the form fields.
-    }
-  });
-}
 document.getElementById("tripType").addEventListener("click", function (event) {
   if (event.target.classList.contains("trip-option-form")) {
     // Remove active class from all options
@@ -536,19 +582,11 @@ document.addEventListener("DOMContentLoaded", function () {
   departureInput.setAttribute("min", todayFormatted);
   returnInput.setAttribute("min", todayFormatted);
 });
-
-const scrollRevealOption = {
-  distance: "50px",
-  origin: "bottom",
-  duration: 1000,
-};
-
-// header container
-ScrollReveal().reveal(".header__container h1", {
+ScrollReveal().reveal(".subscribeForm", {
   ...scrollRevealOption,
 });
 
-ScrollReveal().reveal(".header__form", {
+ScrollReveal().reveal(".step", {
   ...scrollRevealOption,
   delay: 500,
 });
@@ -592,3 +630,8 @@ ScrollReveal().reveal(".line img", {
   delay: 1000, // Delay line images more than the steps
   interval: 300,
 });
+const scrollRevealOption = {
+  distance: "50px",
+  origin: "bottom",
+  duration: 1000,
+};

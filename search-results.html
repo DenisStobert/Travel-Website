@@ -24,18 +24,14 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/places.js@1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3AP2WmC5MY8fOBIPVd66YmkD8u8nbcts&libraries=places&callback=initAutocomplete"
       async
       defer
     ></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
   </head>
   <body>
     <div class="loader-wrapper">
@@ -72,7 +68,7 @@
           </a>
         </div>
         <div class="nav__logo">
-          <a href="#">
+          <a href="index.html">
             <img src="assets/logo.png" alt="Logo" />
             <span class="logo-separator">|</span>
             <span class="logo-text">Comfort you can afford</span>
@@ -200,7 +196,7 @@
                 </div>
               </div>
           </div>
-            <form>
+            <form id="quoteForm">
             <div class="form-section row">
               <div class="half">
                 <label for="from">From</label>
@@ -305,7 +301,7 @@
     <section class="subscribe">
       <div class="section__container subscribe__container">
         <h4>Subscribe and be Updated</h4>
-        <form action="/" onsubmit="handleSubscribe(event)">
+        <form id="subscribeForm" class="subscribeForm">
           <div class="input-container">
             <div class="phone-prefix">
               <img src="assets/us-flag.png" alt="US Flag" class="flag-icon" />
@@ -338,6 +334,7 @@
         </form>
       </div>
     </section>
+    
 
     <footer>
       <div class="section__container footer__container">
@@ -392,7 +389,6 @@
         Copyright © 2024 Business Flyer Travel. All rights reserved.
       </div>
     </footer>
-
     <script src="search-results.js"></script>
   </body>
 </html>

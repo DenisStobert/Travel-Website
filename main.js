@@ -10,6 +10,11 @@ function enableScroll() {
   document.documentElement.style.overflow = "auto"; // for the html element
   document.body.style.overflow = "auto";
 }
+function bookNow(city) {
+  const urlParams = new URLSearchParams();
+  urlParams.set('city', city);
+  window.location.href = `search-results.html?${urlParams.toString()}`;
+}
 // Call disableScroll as soon as possible
 disableScroll();
 window.addEventListener("load", function () {
