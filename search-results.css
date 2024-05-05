@@ -203,7 +203,7 @@ body {
   background-image: url("assets/bg1.webp"); /* Path to your image */
   background-size: cover;
   background-position: center;
-  height: 85vh; /* 80% of the viewport height */
+  min-height: 1150px; /* 80% of the viewport height */
   display: flex;
   align-items: center; /* Center content vertically */
   justify-content: center; /* Center content horizontally */

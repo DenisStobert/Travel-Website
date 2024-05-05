@@ -555,17 +555,17 @@ input[type="date"] {
 }
 .trending__container .swiper {
   width: 100%;
-  min-height: 60vh;
+  min-height: 700px;
 }
 
 .trending__container .swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 60vh;
+  min-height: 700px;
 }
 .trending__container .swiper {
-  min-height: 60vh;
+  min-height: 700px;
 }
 .swiper-button-prev,
 .swiper-button-next {
@@ -586,7 +586,7 @@ input[type="date"] {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 40vh;
+  min-height: 450px;
 }
 .trending__card img {
   width: 100%;
