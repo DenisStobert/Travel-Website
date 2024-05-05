@@ -25,6 +25,65 @@ function startTimer(duration, display) {
     }
   }, 1000);
 }
+document.addEventListener("DOMContentLoaded", function () {
+  // Array of airline objects with name and logo URL
+  var airlines = [
+    { name: "Emirates", logoUrl: "assets/emirates-logo.png" },
+    { name: "Qatar", logoUrl: "assets/qatar-logo.png" },
+    { name: "Etihad", logoUrl: "assets/etihad-logo.png" },
+    { name: "Delta", logoUrl: "assets/delta-logo.png" },
+    { name: "United", logoUrl: "assets/united-logo.png" },
+    { name: "Turkish", logoUrl: "assets/turkish-logo.png" }
+  ];
+
+  var previousAirline = null; // Variable to store the previously selected airline
+  var prePreviousAirline = null; // Variable to store the airline before the previous one
+
+  // Function to generate a random integer between min and max (inclusive)
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  // Function to generate random deals
+  function generateRandomDeals() {
+    var dealsContainer = document.getElementById("deals-container");
+    dealsContainer.innerHTML = ""; // Clear existing content
+
+    for (var i = 0; i < 3; i++) { // Generate 3 random deals
+      var randomIndex;
+      do {
+        randomIndex = getRandomInt(0, airlines.length - 1);
+      } while (
+        airlines[randomIndex].name === previousAirline ||
+        airlines[randomIndex].name === prePreviousAirline
+      ); // Ensure no consecutive same airlines
+
+      var airline = airlines[randomIndex];
+      var basePrice = getRandomInt(1800, 2500); // Generate random base price
+
+      // Create deal element
+      var dealElement = document.createElement("div");
+      dealElement.classList.add("airline-deal");
+      dealElement.innerHTML = `
+        <img src="${airline.logoUrl}" class="airline-logo-deal">
+        <div class="airline-name">${airline.name}</div>
+        <div class="airline-price" data-base-price="${basePrice}">$${basePrice}.00*</div>
+        <div class="flight-class">Business Class, RT, Total</div>
+      `;
+
+      // Append deal to deals container
+      dealsContainer.appendChild(dealElement);
+
+      // Update previousAirline and prePreviousAirline variables
+      prePreviousAirline = previousAirline;
+      previousAirline = airline.name;
+    }
+  }
+
+  // Generate random deals when the page loads
+  generateRandomDeals();
+});
+
 document.addEventListener('DOMContentLoaded', function() {
   // Function to generate random additional price
   function getRandomAdditionalPrice(min, max) {

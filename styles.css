@@ -588,6 +588,17 @@ input[type="date"] {
   justify-content: space-between;
   min-height: 450px;
 }
+#returnDate:disabled {
+  color: #999; /* Grey text color */
+  background-color: #f5f5f5; /* Light grey background color */
+  cursor: not-allowed; /* Change cursor to not-allowed */
+}
+.greyed-out {
+  color: #999; /* Grey text color */
+  background-color: #f5f5f5; /* Light grey background color */
+  cursor: not-allowed; /* Change cursor to not-allowed */
+}
+
 .trending__card img {
   width: 100%;
   height: 230px;
@@ -640,11 +651,18 @@ input[type="date"] {
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
   background-color: rgba(0, 0, 0, 0.6); /* Black with opacity */
   align-items: center; /* Vertical alignment */
   justify-content: center; /* Horizontal alignment */
   backdrop-filter: blur(5px);
+  overflow-x: hidden;
+}
+.safe-text {
+  font-size: 12px;
+  margin-top: 10px;
+}
+.safe-text span {
+  font-weight: bold;
 }
 .modal-extra-text {
   display: none; /* Hide by default on larger screens */

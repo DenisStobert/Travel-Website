@@ -52,6 +52,33 @@ function handleSubscribe(e) {
     }
   });
 }
+document.addEventListener("DOMContentLoaded", function () {
+  // Access trip type options
+  var roundTripOption = document.querySelector(".trip-option-form.round-trip");
+  var oneWayOption = document.querySelector(".trip-option-form.one-way");
+  var returnDateInput = document.getElementById("returnDate");
+
+  // Add event listeners to trip type options
+  roundTripOption.addEventListener("click", function () {
+    console.log("Round trip option clicked");
+    this.classList.add("active");
+    oneWayOption.classList.remove("active");
+    returnDateInput.disabled = false; // Enable return date input for round trip
+    returnDateInput.classList.remove("greyed-out"); // Remove greyed-out style
+  });
+
+  oneWayOption.addEventListener("click", function () {
+    console.log("One-way option clicked");
+    this.classList.add("active");
+    roundTripOption.classList.remove("active");
+    returnDateInput.disabled = true; // Disable return date input for one-way
+    returnDateInput.classList.add("greyed-out"); // Add greyed-out style
+  });
+
+  // Debugging: Log the state of the returnDate input
+  console.log("Initial returnDate input state:", returnDateInput.disabled);
+});
+
 document.getElementById("tripType").addEventListener("click", function (event) {
   if (event.target.classList.contains("trip-option-form")) {
     // Remove active class from all options
@@ -61,10 +88,10 @@ document.getElementById("tripType").addEventListener("click", function (event) {
     // Add active class to clicked option
     event.target.classList.add("active");
     // Optionally handle the value
-    console.log("Selected Trip Type:", event.target.dataset.value);
-    // If you need to use this value for further processing, you can set it on a hidden input or form data
   }
 });
+
+
 document.addEventListener('DOMContentLoaded', function() {
   const navbar = document.querySelector('nav');
   window.addEventListener('scroll', function() {
