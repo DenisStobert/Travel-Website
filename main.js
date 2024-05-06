@@ -35,6 +35,58 @@ function updateTripType(type) {
   });
   event.target.classList.add('active');
 }
+$(document).ready(function() {
+  // Function to fetch airport suggestions from Aviationstack API
+  function fetchAirportSuggestions(inputId) {
+    var input = document.getElementById(inputId);
+    var inputValue = input.value.trim();
+    
+    // Check if input value is not empty
+    if (inputValue !== "") {
+      // Make AJAX request to Aviationstack API
+      $.ajax({
+        url: 'https://api.aviationstack.com/v1/airports?access_key=e33ede2ea6e687051e38e4a0d090f6aa&search=London',
+        method: 'GET',
+        data: {
+          access_key: 'e33ede2ea6e687051e38e4a0d090f6aa',
+          query: inputValue,
+        },
+        success: function(response) {
+          // Parse response and extract airport suggestions
+          var suggestions = response.data.map(function(airport) {
+            return airport.name + ' (' + airport.code + ')';
+          });
+
+          // Update autocomplete dropdown with suggestions
+          updateAutocompleteDropdown(inputId, suggestions);
+        },
+        error: function(xhr, status, error) {
+          console.error('Error fetching airport suggestions:', error);
+        }
+      });
+    }
+  }
+
+  // Function to update autocomplete dropdown with suggestions
+  function updateAutocompleteDropdown(inputId, suggestions) {
+    var autocompleteDropdown = document.getElementById(inputId + '-autocomplete');
+
+    // Clear previous suggestions
+    autocompleteDropdown.innerHTML = '';
+
+    // Add new suggestions to the dropdown
+    suggestions.forEach(function(suggestion) {
+      var option = document.createElement('option');
+      option.value = suggestion;
+      autocompleteDropdown.appendChild(option);
+    });
+  }
+
+  // Event listener for keyup event on input fields
+  $('#fromAirport, #toAirport').keyup(function() {
+    fetchAirportSuggestions($(this).attr('id'));
+  });
+});
 function handleSubscribe(e) {
   e.preventDefault(); // Prevents the form from submitting normally
 
@@ -75,9 +127,13 @@ document.addEventListener("DOMContentLoaded", function () {
     returnDateInput.classList.add("greyed-out"); // Add greyed-out style
   });
 
+  // Initialize as round trip
+  document.getElementById("returnDate").disabled = false;
+
   // Debugging: Log the state of the returnDate input
   console.log("Initial returnDate input state:", returnDateInput.disabled);
 });
+
 
 document.getElementById("tripType").addEventListener("click", function (event) {
   if (event.target.classList.contains("trip-option-form")) {

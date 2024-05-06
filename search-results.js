@@ -330,11 +330,74 @@ function submitQuote() {
 }
 
 
-window.onload = function () {
-  var timeInSeconds = 17 * 3600 + 32 * 60; // 17 hours and 32 minutes in seconds
+// Function to get the current time in EST
+function getCurrentTimeEST() {
+  var currentTime = new Date();
+  var utcOffset = -5; // EST offset from UTC is -5 hours
+  var estTime = new Date(currentTime.getTime() + utcOffset * 3600 * 1000);
+  return estTime;
+}
+
+// Function to calculate the time remaining until the next reset
+function getTimeUntilNextReset() {
+  var currentTime = getCurrentTimeEST();
+  var hours = currentTime.getHours();
+  var minutes = currentTime.getMinutes();
+  var seconds = currentTime.getSeconds();
+  
+  // Calculate the time until the next reset (24 hours from the current time)
+  var timeUntilReset = (24 - hours % 24 - 1) * 3600 + (59 - minutes) * 60 + (60 - seconds);
+  return timeUntilReset;
+}
+
+// Function to start the timer
+function startTimer(durationInSeconds, display) {
+  var timer = durationInSeconds;
+  setInterval(function () {
+    // Calculate remaining time
+    var hours = Math.floor(timer / 3600);
+    var minutes = Math.floor((timer % 3600) / 60);
+
+    // Display the remaining time in the format hh"h" mm"m"
+    display.textContent =
+      ("0" + hours).slice(-2) + "h " + ":" +
+      ("0" + minutes).slice(-2) + "m";
+
+    // Update the timer
+    if (--timer < 0) {
+      timer = durationInSeconds; // Reset the timer
+      updatePrice(); // Update the price
+    }
+  }, 1000); // Update the timer every second
+}
+
+// Function to update the price display
+function updatePrice() {
+  // Generate a random price variation within a range
+  var priceVariation = Math.floor(Math.random() * 201) - 100; // Random number between -100 and 100
+  var currentPrice = parseFloat(document.getElementById("price").textContent.substring(1)); // Get the current price
+  var newPrice = currentPrice + priceVariation; // Calculate the new price
+
+  // Update the price display
+  document.getElementById("price").textContent = "$" + newPrice.toFixed(2);
+}
+
+// Function to initialize the timer
+function initializeTimer() {
+  var timeUntilReset = getTimeUntilNextReset();
   var display = document.querySelector("#timer");
-  startTimer(timeInSeconds, display);
+  startTimer(timeUntilReset, display);
+
+  // Update the price when the page loads
+  updatePrice();
+}
+
+// Initialize the timer when the window loads
+window.onload = function () {
+  initializeTimer();
 };
+
+
 document.addEventListener("DOMContentLoaded", function () {
   // Get all select elements within .third containers
   const selects = document.querySelectorAll(".flight-details .third select");
