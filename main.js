@@ -35,58 +35,104 @@ function updateTripType(type) {
   });
   event.target.classList.add('active');
 }
-$(document).ready(function() {
-  // Function to fetch airport suggestions from Aviationstack API
-  function fetchAirportSuggestions(inputId) {
-    var input = document.getElementById(inputId);
-    var inputValue = input.value.trim();
-    
-    // Check if input value is not empty
-    if (inputValue !== "") {
-      // Make AJAX request to Aviationstack API
-      $.ajax({
-        url: 'https://api.aviationstack.com/v1/airports?access_key=e33ede2ea6e687051e38e4a0d090f6aa&search=London',
-        method: 'GET',
-        data: {
-          access_key: 'e33ede2ea6e687051e38e4a0d090f6aa',
-          query: inputValue,
-        },
-        success: function(response) {
-          // Parse response and extract airport suggestions
-          var suggestions = response.data.map(function(airport) {
-            return airport.name + ' (' + airport.code + ')';
-          });
+// Function to fetch autocomplete suggestions
+function fetchAutocompleteResults(searchTerm, city) {
+  let url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(searchTerm)}.json?types=poi&autocomplete=true&limit=5&language=en&access_token=pk.eyJ1IjoiYnVzaW5lc3NmbHllciIsImEiOiJjbHZ2bWdkZ2IwM2hrMmxxc3k4d254ZXFtIn0.GzyAnHfIuZM0Llx66w5bWw`;
 
-          // Update autocomplete dropdown with suggestions
-          updateAutocompleteDropdown(inputId, suggestions);
-        },
-        error: function(xhr, status, error) {
-          console.error('Error fetching airport suggestions:', error);
-        }
-      });
-    }
+  if (city) {
+    url += `&bbox=${city.bbox[0]},${city.bbox[1]},${city.bbox[2]},${city.bbox[3]}`;
   }
 
-  // Function to update autocomplete dropdown with suggestions
-  function updateAutocompleteDropdown(inputId, suggestions) {
-    var autocompleteDropdown = document.getElementById(inputId + '-autocomplete');
-
-    // Clear previous suggestions
-    autocompleteDropdown.innerHTML = '';
-
-    // Add new suggestions to the dropdown
-    suggestions.forEach(function(suggestion) {
-      var option = document.createElement('option');
-      option.value = suggestion;
-      autocompleteDropdown.appendChild(option);
+  return fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      // Filter features to include only airports
+      const airports = data.features.filter(feature => feature.properties.category === 'airport');
+      
+      // Extract airport names and city + airport codes from the filtered features
+      return airports.map(airport => ({
+        name: airport.text,
+        cityCode: airport.context.find(c => c.id.startsWith('place')).text
+      }));
     });
-  }
+}
 
-  // Event listener for keyup event on input fields
-  $('#fromAirport, #toAirport').keyup(function() {
-    fetchAirportSuggestions($(this).attr('id'));
-  });
+// Event listener for input field changes
+document.getElementById('fromAirport').addEventListener('input', function() {
+  const searchTerm = this.value;
+
+  fetchAutocompleteResults(searchTerm, null) // Pass null for city initially
+    .then(results => {
+      const dropdown = document.getElementById('fromAirportDropdown');
+      dropdown.innerHTML = ''; // Clear previous results
+
+      // Create and append list items for each result
+      results.forEach(result => {
+        const li = document.createElement('li');
+        li.textContent = result.name; // Display entire airport name in dropdown
+        li.addEventListener('click', () => {
+          // Use city + airport code in the input field
+          document.getElementById('fromAirport').value = `${result.cityCode} (${result.name})`; 
+          
+          // Pass city code to the other page          
+          dropdown.style.display = 'none';
+        });
+        dropdown.appendChild(li);
+      });
+
+      // Display the dropdown if there are results
+      dropdown.style.display = results.length ? 'block' : 'none';
+    });
 });
+// Event listener for input field changes
+document.getElementById('toAirport').addEventListener('input', function() {
+  const searchTerm = this.value;
+
+  fetchAutocompleteResults(searchTerm, null) // Pass null for city initially
+    .then(results => {
+      const dropdown = document.getElementById('toAirportDropdown');
+      dropdown.innerHTML = ''; // Clear previous results
+
+      // Create and append list items for each result
+      results.forEach(result => {
+        const li = document.createElement('li');
+        li.textContent = result.name; // Display entire airport name in dropdown
+        li.addEventListener('click', () => {
+          // Use city + airport code in the input field
+          document.getElementById('toAirport').value = `${result.cityCode} (${result.name})`; 
+          
+          // Pass city code to the other page          
+          dropdown.style.display = 'none';
+        });
+        dropdown.appendChild(li);
+      });
+
+      // Display the dropdown if there are results
+      dropdown.style.display = results.length ? 'block' : 'none';
+    });
+});
+
+// Hide the 'To' airport dropdown when clicking outside of it
+document.addEventListener('click', function(event) {
+  const dropdown = document.getElementById('toAirportDropdown');
+  if (!event.target.closest('#toAirportDropdown') && !event.target.matches('#toAirport')) {
+    dropdown.style.display = 'none';
+  }
+});
+
+// Handle form submission
+document.getElementById('flightSearchForm').addEventListener('submit', function(event) {
+  // Check if the user has selected an option for both 'From' and 'To' airports
+  if (document.getElementById('fromAirport').value.trim() === '' || document.getElementById('toAirport').value.trim() === '') {
+    event.preventDefault(); // Prevent form submission
+    alert('Please select options for both the "From" and "To" airports from the autocomplete lists.');
+    return;
+  }
+  // Form submission logic
+  // Optionally, you can redirect to the search-results.html page here
+});
+
+
 function handleSubscribe(e) {
   e.preventDefault(); // Prevents the form from submitting normally
 

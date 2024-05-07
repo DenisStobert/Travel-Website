@@ -110,18 +110,28 @@ document.addEventListener("DOMContentLoaded", function () {
   const returnDate = params.get("returnDate");
   const tripType = params.get("tripType"); // 'Round-Trip' or 'One-Way'
   const passengers = params.get("passengers"); // Number of passengers
+  const cityCode = params.get("cityCode");
 
-  // Set text in inputs or placeholders
   if (fromAirport && toAirport) {
-    document.getElementById("from").placeholder = fromAirport;
-    document.getElementById("to").placeholder = toAirport;
+    // Extract the city name from 'toAirport' (assuming city name is before the parentheses)
+    const toCity = toAirport.substring(0, toAirport.indexOf('(')).trim();
+    const fromCity = fromAirport.substring(0, fromAirport.indexOf('(')).trim();
+
+    document.getElementById("from").placeholder = fromCity;
+    document.getElementById("to").placeholder = toCity;
     document.querySelector(
       ".price-content h1"
-    ).textContent = `${fromAirport} → ${toAirport}`;
+    ).textContent = `${fromCity} → ${toCity}`;
+
+    // Use the city code here
+    if (cityCode) {
+      // Do something with the city code
+    }
   }
   // Dynamically set the destination in the "OTHER DEALS TO" header
   if (toAirport) {
-    document.getElementById("destination-city").textContent = toAirport;
+    const toCity = toAirport.substring(0, toAirport.indexOf('(')).trim();
+    document.getElementById("destination-city").textContent = toCity;
   }
   // Set dates in date inputs
   document.getElementById("departure").value = departureDate || "";
