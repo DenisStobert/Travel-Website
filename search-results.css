@@ -430,6 +430,33 @@ body {
 .safe-text span {
   font-weight: bold;
 }
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want a dotted underline */
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 400px;
+  background-color: #fff;
+  color: #000;
+  text-align: left;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 10px; /* Add some margin to separate the tooltip from the content */
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  cursor: pointer;
+}
 .time-limit {
   font-size: 0.7rem; /* Smaller font size for emphasis */
   color: white; /* Dark grey color for visibility */

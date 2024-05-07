@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
       dealElement.innerHTML = `
         <img src="${airline.logoUrl}" class="airline-logo-deal">
         <div class="airline-name">${airline.name}</div>
-        <div class="airline-price" data-base-price="${basePrice}">$${basePrice}.00*</div>
+        <div class="airline-price" data-base-price="${basePrice}">$${basePrice}.00<span class="tooltip"> *</span></div>
         <div class="flight-class">Business Class, RT, Total</div>
       `;
 
@@ -83,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Generate random deals when the page loads
   generateRandomDeals();
 });
-
 document.addEventListener('DOMContentLoaded', function() {
   // Function to generate random additional price
   function getRandomAdditionalPrice(min, max) {
