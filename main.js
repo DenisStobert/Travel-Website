@@ -56,7 +56,6 @@ function fetchAutocompleteResults(searchTerm, city) {
       }));
     });
 }
-
 // Event listener for input field changes
 document.getElementById('fromAirport').addEventListener('input', function() {
   const searchTerm = this.value;
@@ -132,7 +131,6 @@ document.getElementById('flightSearchForm').addEventListener('submit', function(
   // Optionally, you can redirect to the search-results.html page here
 });
 
-
 function handleSubscribe(e) {
   e.preventDefault(); // Prevents the form from submitting normally
 
@@ -197,12 +195,12 @@ document.getElementById("tripType").addEventListener("click", function (event) {
 document.addEventListener('DOMContentLoaded', function() {
   const navbar = document.querySelector('nav');
   window.addEventListener('scroll', function() {
-      // Check if page is scrolled more than 50 pixels
-      if (window.scrollY > 50) {
-          navbar.classList.add('scrolled');
-      } else {
-          navbar.classList.remove('scrolled');
-      }
+    // Check if page is scrolled more than 50 pixels and window width is greater than 600px
+    if (window.scrollY > 50 && window.innerWidth > 600) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
   });
 });
 

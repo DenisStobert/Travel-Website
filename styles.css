@@ -1775,6 +1775,10 @@ input::placeholder {
     width: 90%;
     transform: translateX(5%);
   }
+  nav{
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
   .section__header {
     display: flex;
     justify-content: center; /* Center horizontally */
@@ -1954,6 +1958,7 @@ input::placeholder {
   }
   .nav__links li a {
     font-size: 20px;
+    color: #000;
   }
   .nav__contact {
     display: none; /* Hide the contact info by default on mobile */

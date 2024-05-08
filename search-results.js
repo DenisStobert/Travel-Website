@@ -25,6 +25,7 @@ function startTimer(duration, display) {
     }
   }, 1000);
 }
+
 document.addEventListener("DOMContentLoaded", function () {
   // Array of airline objects with name and logo URL
   var airlines = [
@@ -33,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
     { name: "Etihad", logoUrl: "assets/etihad-logo.png" },
     { name: "Delta", logoUrl: "assets/delta-logo.png" },
     { name: "United", logoUrl: "assets/united-logo.png" },
-    { name: "Turkish", logoUrl: "assets/turkish-logo.png" }
+    { name: "Turkish", logoUrl: "assets/turkish-logo.png" },
   ];
 
   var previousAirline = null; // Variable to store the previously selected airline
@@ -49,7 +50,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var dealsContainer = document.getElementById("deals-container");
     dealsContainer.innerHTML = ""; // Clear existing content
 
-    for (var i = 0; i < 3; i++) { // Generate 3 random deals
+    for (var i = 0; i < 3; i++) {
+      // Generate 3 random deals
       var randomIndex;
       do {
         randomIndex = getRandomInt(0, airlines.length - 1);
@@ -83,18 +85,21 @@ document.addEventListener("DOMContentLoaded", function () {
   // Generate random deals when the page loads
   generateRandomDeals();
 });
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
   // Function to generate random additional price
   function getRandomAdditionalPrice(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
   // Get all price elements
-  const priceElements = document.querySelectorAll('.airline-price');
+  const priceElements = document.querySelectorAll(".airline-price");
 
   // Update each price element with a random additional price
-  priceElements.forEach(priceElement => {
-    const basePrice = parseInt(priceElement.getAttribute('data-base-price'), 10);
+  priceElements.forEach((priceElement) => {
+    const basePrice = parseInt(
+      priceElement.getAttribute("data-base-price"),
+      10
+    );
     const additionalPrice = getRandomAdditionalPrice(100, 1000);
     const newPrice = basePrice + additionalPrice;
     priceElement.textContent = `$${newPrice.toFixed(2)}*`;
@@ -113,8 +118,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (fromAirport && toAirport) {
     // Extract the city name from 'toAirport' (assuming city name is before the parentheses)
-    const toCity = toAirport.substring(0, toAirport.indexOf('(')).trim();
-    const fromCity = fromAirport.substring(0, fromAirport.indexOf('(')).trim();
+    const toCity = toAirport.substring(0, toAirport.indexOf("(")).trim();
+    const fromCity = fromAirport.substring(0, fromAirport.indexOf("(")).trim();
 
     document.getElementById("from").placeholder = fromCity;
     document.getElementById("to").placeholder = toCity;
@@ -129,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   // Dynamically set the destination in the "OTHER DEALS TO" header
   if (toAirport) {
-    const toCity = toAirport.substring(0, toAirport.indexOf('(')).trim();
+    const toCity = toAirport.substring(0, toAirport.indexOf("(")).trim();
     document.getElementById("destination-city").textContent = toCity;
   }
   // Set dates in date inputs
@@ -212,12 +217,12 @@ dropdowns.forEach((dropdown) => {
 });
 // Object to store prices for each destination
 const destinationPrices = {
-  Sydney: 2990.00,
-  Dubai: 2830.00,
-  Paris: 2550.00,
-  Singapore: 2480.00,
-  Switzerland: 2750.00,
-  Antarctica: 3000.00
+  Sydney: 2990.0,
+  Dubai: 2830.0,
+  Paris: 2550.0,
+  Singapore: 2480.0,
+  Switzerland: 2750.0,
+  Antarctica: 3000.0,
 };
 // Update destination name, price, and hero image in HTML elements
 function updateDestinationDetails(cityName) {
@@ -225,7 +230,9 @@ function updateDestinationDetails(cityName) {
   document.querySelector(".price-content h1").textContent = cityName;
   const oldPrice = destinationPrices[cityName];
   const discountedPrice = calculateDiscountedPrice(oldPrice);
-  document.querySelector(".old-price").textContent = `old price: $${oldPrice.toFixed(2)}`;
+  document.querySelector(
+    ".old-price"
+  ).textContent = `old price: $${oldPrice.toFixed(2)}`;
   document.querySelector("h2").textContent = `$${discountedPrice.toFixed(2)}*`;
 
   // Update hero image
@@ -245,9 +252,9 @@ function calculateDiscountedPrice(oldPrice) {
 }
 
 // In search-results.js
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
-  const cityName = urlParams.get('city');
+  const cityName = urlParams.get("city");
   if (cityName) {
     updateDestinationDetails(cityName);
   }
@@ -264,7 +271,7 @@ function closeAllDropdowns() {
 }
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize any actions on load
-  document.querySelectorAll("form").forEach(form => {
+  document.querySelectorAll("form").forEach((form) => {
     form.addEventListener("submit", function (event) {
       event.preventDefault(); // Prevent the default form submission behavior
       if (form.id === "subscribeForm") {
@@ -281,7 +288,7 @@ function handleSubscribe() {
 
   // Your custom logic to handle subscription
   // For example, you can use AJAX to submit the form data to the server
-  
+
   // Display a confirmation message
   Swal.fire({
     title: "Subscription Successful!",
@@ -291,7 +298,9 @@ function handleSubscribe() {
   });
 }
 function submitQuote() {
-  const inputs = document.querySelectorAll("#quoteForm input[required]:not(:disabled)"); // Only consider enabled inputs
+  const inputs = document.querySelectorAll(
+    "#quoteForm input[required]:not(:disabled)"
+  ); // Only consider enabled inputs
   let allFieldsFilled = true;
   let validationMessage = "Please fill in this field.";
 
@@ -338,74 +347,117 @@ function submitQuote() {
   }
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+  let currentPrice = localStorage.getItem("flightPrice");
+  let currentSearch;
 
-// Function to get the current time in EST
-function getCurrentTimeEST() {
-  var currentTime = new Date();
-  var utcOffset = -5; // EST offset from UTC is -5 hours
-  var estTime = new Date(currentTime.getTime() + utcOffset * 3600 * 1000);
-  return estTime;
-}
+  // Function to generate a random price between $2000 and $2500
+  function generateRandomPrice() {
+    return Math.floor(Math.random() * (2500 - 2000 + 1)) + 2000;
+  }
 
-// Function to calculate the time remaining until the next reset
-function getTimeUntilNextReset() {
-  var currentTime = getCurrentTimeEST();
-  var hours = currentTime.getHours();
-  var minutes = currentTime.getMinutes();
-  var seconds = currentTime.getSeconds();
-  
-  // Calculate the time until the next reset (24 hours from the current time)
-  var timeUntilReset = (24 - hours % 24 - 1) * 3600 + (59 - minutes) * 60 + (60 - seconds);
-  return timeUntilReset;
-}
-
-// Function to start the timer
-function startTimer(durationInSeconds, display) {
-  var timer = durationInSeconds;
-  setInterval(function () {
-    // Calculate remaining time
-    var hours = Math.floor(timer / 3600);
-    var minutes = Math.floor((timer % 3600) / 60);
-
-    // Display the remaining time in the format hh"h" mm"m"
-    display.textContent =
-      ("0" + hours).slice(-2) + "h " + ":" +
-      ("0" + minutes).slice(-2) + "m";
-
-    // Update the timer
-    if (--timer < 0) {
-      timer = durationInSeconds; // Reset the timer
-      updatePrice(); // Update the price
+  // Function to update the price display
+  function updatePrice() {
+    if (currentPrice === null || currentPrice === undefined) {
+      currentPrice = generateRandomPrice();
+      localStorage.setItem("flightPrice", currentPrice);
     }
-  }, 1000); // Update the timer every second
-}
+    document.getElementById("flightPrice").textContent = `$${currentPrice}.00*`;
+  }
 
-// Function to update the price display
-function updatePrice() {
-  // Generate a random price variation within a range
-  var priceVariation = Math.floor(Math.random() * 201) - 100; // Random number between -100 and 100
-  var currentPrice = parseFloat(document.getElementById("price").textContent.substring(1)); // Get the current price
-  var newPrice = currentPrice + priceVariation; // Calculate the new price
+  // Function to handle the timer hitting 0
+  function handleTimerReset() {
+    // Generate a new random price
+    currentPrice = generateRandomPrice();
+    localStorage.setItem("flightPrice", currentPrice);
+    updatePrice();
+    resetTimer();
+  }
+
+  // Function to get the current time in EST
+  function getCurrentTimeEST() {
+    var currentTime = new Date();
+    var utcOffset = -5; // EST offset from UTC is -5 hours
+    var estTime = new Date(currentTime.getTime() + utcOffset * 3600 * 1000);
+    return estTime;
+  }
+
+  // Function to calculate the time remaining until the next reset
+  function getTimeUntilNextReset() {
+    var currentTime = getCurrentTimeEST();
+    var hours = currentTime.getHours();
+    var minutes = currentTime.getMinutes();
+    var seconds = currentTime.getSeconds();
+
+    // Calculate the time until the next reset (24 hours from the current time)
+    var timeUntilReset =
+      (24 - (hours % 24) - 1) * 3600 + (59 - minutes) * 60 + (60 - seconds);
+    return timeUntilReset;
+  }
+
+  // Function to start the timer
+  function startTimer(durationInSeconds, display, callback) {
+    var timer = durationInSeconds;
+    setInterval(function () {
+      // Calculate remaining time
+      var hours = Math.floor(timer / 3600);
+      var minutes = Math.floor((timer % 3600) / 60);
+
+      // Display the remaining time in the format hh"h" mm"m"
+      display.textContent =
+        ("0" + hours).slice(-2) + "h " + ": " + ("0" + minutes).slice(-2) + "m";
+
+      // Update the timer
+      if (--timer < 0) {
+        timer = durationInSeconds; // Reset the timer
+        callback(); // Update the price
+      }
+    }, 1000); // Update the timer every second
+  }
+
+  // Function to reset the timer
+  function resetTimer() {
+    clearInterval(timerInterval);
+    timerInterval = startTimer(
+      getTimeUntilNextReset(),
+      document.querySelector("#timer"),
+      handleTimerReset
+    );
+  }
+
+  // Initialize the timer when the window loads
+  window.onload = function () {
+    initializeTimer();
+  };
+
+  // Initialize the timer
+  function initializeTimer() {
+    let timeUntilReset = getTimeUntilNextReset();
+    startTimer(
+      timeUntilReset,
+      document.querySelector("#timer"),
+      handleTimerReset
+    );
+  }
+
+  // Event listener for the search form submission
+  document
+    .getElementById("flightSearchForm")
+    .addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent the form from submitting
+
+      // Get the search direction from the form
+      const fromAirport = document.getElementById("fromAirport").value;
+      const toAirport = document.getElementById("toAirport").value;
+      currentSearch = `${fromAirport} to ${toAirport}`;
+
+      // Reset the timer for the new search direction
+      resetTimer();
+    });
 
   // Update the price display
-  document.getElementById("price").textContent = "$" + newPrice.toFixed(2);
-}
-
-// Function to initialize the timer
-function initializeTimer() {
-  var timeUntilReset = getTimeUntilNextReset();
-  var display = document.querySelector("#timer");
-  startTimer(timeUntilReset, display);
-
-  // Update the price when the page loads
   updatePrice();
-}
-
-// Initialize the timer when the window loads
-window.onload = function () {
-  initializeTimer();
-};
-
+});
 
 document.addEventListener("DOMContentLoaded", function () {
   // Get all select elements within .third containers
@@ -422,16 +474,17 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 document.addEventListener("DOMContentLoaded", function () {
-  const navbar1 = document.querySelector(".main-nav");
+  const navbar = document.querySelector("nav");
   window.addEventListener("scroll", function () {
-    // Check if page is scrolled more than 50 pixels
-    if (window.scrollY > 50) {
-      navbar1.classList.add("scrolled");
+    // Check if page is scrolled more than 50 pixels and window width is greater than 600px
+    if (window.scrollY > 50 && window.innerWidth > 600) {
+      navbar.classList.add("scrolled");
     } else {
-      navbar1.classList.remove("scrolled");
+      navbar.classList.remove("scrolled");
     }
   });
 });
+
 // Disable scrolling on the body and any other scrollable elements
 function disableScroll() {
   document.body.style.overflow = "hidden";
