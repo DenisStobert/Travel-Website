@@ -10,6 +10,23 @@ function enableScroll() {
   document.documentElement.style.overflow = "auto"; // for the html element
   document.body.style.overflow = "auto";
 }
+// JavaScript for parallax effect
+document.addEventListener("DOMContentLoaded", function () {
+  var video = document.getElementById("heroVideo");
+  var videoWrapper = document.querySelector(".video-wrapper");
+
+  function updateParallax() {
+    var scrollPosition = window.scrollY;
+    var offset = videoWrapper.offsetTop;
+    var height = videoWrapper.offsetHeight;
+    var parallaxAmount = (scrollPosition - offset) / height;
+
+    video.style.transform = "translateX(-50%) translateY(-50%) scale(" + (1 + parallaxAmount * 1) + ")";
+  }
+
+  window.addEventListener("scroll", updateParallax);
+  updateParallax(); // Update on page load
+});
 function bookNow(city) {
   const urlParams = new URLSearchParams();
   urlParams.set('city', city);

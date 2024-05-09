@@ -199,12 +199,15 @@ body {
   text-align: center; /* Centers the content */
   padding-top: 20%; /* Adjusts the position of inner content */
 }
+/* Updated CSS */
 .video-wrapper {
   position: relative;
   width: 100%;
-  min-height: 70vh; /* Full height */
+  height: 70vh; /* Adjusted to use viewport height */
   overflow: hidden;
+  perspective: 1000px; /* Added perspective for 3D effect */
 }
+
 .video-wrapper::after {
   content: "";
   position: absolute;
@@ -212,25 +215,22 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(
-    0,
-    0,
-    0,
-    0.3
-  ); /* Adjust the opacity to make it lighter or darker */
-  z-index: 2; /* Ensure it's above the video but below the text content */
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 2;
 }
+
 #heroVideo {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%) translateY(-50%) scale(1.2); /* Adjusted transform */
   width: auto;
   min-width: 100%;
   height: auto;
   min-height: 100%;
-  z-index: 1; /* Ensures the video stays behind the content */
+  z-index: 1;
 }
+
 .section__container.header__container {
   position: relative;
   z-index: 3; /* Ensures text and other elements are above the overlay */
