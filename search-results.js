@@ -25,8 +25,18 @@ function startTimer(duration, display) {
     }
   }, 1000);
 }
-
 document.addEventListener("DOMContentLoaded", function () {
+  var tripType = localStorage.getItem("tripType");
+  var flightClassText = tripType === "One Way" ? "OW" : "RT";
+
+  // Update the text based on the trip type
+  if (tripType === "One Way") {
+    document.querySelector(".price-content p").textContent =
+      "Business Class, One Way, Total";
+  } else {
+    document.querySelector(".price-content p").textContent =
+      "Business Class, Round Trip, Total";
+  }
   // Array of airline objects with name and logo URL
   var airlines = [
     { name: "Emirates", logoUrl: "assets/emirates-logo.png" },
@@ -45,46 +55,147 @@ document.addEventListener("DOMContentLoaded", function () {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  // Function to generate random deals
-  function generateRandomDeals() {
-    var dealsContainer = document.getElementById("deals-container");
-    dealsContainer.innerHTML = ""; // Clear existing content
-
-    for (var i = 0; i < 3; i++) {
-      // Generate 3 random deals
-      var randomIndex;
-      do {
-        randomIndex = getRandomInt(0, airlines.length - 1);
-      } while (
-        airlines[randomIndex].name === previousAirline ||
-        airlines[randomIndex].name === prePreviousAirline
-      ); // Ensure no consecutive same airlines
-
-      var airline = airlines[randomIndex];
-      var basePrice = getRandomInt(1800, 2500); // Generate random base price
-
-      // Create deal element
-      var dealElement = document.createElement("div");
-      dealElement.classList.add("airline-deal");
-      dealElement.innerHTML = `
-        <img src="${airline.logoUrl}" class="airline-logo-deal">
-        <div class="airline-name">${airline.name}</div>
-        <div class="airline-price" data-base-price="${basePrice}">$${basePrice}.00<span class="tooltip"> *</span></div>
-        <div class="flight-class">Business Class, RT, Total</div>
-      `;
-
-      // Append deal to deals container
-      dealsContainer.appendChild(dealElement);
-
-      // Update previousAirline and prePreviousAirline variables
-      prePreviousAirline = previousAirline;
-      previousAirline = airline.name;
-    }
+  // Function to calculate the discounted price
+  function calculateDiscountedPrice(basePrice) {
+    return tripType === "One Way" ? basePrice * 0.4 : basePrice;
   }
+
+  // Function to generate random deals
+function generateRandomDeals() {
+  var dealsContainer = document.getElementById("deals-container");
+  dealsContainer.innerHTML = ""; // Clear existing content
+
+  for (var i = 0; i < 3; i++) {
+    // Generate 3 random deals
+    var randomIndex;
+    do {
+      randomIndex = getRandomInt(0, airlines.length - 1);
+    } while (
+      airlines[randomIndex].name === previousAirline ||
+      airlines[randomIndex].name === prePreviousAirline
+    ); // Ensure no consecutive same airlines
+
+    var airline = airlines[randomIndex];
+    var basePrice = getRandomInt(1800, 2500); // Generate random base price
+
+    // Adjust the price for one-way flights
+    if (tripType === "One Way") {
+      basePrice *= 0.6; // Apply a 60% discount for one-way flights
+    }
+
+    // Create deal element
+    var dealElement = document.createElement("div");
+    dealElement.classList.add("airline-deal");
+    dealElement.innerHTML = `
+      <img src="${airline.logoUrl}" class="airline-logo-deal">
+      <div class="airline-name">${airline.name}</div>
+      <div class="airline-price" data-base-price="${basePrice}">$${basePrice}.00<span class="tooltip"> *</span></div>
+      <div class="flight-class">Business Class, ${flightClassText}, Total</div>
+    `;
+
+    // Append deal to deals container
+    dealsContainer.appendChild(dealElement);
+
+    // Update previousAirline and prePreviousAirline variables
+    prePreviousAirline = previousAirline;
+    previousAirline = airline.name;
+  }
+}
 
   // Generate random deals when the page loads
   generateRandomDeals();
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Function to generate a random price between $2000 and $2500
+  function generateRandomPrice() {
+    return Math.floor(Math.random() * (2500 - 2000 + 1)) + 2000;
+  }
+
+  // Function to calculate 15% more than the random price
+  function calculateOldPrice(randomPrice) {
+    return Math.round(randomPrice * 1.15);
+  }
+
+  // Function to get the current time in EST
+  function getCurrentTimeEST() {
+    var currentTime = new Date();
+    var utcOffset = 0; // EST offset from UTC is -5 hours
+    var estTime = new Date(currentTime.getTime() + utcOffset * 3600 * 1000);
+    return estTime;
+  }
+
+  // Function to calculate the time remaining until midnight EST
+  function getTimeUntilMidnightEST() {
+    var currentTime = getCurrentTimeEST();
+    var hours = currentTime.getHours();
+    var minutes = currentTime.getMinutes();
+    var seconds = currentTime.getSeconds();
+
+    // Calculate the time until midnight EST
+    var timeUntilMidnightEST =
+      (24 - (hours % 24) - 1) * 3600 + (59 - minutes) * 60 + (60 - seconds);
+    return timeUntilMidnightEST;
+  }
+
+  // Function to update the timer display
+  function updateTimer() {
+    var timeUntilReset = getTimeUntilMidnightEST();
+    var hours = Math.floor(timeUntilReset / 3600);
+    var minutes = Math.floor((timeUntilReset % 3600) / 60);
+    document.getElementById("timer").textContent = `${("0" + hours).slice(
+      -2
+    )}h : ${("0" + minutes).slice(-2)}m`;
+  }
+
+  // Function to reset the prices and update the timer
+  function resetPricesAndTimer() {
+    // Update the timer display
+    updateTimer();
+  
+    // Get the destination from the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const toDestination = urlParams.get("toAirport");
+    var tripType = localStorage.getItem("tripType");
+  
+    // Retrieve the stored prices for "to" destinations
+    let destinationPrices =
+      JSON.parse(localStorage.getItem("destinationPrices")) || {};
+  
+    // Generate a new random price if the destination doesn't have one yet
+    if (!destinationPrices.hasOwnProperty(toDestination)) {
+      destinationPrices[toDestination] = generateRandomPrice();
+      localStorage.setItem(
+        "destinationPrices",
+        JSON.stringify(destinationPrices)
+      );
+    }
+  
+    // Calculate the old price as 15% more than the random price
+    let randomPrice = destinationPrices[toDestination];
+  
+    // Discount the random price by 60% for one-way trips
+    if (tripType === "One Way") {
+      randomPrice *= 0.6; // 60% discount
+      randomPrice = Math.round(randomPrice);
+    }
+
+    let oldPrice = calculateOldPrice(randomPrice);
+  
+    // Display the prices
+    document.getElementById("flightPrice").textContent = `$${randomPrice}.00*`;
+    document.querySelector(".old-price").textContent = `old price: $${oldPrice}.00`;
+  }
+  // Initialize the timer and prices at the start
+  resetPricesAndTimer();
+
+  // Update the timer every second
+  setInterval(updateTimer, 1000);
+
+  // Reset the prices and timer at midnight EST
+  setInterval(resetPricesAndTimer, getTimeUntilMidnightEST() * 1000);
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   // Function to generate random additional price
   function getRandomAdditionalPrice(min, max) {
@@ -346,119 +457,6 @@ function submitQuote() {
     });
   }
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-  let currentPrice = localStorage.getItem("flightPrice");
-  let currentSearch;
-
-  // Function to generate a random price between $2000 and $2500
-  function generateRandomPrice() {
-    return Math.floor(Math.random() * (2500 - 2000 + 1)) + 2000;
-  }
-
-  // Function to update the price display
-  function updatePrice() {
-    if (currentPrice === null || currentPrice === undefined) {
-      currentPrice = generateRandomPrice();
-      localStorage.setItem("flightPrice", currentPrice);
-    }
-    document.getElementById("flightPrice").textContent = `$${currentPrice}.00*`;
-  }
-
-  // Function to handle the timer hitting 0
-  function handleTimerReset() {
-    // Generate a new random price
-    currentPrice = generateRandomPrice();
-    localStorage.setItem("flightPrice", currentPrice);
-    updatePrice();
-    resetTimer();
-  }
-
-  // Function to get the current time in EST
-  function getCurrentTimeEST() {
-    var currentTime = new Date();
-    var utcOffset = -5; // EST offset from UTC is -5 hours
-    var estTime = new Date(currentTime.getTime() + utcOffset * 3600 * 1000);
-    return estTime;
-  }
-
-  // Function to calculate the time remaining until the next reset
-  function getTimeUntilNextReset() {
-    var currentTime = getCurrentTimeEST();
-    var hours = currentTime.getHours();
-    var minutes = currentTime.getMinutes();
-    var seconds = currentTime.getSeconds();
-
-    // Calculate the time until the next reset (24 hours from the current time)
-    var timeUntilReset =
-      (24 - (hours % 24) - 1) * 3600 + (59 - minutes) * 60 + (60 - seconds);
-    return timeUntilReset;
-  }
-
-  // Function to start the timer
-  function startTimer(durationInSeconds, display, callback) {
-    var timer = durationInSeconds;
-    setInterval(function () {
-      // Calculate remaining time
-      var hours = Math.floor(timer / 3600);
-      var minutes = Math.floor((timer % 3600) / 60);
-
-      // Display the remaining time in the format hh"h" mm"m"
-      display.textContent =
-        ("0" + hours).slice(-2) + "h " + ": " + ("0" + minutes).slice(-2) + "m";
-
-      // Update the timer
-      if (--timer < 0) {
-        timer = durationInSeconds; // Reset the timer
-        callback(); // Update the price
-      }
-    }, 1000); // Update the timer every second
-  }
-
-  // Function to reset the timer
-  function resetTimer() {
-    clearInterval(timerInterval);
-    timerInterval = startTimer(
-      getTimeUntilNextReset(),
-      document.querySelector("#timer"),
-      handleTimerReset
-    );
-  }
-
-  // Initialize the timer when the window loads
-  window.onload = function () {
-    initializeTimer();
-  };
-
-  // Initialize the timer
-  function initializeTimer() {
-    let timeUntilReset = getTimeUntilNextReset();
-    startTimer(
-      timeUntilReset,
-      document.querySelector("#timer"),
-      handleTimerReset
-    );
-  }
-
-  // Event listener for the search form submission
-  document
-    .getElementById("flightSearchForm")
-    .addEventListener("submit", function (event) {
-      event.preventDefault(); // Prevent the form from submitting
-
-      // Get the search direction from the form
-      const fromAirport = document.getElementById("fromAirport").value;
-      const toAirport = document.getElementById("toAirport").value;
-      currentSearch = `${fromAirport} to ${toAirport}`;
-
-      // Reset the timer for the new search direction
-      resetTimer();
-    });
-
-  // Update the price display
-  updatePrice();
-});
-
 document.addEventListener("DOMContentLoaded", function () {
   // Get all select elements within .third containers
   const selects = document.querySelectorAll(".flight-details .third select");

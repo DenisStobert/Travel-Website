@@ -56,6 +56,14 @@ function fetchAutocompleteResults(searchTerm, city) {
       }));
     });
 }
+// Assuming you have an event listener for the one-way and round-trip buttons
+document.getElementById("oneWay").addEventListener("click", function () {
+  localStorage.setItem("tripType", "One Way");
+});
+
+document.getElementById("roundTrip").addEventListener("click", function () {
+  localStorage.setItem("tripType", "Round Trip");
+});
 // Event listener for input field changes
 document.getElementById('fromAirport').addEventListener('input', function() {
   const searchTerm = this.value;
