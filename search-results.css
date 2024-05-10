@@ -345,9 +345,16 @@ body {
   margin-right: 20px; /* Adds some margin to separate from the divider */
   flex-grow: 0; /* Prevents the box from growing to fill available space */
   flex-shrink: 1; /* Allows the box to shrink to fit its content */
+  max-width: 200px;
 }
 .price-content p{
   font-size: 13px;
+}
+.price-content h1 {
+  font-size: 1.5em; /* Set a base font size */
+  white-space: nowrap; /* Prevent the text from wrapping */
+  overflow: hidden; /* Hide any overflow text */
+  text-overflow: ellipsis; /* Display an ellipsis (...) if the text overflows */
 }
 .price-details {
   display: flex;

@@ -177,23 +177,29 @@ document.addEventListener("DOMContentLoaded", function () {
   // Access trip type options
   var roundTripOption = document.querySelector(".trip-option-form.round-trip");
   var oneWayOption = document.querySelector(".trip-option-form.one-way");
-  var returnDateInput = document.getElementById("returnDate");
+  var returnDateInput = document.getElementById("returnDate1");
 
-  // Add event listeners to trip type options
-  roundTripOption.addEventListener("click", function () {
-    console.log("Round trip option clicked");
-    this.classList.add("active");
-    oneWayOption.classList.remove("active");
-    returnDateInput.disabled = false; // Enable return date input for round trip
-    returnDateInput.classList.remove("greyed-out"); // Remove greyed-out style
+  // Add event listeners to trip type options parent
+  roundTripOption.parentElement.addEventListener("click", function (event) {
+    if (event.target === roundTripOption) {
+      console.log("Round trip option clicked");
+      roundTripOption.classList.add("active");
+      oneWayOption.classList.remove("active");
+      returnDateInput.disabled = false; // Enable return date input for round trip
+      returnDateInput.style.backgroundColor = ""; // Reset background color
+      returnDateInput.placeholder = "mm/dd/yyyy"; // Reset placeholder
+    }
   });
 
-  oneWayOption.addEventListener("click", function () {
-    console.log("One-way option clicked");
-    this.classList.add("active");
-    roundTripOption.classList.remove("active");
-    returnDateInput.disabled = true; // Disable return date input for one-way
-    returnDateInput.classList.add("greyed-out"); // Add greyed-out style
+  oneWayOption.parentElement.addEventListener("click", function (event) {
+    if (event.target === oneWayOption) {
+      console.log("One-way option clicked");
+      oneWayOption.classList.add("active");
+      roundTripOption.classList.remove("active");
+      returnDateInput.disabled = true; // Disable return date input for one-way
+      returnDateInput.style.backgroundColor = "rgba(0,0,0,0.1)"; // Grey out background
+      returnDateInput.placeholder = ""; // Remove placeholder
+    }
   });
 
   // Initialize as round trip
@@ -202,7 +208,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Debugging: Log the state of the returnDate input
   console.log("Initial returnDate input state:", returnDateInput.disabled);
 });
-
 
 document.getElementById("tripType").addEventListener("click", function (event) {
   if (event.target.classList.contains("trip-option-form")) {
@@ -411,31 +416,60 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Access the 'From' input
-  var inputFrom = document.getElementById("from");
-  var autocompleteFrom = new google.maps.places.Autocomplete(inputFrom, {
-    types: ["(cities)"], // Suggests cities from all over the world
-  });
+document.getElementById('from').addEventListener('input', function() {
+  const searchTerm = this.value;
 
-  // Listen for when a place is selected from the 'From' input
-  autocompleteFrom.addListener("place_changed", function () {
-    var place = autocompleteFrom.getPlace();
-    console.log("Place from:", place); // Example action: logging the selected place
-  });
+  fetchAutocompleteResults(searchTerm, null) // Pass null for city initially
+    .then(results => {
+      const dropdown = document.getElementById('fromAutocompleteDropdown');
+      dropdown.innerHTML = ''; // Clear previous results
 
-  // Access the 'To' input
-  var inputTo = document.getElementById("to");
-  var autocompleteTo = new google.maps.places.Autocomplete(inputTo, {
-    types: ["(cities)"], // Suggests cities from all over the world
-  });
+      // Create and append list items for each result
+      results.forEach(result => {
+        const li = document.createElement('li');
+        li.textContent = result.name; // Display entire airport name in dropdown
+        li.addEventListener('click', () => {
+          // Use city + airport code in the input field
+          document.getElementById('from').value = `${result.cityCode} (${result.name})`; 
+          
+          // Hide the dropdown
+          dropdown.style.display = 'none';
+        });
+        dropdown.appendChild(li);
+      });
 
-  // Listen for when a place is selected from the 'To' input
-  autocompleteTo.addListener("place_changed", function () {
-    var place = autocompleteTo.getPlace();
-    console.log("Place to:", place); // Example action: logging the selected place
-  });
+      // Display the dropdown if there are results
+      dropdown.style.display = results.length ? 'block' : 'none';
+    });
 });
+
+document.getElementById('to').addEventListener('input', function() {
+  const searchTerm = this.value;
+
+  fetchAutocompleteResults(searchTerm, null) // Pass null for city initially
+    .then(results => {
+      const dropdown = document.getElementById('toAutocompleteDropdown');
+      dropdown.innerHTML = ''; // Clear previous results
+
+      // Create and append list items for each result
+      results.forEach(result => {
+        const li = document.createElement('li');
+        li.textContent = result.name; // Display entire airport name in dropdown
+        li.addEventListener('click', () => {
+          // Use city + airport code in the input field
+          document.getElementById('to').value = `${result.cityCode} (${result.name})`; 
+          
+          // Hide the dropdown
+          dropdown.style.display = 'none';
+        });
+        dropdown.appendChild(li);
+      });
+
+      // Display the dropdown if there are results
+      dropdown.style.display = results.length ? 'block' : 'none';
+    });
+});
+
 document.getElementById("roundTrip").addEventListener("click", function () {
   this.classList.add("active");
   document.getElementById("oneWay").classList.remove("active");

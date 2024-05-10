@@ -164,7 +164,34 @@ document.addEventListener("DOMContentLoaded", function () {
   
     // Generate a new random price if the destination doesn't have one yet
     if (!destinationPrices.hasOwnProperty(toDestination)) {
-      destinationPrices[toDestination] = generateRandomPrice();
+      let randomPrice;
+  
+      // Adjust the random price based on specific countries
+      switch (toDestination.toUpperCase()) {
+        case "AUSTRALIA":
+          randomPrice = Math.floor(Math.random() * (3500 - 3000 + 1)) + 3000;
+          break;
+        case "INDIA":
+        case "UAE":
+          randomPrice = Math.floor(Math.random() * (3500 - 2500 + 1)) + 2500;
+          break;
+        case "SINGAPORE":
+        case "TOKYO":
+        case "VIETNAM":
+          randomPrice = Math.floor(Math.random() * (3000 - 2500 + 1)) + 2500;
+          break;
+        case "THAILAND":
+        case "INDONESIA":
+        case "MALDIVES":
+          randomPrice = Math.floor(Math.random() * (3500 - 3000 + 1)) + 3000;
+          break;
+        default:
+          // For other destinations, use the default random price range
+          randomPrice = generateRandomPrice();
+          break;
+      }
+  
+      destinationPrices[toDestination] = randomPrice;
       localStorage.setItem(
         "destinationPrices",
         JSON.stringify(destinationPrices)
@@ -179,13 +206,14 @@ document.addEventListener("DOMContentLoaded", function () {
       randomPrice *= 0.6; // 60% discount
       randomPrice = Math.round(randomPrice);
     }
-
+  
     let oldPrice = calculateOldPrice(randomPrice);
   
     // Display the prices
     document.getElementById("flightPrice").textContent = `$${randomPrice}.00*`;
     document.querySelector(".old-price").textContent = `old price: $${oldPrice}.00`;
   }
+  
   // Initialize the timer and prices at the start
   resetPricesAndTimer();
 
@@ -234,9 +262,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("from").placeholder = fromCity;
     document.getElementById("to").placeholder = toCity;
-    document.querySelector(
-      ".price-content h1"
-    ).textContent = `${fromCity} → ${toCity}`;
+    const h1Element = document.querySelector(".price-content h1");
+    h1Element.innerHTML = `${fromCity} →<br> ${toCity}`;
 
     // Use the city code here
     if (cityCode) {
@@ -324,6 +351,7 @@ dropdowns.forEach((dropdown) => {
         document.getElementById("return").placeholder = "mm/dd/yyyy";
       }
     });
+    
   });
 });
 // Object to store prices for each destination

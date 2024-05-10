@@ -608,8 +608,7 @@
                 </div>
               </div>
               <div class="input-row">
-                <div class="input-group">
-                  <label for="from">From*</label>
+                <div class="autocomplete">
                   <input
                     type="text"
                     id="from"
@@ -617,9 +616,12 @@
                     placeholder="City or Airport"
                     required
                   />
+                  <ul
+                    class="autocomplete-dropdown"
+                    id="fromAutocompleteDropdown"
+                  ></ul>
                 </div>
-                <div class="input-group">
-                  <label for="to">To*</label>
+                <div class="autocomplete">
                   <input
                     type="text"
                     id="to"
@@ -627,6 +629,10 @@
                     placeholder="City or Airport"
                     required
                   />
+                  <ul
+                    class="autocomplete-dropdown"
+                    id="toAutocompleteDropdown"
+                  ></ul>
                 </div>
               </div>
               <div class="input-row">
@@ -641,7 +647,7 @@
                 </div>
                 <div class="input-group">
                   <label for="returnDate">Return Date</label>
-                  <input type="date" id="returnDate" name="returnDate" />
+                  <input type="date" id="returnDate1" name="returnDate" />
                 </div>
               </div>
               <div class="input-row">
@@ -691,8 +697,8 @@
               <button type="submit">GET FREE QUOTES</button>
               <p class="safe-text">
                 <span>100% Safe. No purchase required.</span> I agree to provide
-                my phone number and to be contacted by clicking “Get a Free
-                Quote”. Your privacy is respected. Terms of Service.
+                my phone number and to be contacted by clicking “Get Free
+                Quotes”. Your privacy is respected. Terms of Service.
               </p>
             </form>
             <div class="modal-extra-text">
